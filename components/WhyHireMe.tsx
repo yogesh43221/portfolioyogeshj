@@ -1,0 +1,78 @@
+import React from 'react';
+import { BookOpen, Server, TrendingUp } from 'lucide-react';
+
+const WhyHireMe: React.FC = () => {
+  return (
+    <section className="py-24 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+      <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+        
+        {/* Architectural Header */}
+        <div className="border-b border-slate-300 dark:border-slate-800 pb-8 mb-16">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div>
+                    <span className="text-blue-600 dark:text-blue-500 font-mono text-sm font-bold tracking-wider uppercase mb-3 block">
+                    ./why_hire_me
+                    </span>
+                    <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white font-sans tracking-tight leading-tight">
+                        Bridging Research &<br />Production Engineering
+                    </h2>
+                </div>
+                <p className="text-slate-700 dark:text-slate-300 max-w-xl leading-relaxed text-lg font-sans pb-1 font-medium">
+                    I don't just build models; I build reliable, scalable systems. My background blends academic rigor with the practical constraints of real-world software engineering.
+                </p>
+            </div>
+        </div>
+
+        {/* Structured Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Card 1 */}
+            <div className="group p-10 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 hover:border-blue-500/30 dark:hover:border-blue-500/30 transition-all">
+                <div className="flex items-center gap-4 mb-5">
+                    <div className="p-3 bg-white dark:bg-slate-800 rounded-xl shadow-sm text-blue-600 dark:text-blue-400 border border-slate-100 dark:border-slate-700">
+                        <BookOpen className="h-6 w-6" />
+                    </div>
+                    <h3 className="font-bold text-slate-900 dark:text-white font-sans text-xl">
+                        Research-Grade Rigor
+                    </h3>
+                </div>
+                <p className="text-base text-slate-700 dark:text-slate-400 leading-relaxed font-sans">
+                    Published IEEE author with deep understanding of algorithmic foundations. I move beyond "import sklearn" to understand and optimize mathematical underpinnings for edge-case robustness.
+                </p>
+            </div>
+
+            {/* Card 2 */}
+            <div className="group p-10 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 hover:border-blue-500/30 dark:hover:border-blue-500/30 transition-all">
+                <div className="flex items-center gap-4 mb-5">
+                    <div className="p-3 bg-white dark:bg-slate-800 rounded-xl shadow-sm text-purple-600 dark:text-purple-400 border border-slate-100 dark:border-slate-700">
+                        <Server className="h-6 w-6" />
+                    </div>
+                    <h3 className="font-bold text-slate-900 dark:text-white font-sans text-xl">
+                        Full-Cycle Systems
+                    </h3>
+                </div>
+                <p className="text-base text-slate-700 dark:text-slate-400 leading-relaxed font-sans">
+                    Not siloed in Jupyter notebooks. I architect end-to-end pipelines: from complex SQL ETL and vector database management to deploying robust FastAPI services in Docker containers.
+                </p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="group p-10 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 hover:border-blue-500/30 dark:hover:border-blue-500/30 transition-all">
+                <div className="flex items-center gap-4 mb-5">
+                    <div className="p-3 bg-white dark:bg-slate-800 rounded-xl shadow-sm text-emerald-600 dark:text-emerald-400 border border-slate-100 dark:border-slate-700">
+                        <TrendingUp className="h-6 w-6" />
+                    </div>
+                    <h3 className="font-bold text-slate-900 dark:text-white font-sans text-xl">
+                        Impact-Driven Results
+                    </h3>
+                </div>
+                <p className="text-base text-slate-700 dark:text-slate-400 leading-relaxed font-sans">
+                    Proven track record of ROI. Whether reducing clinical data processing time by 40% or optimizing inventory for sales forecasting, I focus on measurable efficiency and cost reduction.
+                </p>
+            </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default WhyHireMe;
