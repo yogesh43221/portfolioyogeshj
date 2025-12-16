@@ -97,25 +97,43 @@ const Philosophy: React.FC = () => {
          </div>
 
         {/* 2. Interactive ML Pipeline Visualization */}
-        <div className="mb-20">
+        <div className="mb-24">
+             <div className="mb-12">
+                <h3 className="text-3xl font-bold text-slate-900 dark:text-white font-sans mb-3">
+                    How I Design Production AI Systems
+                </h3>
+                <p className="text-slate-600 dark:text-slate-400 font-sans text-lg border-l-4 border-blue-500 pl-4 italic">
+                    A practical blueprint from raw data to business value
+                </p>
+            </div>
             <MLSystemPipeline />
         </div>
 
         {/* 3. Core Principles Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {principles.map((item, idx) => (
-                <div key={idx} className="group p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-blue-500/30 dark:hover:border-blue-500/30 transition-all shadow-sm hover:shadow-lg">
-                    <div className="mb-6 inline-flex p-3.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                        {item.icon}
+        <div>
+            <div className="mb-12">
+                <h3 className="text-3xl font-bold text-slate-900 dark:text-white font-sans mb-3">
+                    Core Engineering Principles
+                </h3>
+                <p className="text-slate-600 dark:text-slate-400 font-sans text-lg border-l-4 border-emerald-500 pl-4 italic">
+                    Non-negotiables I follow in every production system
+                </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {principles.map((item, idx) => (
+                    <div key={idx} className="group p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-blue-500/30 dark:hover:border-blue-500/30 transition-all shadow-sm hover:shadow-lg">
+                        <div className="mb-6 inline-flex p-3.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                            {item.icon}
+                        </div>
+                        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 font-sans">
+                            {item.title}
+                        </h3>
+                        <p className="text-base text-slate-700 dark:text-slate-400 leading-relaxed font-sans">
+                            {item.desc}
+                        </p>
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4 font-sans">
-                        {item.title}
-                    </h3>
-                    <p className="text-base text-slate-700 dark:text-slate-400 leading-relaxed font-sans">
-                        {item.desc}
-                    </p>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
       </div>
     </section>

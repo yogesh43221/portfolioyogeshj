@@ -67,6 +67,9 @@ const AIChat: React.FC = () => {
             <p className="text-slate-600 dark:text-slate-400 transition-colors font-sans max-w-lg mx-auto text-base">
                 Ask my Gemini-powered agent about my background.
             </p>
+            <p className="text-xs text-slate-500 mt-2 font-mono">
+                This is a demo agent trained on my public work and experience.
+            </p>
         </div>
 
         {/* Terminal Window */}
