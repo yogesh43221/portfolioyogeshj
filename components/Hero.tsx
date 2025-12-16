@@ -1,9 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, Github, Linkedin, Mail, Terminal, Cpu, Network } from 'lucide-react';
 import { PROFILE } from '../constants';
 import ResumeDropdown from './ResumeDropdown';
 
+const ROLES = [
+  { 
+    title: "AI Researcher & Data Engineer", 
+    subtitle: "Specializing in Agentic Workflows & Scalable ETL" 
+  },
+  { 
+    title: "Machine Learning Engineer", 
+    subtitle: "Optimizing Predictive Models for Production" 
+  },
+  { 
+    title: "Backend Systems Architect", 
+    subtitle: "Building Robust APIs with FastAPI & Docker" 
+  }
+];
+
 const Hero: React.FC = () => {
+  const [roleIndex, setRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % ROLES.length);
+    }, 3500); // Change every 3.5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const targetId = href.replace('#', '');
@@ -14,9 +39,9 @@ const Hero: React.FC = () => {
   };
 
   return (
-    // Increased z-index, optimized spacing for large screens
-    <section id="about" className="relative min-h-[90vh] flex items-center justify-center pt-20 pb-16 z-20 overflow-hidden">
-      {/* Background: Technical Grid */}
+    // REMOVED overflow-hidden from here to allow Dropdown to show over the next section
+    <section id="about" className="relative min-h-[90vh] flex items-center justify-center pt-20 pb-16 z-20">
+      {/* Background: Technical Grid - Kept overflow-hidden here to contain background effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-slate-50 dark:bg-slate-950">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px]"></div>
           {/* Subtle glow effect */}
@@ -25,25 +50,27 @@ const Hero: React.FC = () => {
 
       <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-center text-center relative z-10">
         
-        {/* Identity Command Bar Container (Photo removed) */}
+        {/* Identity Command Bar Container */}
         <div className="flex flex-col items-center gap-6 mb-12 animate-fadeIn">
             
-            {/* Command Bar - Static & Confident */}
+            {/* Command Bar - Dynamic & Confident */}
             <div className="relative group">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-1000"></div>
                 
-                <div className="relative flex items-center gap-4 px-8 py-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-300 dark:border-slate-700 shadow-sm transition-all duration-300">
-                    <Terminal className="w-5 h-5 text-blue-600 dark:text-blue-500" />
+                <div className="relative flex items-center gap-4 px-8 py-3 bg-white dark:bg-slate-900 rounded-lg border border-slate-300 dark:border-slate-700 shadow-sm transition-all duration-300 min-w-[320px] sm:min-w-[600px] justify-center">
+                    <Terminal className="w-5 h-5 text-blue-600 dark:text-blue-500 flex-shrink-0" />
                     
-                    <span className="font-bold text-slate-900 dark:text-white text-base tracking-tight font-sans">
-                        AI Researcher & Data Engineer
-                    </span>
-                    
-                    <div className="h-5 w-px bg-slate-300 dark:bg-slate-700 hidden sm:block"></div>
-                    
-                    <span className="font-mono text-sm text-slate-600 dark:text-slate-400 hidden sm:block">
-                        Specializing in Agentic Workflows & Scalable ETL
-                    </span>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 overflow-hidden">
+                        <span key={`title-${roleIndex}`} className="font-bold text-slate-900 dark:text-white text-base tracking-tight font-sans animate-[fadeIn_0.5s_ease-out_forwards]">
+                            {ROLES[roleIndex].title}
+                        </span>
+                        
+                        <div className="h-5 w-px bg-slate-300 dark:bg-slate-700 hidden sm:block"></div>
+                        
+                        <span key={`sub-${roleIndex}`} className="font-mono text-sm text-slate-600 dark:text-slate-400 hidden sm:block animate-[fadeIn_0.5s_ease-out_forwards]">
+                            {ROLES[roleIndex].subtitle}
+                        </span>
+                    </div>
                 </div>
             </div>
 
