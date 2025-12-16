@@ -25,8 +25,22 @@ const Hero: React.FC = () => {
 
       <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-center text-center relative z-10">
         
-        {/* Identity Command Bar - Static & Confident */}
+        {/* Profile Image & Identity Command Bar Container */}
         <div className="flex flex-col items-center gap-6 mb-12 animate-fadeIn">
+            
+            {/* Professional Headshot */}
+            <div className="relative group mb-2">
+                <div className="absolute -inset-0.5 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
+                <div className="relative w-28 h-28 rounded-full p-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg overflow-hidden">
+                     <img 
+                        src={PROFILE.profileImage} 
+                        alt={PROFILE.name} 
+                        className="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-500"
+                     />
+                </div>
+            </div>
+
+            {/* Command Bar - Static & Confident */}
             <div className="relative group">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-1000"></div>
                 
