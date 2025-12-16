@@ -1,6 +1,9 @@
 import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
 import { SYSTEM_INSTRUCTION } from "../constants";
 
+// Declare process to avoid TypeScript errors when @types/node is not installed
+declare const process: any;
+
 let chatSession: Chat | null = null;
 
 const getChatSession = (): Chat => {
