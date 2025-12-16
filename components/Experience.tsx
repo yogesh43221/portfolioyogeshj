@@ -1,9 +1,10 @@
-import React from 'react';
-import { Briefcase, GraduationCap, ArrowUpRight, ExternalLink } from 'lucide-react';
-import { EXPERIENCE, EDUCATION, ACHIEVEMENTS, PUBLICATIONS, CERTIFICATIONS, ALL_CERTIFICATIONS_URL } from '../constants';
+import React, { useState } from 'react';
+import { Briefcase, GraduationCap, ArrowUpRight, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react';
+import { EXPERIENCE, EDUCATION, ACHIEVEMENTS, PUBLICATIONS, CERTIFICATIONS, ALL_CERTIFICATIONS_URL, EARLY_ENGINEERING } from '../constants';
 import SkillNetwork from './SkillNetwork';
 
 const Experience: React.FC = () => {
+  const [showEarlyCareer, setShowEarlyCareer] = useState(false);
 
   return (
     <section id="experience" className="py-32 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
@@ -56,6 +57,40 @@ const Experience: React.FC = () => {
                         </ul>
                     </div>
                 ))}
+                </div>
+
+                {/* Collapsible Early Career Section */}
+                <div className="mt-12 pt-6 ml-3 border-l-2 border-dashed border-slate-200 dark:border-slate-800/50 pl-10">
+                    <button
+                        onClick={() => setShowEarlyCareer(!showEarlyCareer)}
+                        className="flex items-center gap-2 text-xs font-mono font-bold text-slate-500 hover:text-slate-800 dark:hover:text-slate-300 transition-colors uppercase tracking-widest text-left"
+                    >
+                        {showEarlyCareer ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                        Prior Engineering Foundation
+                    </button>
+
+                    {showEarlyCareer && (
+                        <div className="mt-6 animate-fadeIn bg-slate-50 dark:bg-slate-800/20 p-6 rounded-lg border border-slate-100 dark:border-slate-800">
+                            {EARLY_ENGINEERING.map((job) => (
+                                <div key={job.id} className="opacity-90">
+                                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
+                                        <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200 font-sans">{job.role}</h4>
+                                        <span className="text-[10px] font-mono text-slate-500 mt-1 sm:mt-0">{job.period}</span>
+                                    </div>
+                                    <div className="text-xs font-bold text-slate-600 dark:text-slate-400 mb-2">{job.company}</div>
+                                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-3 font-medium italic font-sans">{job.description}</p>
+                                    <ul className="space-y-2">
+                                        {job.achievements.map((point, i) => (
+                                            <li key={i} className="flex items-start text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-sans">
+                                                <span className="mr-2 mt-1.5 w-1 h-1 bg-slate-400 rounded-full flex-shrink-0"></span>
+                                                {point}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </div>
 

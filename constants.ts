@@ -219,6 +219,21 @@ export const EXPERIENCE: Experience[] = [
   }
 ];
 
+export const EARLY_ENGINEERING: Experience[] = [
+  {
+    id: 4,
+    role: "Hardware Design Engineer Trainee",
+    company: "Aeron Systems Pvt. Ltd.",
+    period: "Jun 2023 - Dec 2023",
+    description: "Foundational engineering role focusing on high-reliability systems and testing protocols.",
+    achievements: [
+      "Contributed to testing and validation workflows for defense-grade navigation systems (Indian Navy), ensuring zero-failure reliability.",
+      "Managed rigorous documentation and compliance checks, translating complex requirements into production-ready deliverables.",
+      "Developed a systems-thinking mindset for error handling and validation, now applied to designing robust data pipelines."
+    ]
+  }
+];
+
 export const EDUCATION: Education[] = [
   {
     id: 1,
