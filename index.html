@@ -4,94 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Yogesh Jadhav | Data Engineer & ML Researcher</title>
-
-    <!-- Tailwind CSS (CDN – acceptable for now) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Tailwind Configuration -->
-    <script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ["Inter", "sans-serif"],
-              mono: ["JetBrains Mono", "monospace"],
-            },
-            colors: {
-              cyber: {
-                900: "#020617",
-                800: "#0f172a",
-                700: "#1e293b",
-                600: "#334155",
-                primary: "#3b82f6",
-                secondary: "#64748b",
-                accent: "#2563eb",
-              },
-            },
-            animation: {
-              fadeIn: "fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-            },
-            keyframes: {
-              fadeIn: {
-                "0%": { opacity: "0", transform: "translateY(10px)" },
-                "100%": { opacity: "1", transform: "translateY(0)" },
-              },
-            },
-          },
-        },
-      };
-    </script>
-
-    <!-- Custom Styles -->
-    <style>
-      /* Professional Scrollbar */
-      ::-webkit-scrollbar {
-        width: 10px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #020617;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #1e293b;
-        border-radius: 5px;
-        border: 2px solid #020617;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #3b82f6;
-      }
-
-      /* Light mode scrollbar */
-      html:not(.dark) ::-webkit-scrollbar-track {
-        background: #f8fafc;
-      }
-      html:not(.dark) ::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border: 2px solid #f8fafc;
-      }
-      html:not(.dark) ::-webkit-scrollbar-thumb:hover {
-        background: #64748b;
-      }
-
-      /* Selection Color */
-      ::selection {
-        background-color: #3b82f6;
-        color: #ffffff;
-      }
-    </style>
-  </head>
-
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
+</head>
   <body class="bg-slate-50 text-slate-900 dark:bg-cyber-900 dark:text-slate-300 antialiased transition-colors duration-300">
-    <!-- React Root -->
     <div id="root"></div>
-
-    <!-- ✅ VITE ENTRY POINT (CRITICAL) -->
-    <script type="module" src="/src/index.tsx"></script>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>

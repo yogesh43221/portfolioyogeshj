@@ -6,12 +6,7 @@ let chatSession: Chat | null = null;
 const getChatSession = (): Chat => {
   if (chatSession) return chatSession;
 
-  const apiKey = process.env.API_KEY;
-  if (!apiKey) {
-    throw new Error("API Key is missing. Please set process.env.API_KEY");
-  }
-
-  const ai = new GoogleGenAI({ apiKey });
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
   // Using gemini-2.5-flash for speed and efficiency in a chat context
   chatSession = ai.chats.create({
