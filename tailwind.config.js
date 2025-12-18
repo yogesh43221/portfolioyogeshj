@@ -12,18 +12,26 @@ export default {
         mono: ['JetBrains Mono', 'monospace'],
       },
       colors: {
+        midnight: {
+          950: '#0B0D12',
+          900: '#111319', // Dark mode base
+          800: '#1D1F2C', // Card surface
+          700: '#262938', // Hover surface
+        },
+        horizon: {
+          light: '#F3FDFF', // Light mode base
+          sky: '#3D7EAE',   // Light mode primary
+          gold: '#ECCA2F',  // Accent gold
+          clouds: '#AACADF', // Subtle accent
+        },
         cyber: {
-          900: '#020617', // Slate 950
-          800: '#0f172a', // Slate 900
-          700: '#1e293b', // Slate 800
-          600: '#334155', // Slate 700
-          primary: '#3b82f6', // Blue 500
-          secondary: '#64748b', // Slate 500
-          accent: '#2563eb', // Blue 600
+          primary: '#3b82f6',
+          accent: '#2563eb',
         }
       },
       animation: {
         'fadeIn': 'fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {
         fadeIn: {

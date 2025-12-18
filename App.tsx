@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 
 const App: React.FC = () => {
   return (
-    <div className="bg-slate-50 dark:bg-slate-950 min-h-screen text-slate-900 dark:text-slate-200 font-sans selection:bg-blue-500 selection:text-white transition-colors duration-300">
+    <div className="bg-horizon-light dark:bg-midnight-900 min-h-screen text-slate-900 dark:text-slate-200 font-sans selection:bg-horizon-sky selection:text-white transition-colors duration-500">
         <Navbar />
         <main>
             <Hero />

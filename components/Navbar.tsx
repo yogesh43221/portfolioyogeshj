@@ -10,11 +10,7 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     const html = document.documentElement;
-    if (html.classList.contains('dark')) {
-      setIsDark(true);
-    } else {
-      setIsDark(false);
-    }
+    setIsDark(html.classList.contains('dark'));
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -45,34 +41,34 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
+    <nav className={`fixed w-full z-50 transition-all duration-500 ${
       isScrolled 
-        ? 'bg-white/90 dark:bg-slate-950/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800' 
+        ? 'bg-white/80 dark:bg-midnight-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-midnight-700' 
         : 'bg-transparent border-b border-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0 flex items-center gap-2">
-             <Terminal className="text-slate-900 dark:text-white h-5 w-5" />
-            <span className="font-bold text-lg text-slate-900 dark:text-white tracking-tight font-sans">
+             <Terminal className="text-horizon-sky h-5 w-5" />
+            <span className="font-bold text-xl text-slate-900 dark:text-white tracking-tight font-sans">
               Yogesh Jadhav
             </span>
           </div>
           
           <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-1">
+            <div className="flex items-center space-x-1">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 px-4 py-2 rounded-md text-sm font-medium transition-colors font-sans"
+                  className="text-slate-600 dark:text-slate-400 hover:text-horizon-sky dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 px-4 py-2 rounded-md text-sm font-medium transition-colors font-sans"
                 >
                   {link.name}
                 </a>
               ))}
               
-              <div className="h-5 w-px bg-slate-200 dark:bg-slate-800 mx-2"></div>
+              <div className="h-5 w-px bg-slate-200 dark:bg-midnight-700 mx-2"></div>
 
               <div className="px-2">
                 <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
@@ -81,7 +77,7 @@ const Navbar: React.FC = () => {
               <a 
                 href="#contact" 
                 onClick={(e) => handleNavClick(e, '#contact')}
-                className="ml-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:opacity-90 px-4 py-2 rounded-md text-sm font-bold transition-all font-sans"
+                className="ml-2 bg-slate-900 dark:bg-horizon-sky text-white dark:text-white hover:opacity-90 px-5 py-2.5 rounded-lg text-sm font-bold transition-all font-sans shadow-sm"
               >
                 Hire Me
               </a>
@@ -101,16 +97,15 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-lg">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="md:hidden bg-white dark:bg-midnight-900 border-b border-slate-200 dark:border-midnight-700 shadow-lg animate-fadeIn">
+          <div className="px-2 pt-2 pb-6 space-y-1 sm:px-3">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800 block px-3 py-2 rounded-md text-base font-medium transition-colors font-sans"
+                className="text-slate-600 dark:text-slate-300 hover:text-horizon-sky dark:hover:text-white hover:bg-slate-50 dark:hover:bg-midnight-800 block px-4 py-3 rounded-md text-base font-medium transition-colors font-sans"
               >
                 {link.name}
               </a>
