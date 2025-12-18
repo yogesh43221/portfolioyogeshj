@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Terminal, Sun, Moon } from 'lucide-react';
+import { Menu, X, Terminal } from 'lucide-react';
 import { NAV_LINKS } from '../constants';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -73,13 +74,9 @@ const Navbar: React.FC = () => {
               
               <div className="h-5 w-px bg-slate-200 dark:bg-slate-800 mx-2"></div>
 
-              <button
-                onClick={toggleTheme}
-                className="p-2 rounded-full text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-white/5 transition-colors"
-                aria-label="Toggle Theme"
-              >
-                {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-              </button>
+              <div className="px-2">
+                <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
+              </div>
 
               <a 
                 href="#contact" 
@@ -92,12 +89,7 @@ const Navbar: React.FC = () => {
           </div>
           
           <div className="-mr-2 flex md:hidden items-center gap-4">
-             <button
-                onClick={toggleTheme}
-                className="p-2 rounded-full text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-white/5 transition-colors"
-              >
-                {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-              </button>
+             <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
 
             <button
               onClick={() => setIsOpen(!isOpen)}
