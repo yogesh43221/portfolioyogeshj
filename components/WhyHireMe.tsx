@@ -3,14 +3,14 @@ import { BookOpen, Server, TrendingUp } from 'lucide-react';
 
 const WhyHireMe: React.FC = () => {
   return (
-    <section className="py-24 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+    <section className="py-24 w-full bg-white dark:bg-midnight-900 border-b border-slate-200 dark:border-midnight-800 transition-colors duration-500">
       <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
         
         {/* Architectural Header */}
-        <div className="border-b border-slate-300 dark:border-slate-800 pb-8 mb-16">
+        <div className="border-b border-slate-300 dark:border-midnight-800 pb-8 mb-16">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div>
-                    <span className="text-blue-600 dark:text-blue-500 font-mono text-sm font-bold tracking-wider uppercase mb-3 block">
+                    <span className="text-horizon-sky font-mono text-sm font-bold tracking-wider uppercase mb-3 block">
                     ./why_hire_me
                     </span>
                     <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white font-sans tracking-tight leading-tight">
@@ -26,9 +26,9 @@ const WhyHireMe: React.FC = () => {
         {/* Structured Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card 1 */}
-            <div className="group p-10 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 hover:border-blue-500/30 dark:hover:border-blue-500/30 transition-all">
+            <div className="group p-10 rounded-2xl bg-slate-50 dark:bg-midnight-800 border border-slate-200 dark:border-midnight-700 hover:border-horizon-sky transition-all duration-300 shadow-sm hover:shadow-md">
                 <div className="flex items-center gap-4 mb-5">
-                    <div className="p-3 bg-white dark:bg-slate-800 rounded-xl shadow-sm text-blue-600 dark:text-blue-400 border border-slate-100 dark:border-slate-700">
+                    <div className="p-3 bg-white dark:bg-midnight-900 rounded-xl shadow-sm text-horizon-sky border border-slate-100 dark:border-midnight-700">
                         <BookOpen className="h-6 w-6" />
                     </div>
                     <h3 className="font-bold text-slate-900 dark:text-white font-sans text-xl">
@@ -41,9 +41,9 @@ const WhyHireMe: React.FC = () => {
             </div>
 
             {/* Card 2 */}
-            <div className="group p-10 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 hover:border-blue-500/30 dark:hover:border-blue-500/30 transition-all">
+            <div className="group p-10 rounded-2xl bg-slate-50 dark:bg-midnight-800 border border-slate-200 dark:border-midnight-700 hover:border-horizon-sky transition-all duration-300 shadow-sm hover:shadow-md">
                 <div className="flex items-center gap-4 mb-5">
-                    <div className="p-3 bg-white dark:bg-slate-800 rounded-xl shadow-sm text-purple-600 dark:text-purple-400 border border-slate-100 dark:border-slate-700">
+                    <div className="p-3 bg-white dark:bg-midnight-900 rounded-xl shadow-sm text-horizon-gold border border-slate-100 dark:border-midnight-700">
                         <Server className="h-6 w-6" />
                     </div>
                     <h3 className="font-bold text-slate-900 dark:text-white font-sans text-xl">
@@ -56,9 +56,9 @@ const WhyHireMe: React.FC = () => {
             </div>
 
             {/* Card 3 */}
-            <div className="group p-10 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 hover:border-blue-500/30 dark:hover:border-blue-500/30 transition-all">
+            <div className="group p-10 rounded-2xl bg-slate-50 dark:bg-midnight-800 border border-slate-200 dark:border-midnight-700 hover:border-horizon-sky transition-all duration-300 shadow-sm hover:shadow-md">
                 <div className="flex items-center gap-4 mb-5">
-                    <div className="p-3 bg-white dark:bg-slate-800 rounded-xl shadow-sm text-emerald-600 dark:text-emerald-400 border border-slate-100 dark:border-slate-700">
+                    <div className="p-3 bg-white dark:bg-midnight-900 rounded-xl shadow-sm text-emerald-500 border border-slate-100 dark:border-midnight-700">
                         <TrendingUp className="h-6 w-6" />
                     </div>
                     <h3 className="font-bold text-slate-900 dark:text-white font-sans text-xl">
