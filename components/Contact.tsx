@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Send, Mail, MapPin, CheckCircle, X } from 'lucide-react';
+import { Send, Mail, MapPin, CheckCircle, X, Sparkles } from 'lucide-react';
 import { PROFILE } from '../constants';
+import LinkedInButton from './LinkedInButton';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -79,12 +80,23 @@ const Contact: React.FC = () => {
           
           {/* Left Column: Contact Info */}
           <div className="space-y-8">
-            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-sans">
+            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-sans font-medium">
               I'm currently looking for new opportunities in AI Research and Data Engineering. 
               Whether you have a question, a project idea, or just want to say hi, my inbox is always open!
             </p>
 
             <div className="space-y-6">
+              {/* LinkedIn Direct Action Card */}
+              <div className="p-6 rounded-xl bg-blue-50/50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-800/50">
+                  <div className="flex items-center gap-2 mb-4">
+                      <Sparkles className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                      <span className="text-xs font-mono font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest">Recruiter Quick Action</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 font-sans">Prefer a direct message?</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-6 font-sans">Skip the form and connect with me directly on LinkedIn for a faster response.</p>
+                  <LinkedInButton />
+              </div>
+
               <div className="flex items-start gap-4 p-4 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
                 <div className="p-2 bg-slate-50 dark:bg-slate-800 rounded text-slate-700 dark:text-slate-300">
                   <Mail className="h-5 w-5" />
