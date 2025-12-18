@@ -28,8 +28,8 @@ const Hero: React.FC = () => {
       setTimeout(() => {
         setRoleIndex((prev) => (prev + 1) % ROLES.length);
         setIsExiting(false);
-      }, 500); // Wait for exit animation
-    }, 6000); // 6 seconds for a professional, intentional pace
+      }, 500);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, []);
@@ -44,97 +44,110 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="about" className="relative min-h-[90vh] flex items-center justify-center pt-20 pb-16 z-20 overflow-hidden">
-      {/* Background: Technical Grid */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-horizon-light dark:bg-midnight-900 transition-colors duration-500">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-          {/* Theme-synced glow effects */}
-          <div className="absolute left-1/4 top-1/4 h-[500px] w-[500px] rounded-full bg-horizon-sky/5 dark:bg-horizon-sky/10 blur-[120px] animate-pulse-slow"></div>
-          <div className="absolute right-1/4 bottom-1/4 h-[400px] w-[400px] rounded-full bg-horizon-gold/5 dark:bg-horizon-gold/5 blur-[100px] animate-pulse-slow delay-1000"></div>
+    <section id="about" className="relative min-h-[95vh] flex items-center justify-center pt-24 pb-16 z-20 overflow-hidden">
+      {/* Dynamic Mesh Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-horizon-light dark:bg-midnight-950 transition-colors duration-500">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.05)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+          <div className="absolute left-1/4 top-1/4 h-[600px] w-[600px] rounded-full bg-horizon-sky/10 dark:bg-horizon-sky/20 blur-[150px] animate-pulse-slow"></div>
+          <div className="absolute right-1/4 bottom-1/4 h-[500px] w-[500px] rounded-full bg-horizon-gold/10 dark:bg-horizon-gold/10 blur-[130px] animate-pulse-slow delay-1000"></div>
       </div>
 
       <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 flex flex-col items-center text-center relative z-10">
         
-        {/* Top Section: Status & Role */}
-        <div className="flex flex-col items-center gap-4 mb-10 animate-fadeIn">
-            {/* Subtle Status Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-horizon-gold/10 dark:bg-horizon-gold/5 border border-horizon-gold/20 rounded-full cursor-default">
-                <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-horizon-gold opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-horizon-gold"></span>
-                </span>
-                <span className="text-[10px] font-mono font-bold text-horizon-gold tracking-[0.2em] uppercase">
-                    Available for New Opportunities
-                </span>
+        {/* Status Area */}
+        <div className="flex flex-col items-center gap-6 mb-12 animate-fadeIn">
+            {/* Modern Pill Badge */}
+            <div className="group relative">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-horizon-sky to-horizon-gold rounded-full blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+                <div className="relative inline-flex items-center gap-2 px-4 py-1.5 bg-white dark:bg-midnight-900 border border-slate-200 dark:border-midnight-700 rounded-full cursor-default">
+                    <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-horizon-gold opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-horizon-gold"></span>
+                    </span>
+                    <span className="text-[10px] font-mono font-bold text-slate-600 dark:text-slate-300 tracking-[0.2em] uppercase">
+                        Available for Innovation
+                    </span>
+                </div>
             </div>
 
-            {/* Role Display Area */}
+            {/* Glass Terminal Role Switcher */}
             <div className="relative group">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-horizon-sky to-horizon-gold rounded-lg blur opacity-0 group-hover:opacity-10 transition duration-1000"></div>
+                <div className="absolute -inset-[1px] bg-gradient-to-r from-horizon-sky/50 to-horizon-gold/50 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition duration-700"></div>
                 
-                <div className="relative flex items-center gap-4 px-8 py-4 bg-white dark:bg-midnight-800 rounded-lg border border-slate-200 dark:border-midnight-700 shadow-sm transition-all duration-500 min-w-[320px] sm:min-w-[650px] justify-center overflow-hidden h-[72px] sm:h-auto">
-                    <Terminal className="w-5 h-5 text-horizon-sky flex-shrink-0" />
-                    
-                    <div className={`flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 transition-all duration-500 transform ${isExiting ? 'opacity-0 -translate-y-2' : 'opacity-100 translate-y-0'}`}>
-                        <span className="font-bold text-slate-900 dark:text-white text-base sm:text-lg tracking-tight font-sans">
-                            {ROLES[roleIndex].title}
-                        </span>
+                <div className="relative glass-card px-10 py-5 rounded-xl border-slate-200/50 dark:border-midnight-700/50 min-w-[320px] sm:min-w-[700px] justify-center overflow-hidden">
+                    <div className="scanline-effect"></div>
+                    <div className="flex items-center justify-center gap-5">
+                        <Terminal className="w-5 h-5 text-horizon-sky flex-shrink-0 animate-pulse" />
                         
-                        <div className="h-5 w-px bg-slate-300 dark:bg-midnight-700 hidden sm:block"></div>
-                        
-                        <span className="font-mono text-xs sm:text-sm text-slate-500 dark:text-slate-400">
-                            {ROLES[roleIndex].subtitle}
-                        </span>
+                        <div className={`flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-5 transition-all duration-700 transform ${isExiting ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
+                            <span className="font-bold text-slate-900 dark:text-white text-lg sm:text-xl tracking-tight font-sans">
+                                {ROLES[roleIndex].title}
+                            </span>
+                            
+                            <div className="h-6 w-px bg-slate-300 dark:bg-midnight-700 hidden sm:block"></div>
+                            
+                            <span className="font-mono text-sm sm:text-base text-horizon-sky font-medium opacity-80">
+                                {ROLES[roleIndex].subtitle}
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-slate-900 dark:text-white mb-8 font-sans leading-[1.05]">
-          Architecting <br className="hidden md:block" />
-          <span className="text-horizon-sky bg-clip-text text-transparent bg-gradient-to-r from-horizon-sky to-horizon-sky/80">Intelligent Pipelines</span>
+        <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-bold tracking-tighter text-slate-900 dark:text-white mb-10 font-sans leading-[0.9]">
+          Design <span className="text-horizon-sky">Sync</span>
         </h1>
 
-        <p className="mt-4 text-xl md:text-2xl text-slate-700 dark:text-slate-300 max-w-3xl leading-relaxed font-sans font-medium">
+        <p className="mt-4 text-xl md:text-3xl text-slate-700 dark:text-slate-300 max-w-4xl leading-relaxed font-sans font-medium tracking-tight">
           {PROFILE.shortBio}
         </p>
 
-        <div className="mt-12 flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm font-mono font-bold text-slate-600 dark:text-slate-400 border-t border-b border-slate-200 dark:border-midnight-700 py-6 px-10 bg-white/40 dark:bg-midnight-800/40 backdrop-blur-md rounded-xl transition-colors duration-500">
-            <span className="flex items-center gap-2 hover:text-horizon-sky transition-colors"><Cpu className="w-4 h-4 text-horizon-sky" /> AGENTIC_WORKFLOWS</span>
-            <span className="hidden sm:inline text-slate-300 dark:text-midnight-700">|</span>
-            <span className="flex items-center gap-2 hover:text-horizon-sky transition-colors"><Network className="w-4 h-4 text-horizon-sky" /> ETL_PIPELINES</span>
-            <span className="hidden sm:inline text-slate-300 dark:text-midnight-700">|</span>
-            <span className="flex items-center gap-2 hover:text-horizon-sky transition-colors"><Terminal className="w-4 h-4 text-horizon-sky" /> BACKEND_OPS</span>
+        {/* Technical Stack Tags */}
+        <div className="mt-14 flex flex-wrap justify-center gap-3">
+            {['AGENTIC_AI', 'ETL_ARCH', 'LLM_OPS'].map(tag => (
+                <span key={tag} className="px-5 py-2 glass-card rounded-lg text-xs font-mono font-bold text-slate-600 dark:text-slate-400 hover:text-horizon-sky transition-colors cursor-default border-slate-200 dark:border-midnight-800">
+                    #{tag}
+                </span>
+            ))}
         </div>
 
-        <div className="mt-12 flex flex-col sm:flex-row gap-5 w-full justify-center items-center">
+        {/* Hero CTAs */}
+        <div className="mt-14 flex flex-col sm:flex-row gap-6 w-full justify-center items-center">
           <a
             href="#projects"
             onClick={(e) => handleNavClick(e, '#projects')}
-            className="group inline-flex items-center justify-center px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-midnight-900 text-base font-mono font-bold rounded-lg hover:bg-slate-800 dark:hover:bg-slate-100 transition-all shadow-lg hover:shadow-xl w-full sm:w-auto"
+            className="group relative inline-flex items-center justify-center px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-midnight-950 text-base font-bold rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-2xl glow-shadow-sky w-full sm:w-auto"
           >
-            ./view_projects.sh
-            <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            Explore Systems
+            <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1.5 transition-transform" />
           </a>
           
           <ResumeDropdown align="center" className="w-full sm:w-auto" />
         </div>
 
-        <div className="mt-20 flex gap-8 items-center">
-            <a href={PROFILE.github} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-horizon-sky transition-colors transform hover:scale-110 duration-200" aria-label="GitHub">
-              <Github className="h-7 w-7"/>
-            </a>
-            <a href={PROFILE.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-horizon-sky transition-colors transform hover:scale-110 duration-200" aria-label="LinkedIn">
-              <Linkedin className="h-7 w-7"/>
-            </a>
-            <a href={`mailto:${PROFILE.email}`} className="text-slate-500 hover:text-horizon-sky transition-colors transform hover:scale-110 duration-200" aria-label="Email">
-              <Mail className="h-7 w-7"/>
-            </a>
+        {/* Dynamic Social Links */}
+        <div className="mt-20 flex gap-10 items-center">
+            {[
+                { Icon: Github, href: PROFILE.github, color: 'hover:text-slate-800 dark:hover:text-white' },
+                { Icon: Linkedin, href: PROFILE.linkedin, color: 'hover:text-[#0A66C2]' },
+                { Icon: Mail, href: `mailto:${PROFILE.email}`, color: 'hover:text-horizon-gold' }
+            ].map(({ Icon, href, color }, idx) => (
+                <a 
+                    key={idx} 
+                    href={href} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={`text-slate-400 ${color} transition-all transform hover:scale-125 hover:-translate-y-1 duration-300`}
+                >
+                    <Icon className="h-8 w-8"/>
+                </a>
+            ))}
         </div>
       </div>
 
-      {/* Subtle Bottom Divider */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-midnight-700 to-transparent opacity-60"></div>
+      {/* Modern Wave Divider */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-midnight-800 to-transparent opacity-80"></div>
     </section>
   );
 };

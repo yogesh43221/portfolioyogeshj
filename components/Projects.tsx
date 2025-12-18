@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Code, Brain, Database, Server, ChevronDown, ChevronUp, Network } from 'lucide-react';
+import { ExternalLink, Github, Code, Brain, Database, Server, ChevronDown, ChevronUp, Network, ArrowUpRight } from 'lucide-react';
 import { PROJECTS } from '../constants';
 import { ProjectCategory } from '../types';
 
@@ -31,24 +31,24 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-32 w-full bg-horizon-light dark:bg-midnight-900 transition-colors duration-500 relative">
+    <section id="projects" className="py-32 w-full bg-white dark:bg-midnight-950 transition-colors duration-500 relative">
       <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
         
-        <div className="mb-16 border-b border-slate-300 dark:border-midnight-800 pb-8">
-            <span className="text-horizon-sky font-mono text-sm font-bold tracking-wider uppercase mb-3 block">
-                ./portfolio
-            </span>
-            <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-8">
-                <div>
-                    <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white font-sans tracking-tight mb-4">
-                        Built Systems
+        {/* Header Section */}
+        <div className="mb-20">
+            <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-10 border-b border-slate-200 dark:border-midnight-800 pb-12">
+                <div className="space-y-4">
+                    <span className="text-horizon-sky font-mono text-sm font-bold tracking-widest uppercase flex items-center gap-2">
+                        <div className="w-8 h-px bg-horizon-sky"></div>
+                        Featured_Architectures
+                    </span>
+                    <h2 className="text-5xl md:text-6xl font-bold text-slate-900 dark:text-white font-sans tracking-tight">
+                        Built for Impact.
                     </h2>
-                    <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl font-sans">
-                        A selection of production-ready architectures, RAG pipelines, and analytical tools.
-                    </p>
                 </div>
                 
-                <div className="flex flex-wrap gap-3">
+                {/* Modern Filter Pills */}
+                <div className="flex flex-wrap gap-2 p-1 bg-slate-100 dark:bg-midnight-900 rounded-2xl w-fit">
                     {categories.map((cat) => (
                     <button
                         key={cat}
@@ -56,64 +56,69 @@ const Projects: React.FC = () => {
                             setActiveCategory(cat);
                             setExpandedProjectId(null); 
                         }}
-                        className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-mono font-bold transition-all duration-300 border ${
+                        className={`flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-mono font-bold transition-all duration-300 ${
                         activeCategory === cat
-                            ? 'bg-midnight-900 dark:bg-white text-white dark:text-midnight-900 border-midnight-900 dark:border-white shadow-lg scale-105'
-                            : 'bg-white dark:bg-midnight-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-midnight-700 hover:border-horizon-sky dark:hover:border-horizon-sky hover:bg-slate-50'
+                            ? 'bg-white dark:bg-midnight-800 text-horizon-sky shadow-xl scale-[1.02]'
+                            : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
                         }`}
                     >
                         {getCategoryIcon(cat)}
                         {cat.split(' ')[0]}
-                        <span className="hidden sm:inline">{cat.substring(cat.split(' ')[0].length)}</span>
                     </button>
                     ))}
                 </div>
             </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fadeIn items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 animate-fadeIn items-start">
           {filteredProjects.map((project) => (
             <div 
               key={project.id} 
-              className="group flex flex-col bg-white dark:bg-midnight-800 rounded-2xl border border-slate-200 dark:border-midnight-700 hover:border-horizon-sky dark:hover:border-horizon-sky transition-all duration-500 hover:shadow-xl shadow-sm h-full"
+              className="group flex flex-col glass-card glow-border rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl h-full"
             >
-              <div className="p-8 pb-0 flex-grow">
-                 <div className="flex justify-between items-start mb-6">
-                    <div>
-                        <span className="text-xs font-mono font-bold text-slate-400 block mb-2">ID: {project.id.toString().padStart(3, '0')}</span>
-                        <h3 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-horizon-sky transition-colors font-sans leading-tight">
-                        {project.title}
-                        </h3>
+              {/* Visual Card Top */}
+              <div className="p-8 pb-0">
+                 <div className="flex justify-between items-start mb-8">
+                    <div className="p-3 bg-horizon-sky/10 dark:bg-horizon-sky/5 rounded-xl border border-horizon-sky/20">
+                        {getCategoryIcon(project.category)}
                     </div>
                     {project.featured && (
-                         <span className="flex items-center gap-1 bg-horizon-sky/10 text-horizon-sky text-[10px] font-bold px-3 py-1 rounded-full border border-horizon-sky/20 uppercase tracking-wide font-mono">
-                           Featured
-                         </span>
+                         <div className="flex items-center gap-2 bg-horizon-gold/10 text-horizon-gold text-[10px] font-black px-3 py-1 rounded-full border border-horizon-gold/30 uppercase tracking-widest">
+                           <span className="w-1.5 h-1.5 rounded-full bg-horizon-gold animate-pulse"></span>
+                           Priority
+                         </div>
                     )}
                  </div>
 
-                 <p className="text-slate-700 dark:text-slate-300 text-base leading-relaxed mb-8 font-sans font-medium">
+                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-horizon-sky transition-colors font-sans mb-4 leading-tight">
+                    {project.title}
+                 </h3>
+
+                 <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-10 font-sans font-medium">
                     {project.description}
                  </p>
 
-                 <div className="flex flex-wrap gap-x-3 gap-y-2 mb-8">
+                 <div className="flex flex-wrap gap-2 mb-10">
                     {project.techStack.map(tech => (
-                        <span key={tech} className="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-midnight-900 text-slate-700 dark:text-slate-300 text-xs font-mono font-bold border border-slate-200 dark:border-midnight-700">
+                        <span key={tech} className="px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-midnight-900/50 text-slate-700 dark:text-slate-400 text-[10px] font-mono font-bold border border-slate-200 dark:border-midnight-700">
                             {tech}
                         </span>
                     ))}
                  </div>
               </div>
 
+              {/* Case Study Section */}
               {project.extendedDetails && (
-                 <div className="px-8 border-t border-dashed border-slate-200 dark:border-midnight-700">
+                 <div className="px-8 flex-grow">
                     {expandedProjectId === project.id && (
-                        <div className="py-6 space-y-4 animate-fadeIn">
-                            <div className="bg-slate-50 dark:bg-midnight-900 p-4 rounded-lg text-sm font-mono text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-midnight-700 leading-relaxed">
-                                <span className="text-horizon-sky font-bold block mb-1 uppercase tracking-wider">Problem</span> {project.extendedDetails.problem}
+                        <div className="py-6 space-y-5 animate-fadeIn border-t border-slate-200 dark:border-midnight-700">
+                            <div className="space-y-2">
+                                <span className="text-[10px] font-black text-horizon-sky uppercase tracking-widest">The Challenge</span>
+                                <p className="text-sm font-sans text-slate-700 dark:text-slate-300 leading-relaxed">{project.extendedDetails.problem}</p>
                             </div>
-                            <div className="bg-slate-50 dark:bg-midnight-900 p-4 rounded-lg text-sm font-mono text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-midnight-700 leading-relaxed">
-                                <span className="text-horizon-gold font-bold block mb-1 uppercase tracking-wider">Solution</span> {project.extendedDetails.solution}
+                            <div className="space-y-2">
+                                <span className="text-[10px] font-black text-horizon-gold uppercase tracking-widest">The Solution</span>
+                                <p className="text-sm font-sans text-slate-700 dark:text-slate-300 leading-relaxed">{project.extendedDetails.solution}</p>
                             </div>
                         </div>
                     )}
@@ -122,15 +127,16 @@ const Projects: React.FC = () => {
                             e.stopPropagation(); 
                             toggleProjectDetails(project.id);
                         }}
-                        className="w-full py-4 flex items-center justify-between text-xs font-mono font-bold text-slate-500 hover:text-horizon-sky transition-colors tracking-wide"
+                        className="w-full py-6 flex items-center justify-center gap-3 text-xs font-mono font-bold text-slate-500 hover:text-horizon-sky transition-colors border-t border-dashed border-slate-200 dark:border-midnight-700 mt-auto"
                       >
-                        {expandedProjectId === project.id ? 'CLOSE_DETAILS' : 'VIEW_CASE_STUDY'}
+                        {expandedProjectId === project.id ? 'Hide Specs' : 'View Architecture'}
                         {expandedProjectId === project.id ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
                       </button>
                  </div>
               )}
 
-              <div className="p-5 bg-slate-50 dark:bg-midnight-950/30 rounded-b-2xl border-t border-slate-200 dark:border-midnight-700 flex items-center justify-between">
+              {/* Footer Actions */}
+              <div className="p-6 bg-slate-50/50 dark:bg-midnight-900/40 border-t border-slate-200 dark:border-midnight-700 flex items-center justify-between">
                     <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center text-xs font-mono font-bold text-slate-600 dark:text-slate-400 hover:text-horizon-sky transition-colors">
                         <Github className="h-4 w-4 mr-2" /> 
                         SOURCE
@@ -140,10 +146,10 @@ const Projects: React.FC = () => {
                           href={project.link} 
                           target="_blank" 
                           rel="noopener noreferrer" 
-                          className="flex items-center gap-2 text-xs font-mono font-bold text-horizon-sky hover:text-horizon-gold transition-colors"
+                          className="flex items-center gap-2 text-xs font-mono font-bold text-white bg-slate-900 dark:bg-horizon-sky px-4 py-2 rounded-xl hover:opacity-90 transition-all"
                         >
-                            LIVE DEMO
-                            <ExternalLink className="h-4 w-4" />
+                            Launch
+                            <ArrowUpRight className="h-4 w-4" />
                         </a>
                     )}
               </div>
@@ -152,8 +158,7 @@ const Projects: React.FC = () => {
         </div>
       </div>
 
-      {/* Subtle Bottom Divider */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-midnight-700 to-transparent opacity-60"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-midnight-800 to-transparent"></div>
     </section>
   );
 };

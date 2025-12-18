@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, Mail, MapPin, CheckCircle, X, Sparkles } from 'lucide-react';
+import { Send, Mail, MapPin, CheckCircle, X, Sparkles, MessageSquare } from 'lucide-react';
 import { PROFILE } from '../constants';
 import LinkedInButton from './LinkedInButton';
 
@@ -11,33 +11,17 @@ const Contact: React.FC = () => {
     message: ''
   });
   const [showSuccess, setShowSuccess] = useState(false);
+  const [focusedField, setFocusedField] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Construct mailto link
     const subject = encodeURIComponent(`[Portfolio Contact] ${formData.subject}`);
     const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
     const mailtoLink = `mailto:${PROFILE.email}?subject=${subject}&body=${body}`;
-    
-    // Open email client
     window.location.href = mailtoLink;
-    
-    // Show success state
     setShowSuccess(true);
-    
-    // Reset form
-    setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-    });
-
-    // Auto dismiss after 5 seconds
-    setTimeout(() => {
-        setShowSuccess(false);
-    }, 5000);
+    setFormData({ name: '', email: '', subject: '', message: '' });
+    setTimeout(() => setShowSuccess(false), 5000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -45,153 +29,148 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 w-full bg-horizon-light dark:bg-midnight-900 transition-colors duration-500 relative">
+    <section id="contact" className="py-32 w-full bg-horizon-light dark:bg-midnight-950 transition-colors duration-500 relative overflow-hidden">
       
-      {/* Success Toast */}
+      {/* Mesh Glow Background */}
+      <div className="absolute right-0 top-0 w-1/3 h-full bg-horizon-sky/5 blur-[120px] pointer-events-none"></div>
+
       {showSuccess && (
         <div className="fixed bottom-6 right-6 z-50 animate-fadeIn">
-            <div className="bg-emerald-600 text-white px-6 py-4 rounded-lg shadow-xl flex items-center gap-3">
-                <CheckCircle className="h-6 w-6" />
+            <div className="glass-card text-slate-900 dark:text-white px-8 py-5 rounded-2xl shadow-2xl flex items-center gap-4 border-emerald-500/30">
+                <CheckCircle className="h-8 w-8 text-emerald-500" />
                 <div>
-                    <h4 className="font-bold text-sm font-sans">Message sent successfully!</h4>
-                    <p className="text-xs text-emerald-100 font-sans">Thank you for reaching out. I'll get back to you soon.</p>
+                    <h4 className="font-bold text-base font-sans">Deployment Successful</h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 font-sans">Your message is on its way to my inbox.</p>
                 </div>
-                <button 
-                    onClick={() => setShowSuccess(false)}
-                    className="ml-4 hover:bg-emerald-700 p-1 rounded-full transition-colors"
-                >
+                <button onClick={() => setShowSuccess(false)} className="ml-4 hover:bg-slate-100 dark:hover:bg-midnight-800 p-2 rounded-full">
                     <X className="h-4 w-4" />
                 </button>
             </div>
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         
-        {/* Architectural Header */}
-        <div className="border-b border-slate-200 dark:border-slate-800 pb-8 mb-16">
-            <span className="text-horizon-sky font-mono text-xs font-bold tracking-wider uppercase mb-2 block">
-                ./contact
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white font-sans tracking-tight">Let's Connect</h2>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="flex flex-col lg:flex-row gap-24">
           
-          {/* Left Column: Contact Info */}
-          <div className="space-y-8">
-            <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-sans font-medium">
-              I'm currently looking for new opportunities in AI Research and Data Engineering. 
-              Whether you have a question, a project idea, or just want to say hi, my inbox is always open!
-            </p>
-
+          {/* Left Side: Strategic Info */}
+          <div className="lg:w-2/5 space-y-12">
             <div className="space-y-6">
-              {/* LinkedIn Direct Action Card */}
-              <div className="p-6 rounded-xl bg-blue-50/50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-800/50 transition-colors duration-500">
-                  <div className="flex items-center gap-2 mb-4">
-                      <Sparkles className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-                      <span className="text-xs font-mono font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest">Recruiter Quick Action</span>
+                <span className="text-horizon-sky font-mono text-sm font-bold tracking-widest uppercase">./init_connection</span>
+                <h2 className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white font-sans tracking-tight leading-[0.9]">
+                    Let's <br /><span className="text-horizon-sky">Collab.</span>
+                </h2>
+                <p className="text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-sans font-medium">
+                  Currently open to senior-level discussions regarding Agentic AI workflows and Data Infrastructure.
+                </p>
+            </div>
+
+            <div className="space-y-8">
+              {/* Premium LinkedIn Card */}
+              <div className="p-8 rounded-3xl glass-card border-horizon-sky/20 transition-all hover:scale-[1.02] duration-300">
+                  <div className="flex items-center gap-3 mb-6">
+                      <MessageSquare className="h-5 w-5 text-horizon-sky" />
+                      <span className="text-xs font-mono font-bold text-horizon-sky uppercase tracking-widest">Real-time Interface</span>
                   </div>
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 font-sans">Prefer a direct message?</h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-6 font-sans">Skip the form and connect with me directly on LinkedIn for a faster response.</p>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3 font-sans">Immediate Pipeline</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-8 font-sans leading-relaxed">Fastest response via LinkedIn direct messaging. Let's talk about technical ROI.</p>
                   <LinkedInButton />
               </div>
 
-              <div className="flex items-start gap-4 p-4 rounded-lg bg-white dark:bg-midnight-800 border border-slate-200 dark:border-midnight-700 shadow-sm transition-colors duration-500">
-                <div className="p-2 bg-slate-50 dark:bg-midnight-900 rounded text-slate-700 dark:text-slate-300 transition-colors duration-500">
-                  <Mail className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-slate-900 dark:text-white mb-0.5 font-sans">Email</h3>
-                  <a href={`mailto:${PROFILE.email}`} className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-sans">
-                    {PROFILE.email}
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4 p-4 rounded-lg bg-white dark:bg-midnight-800 border border-slate-200 dark:border-midnight-700 shadow-sm transition-colors duration-500">
-                <div className="p-2 bg-slate-50 dark:bg-midnight-900 rounded text-slate-700 dark:text-slate-300 transition-colors duration-500">
-                  <MapPin className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className="font-bold text-slate-900 dark:text-white mb-0.5 font-sans">Location</h3>
-                  <p className="text-slate-600 dark:text-slate-400 font-sans">
-                    {PROFILE.location}
-                  </p>
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="p-6 rounded-2xl glass-card group hover:border-horizon-sky/40 transition-all">
+                      <Mail className="h-5 w-5 text-horizon-sky mb-4" />
+                      <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-1">Direct Mail</h4>
+                      <p className="text-xs text-slate-500 truncate">{PROFILE.email}</p>
+                  </div>
+                  <div className="p-6 rounded-2xl glass-card group hover:border-horizon-sky/40 transition-all">
+                      <MapPin className="h-5 w-5 text-horizon-sky mb-4" />
+                      <h4 className="font-bold text-slate-900 dark:text-white text-sm mb-1">Base Ops</h4>
+                      <p className="text-xs text-slate-500">{PROFILE.location}</p>
+                  </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Form */}
-          <div className="bg-white dark:bg-midnight-800 p-8 rounded-xl border border-slate-200 dark:border-midnight-700 shadow-sm transition-colors duration-500">
-            <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="sm:col-span-1">
-                <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 font-sans">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-midnight-900 border border-slate-300 dark:border-midnight-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all font-sans"
-                  placeholder="John Doe"
-                />
-              </div>
+          {/* Right Side: High-End Form */}
+          <div className="lg:w-3/5">
+            <div className="glass-card p-10 md:p-14 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-horizon-gold/5 blur-3xl rounded-full"></div>
               
-              <div className="sm:col-span-1">
-                <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 font-sans">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-midnight-900 border border-slate-300 dark:border-midnight-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all font-sans"
-                  placeholder="john@example.com"
-                />
-              </div>
+              <form onSubmit={handleSubmit} className="space-y-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                  <div className="input-focus-line">
+                    <label className={`block text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${focusedField === 'name' ? 'text-horizon-sky translate-y-0' : 'text-slate-400'}`}>01 // Full Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onFocus={() => setFocusedField('name')}
+                      onBlur={() => setFocusedField(null)}
+                      onChange={handleChange}
+                      className="w-full py-4 bg-transparent border-b border-slate-200 dark:border-midnight-700 text-lg text-slate-900 dark:text-white outline-none font-sans font-semibold placeholder:text-slate-300 dark:placeholder:text-midnight-700"
+                      placeholder="Ident Name"
+                    />
+                  </div>
+                  
+                  <div className="input-focus-line">
+                    <label className={`block text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${focusedField === 'email' ? 'text-horizon-sky translate-y-0' : 'text-slate-400'}`}>02 // Return Path</label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onFocus={() => setFocusedField('email')}
+                      onBlur={() => setFocusedField(null)}
+                      onChange={handleChange}
+                      className="w-full py-4 bg-transparent border-b border-slate-200 dark:border-midnight-700 text-lg text-slate-900 dark:text-white outline-none font-sans font-semibold placeholder:text-slate-300 dark:placeholder:text-midnight-700"
+                      placeholder="email@example.com"
+                    />
+                  </div>
+                </div>
 
-              <div className="sm:col-span-2">
-                <label htmlFor="subject" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 font-sans">Subject</label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  required
-                  value={formData.subject}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-midnight-900 border border-slate-300 dark:border-midnight-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all font-sans"
-                  placeholder="Project Inquiry"
-                />
-              </div>
+                <div className="input-focus-line">
+                  <label className={`block text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${focusedField === 'subject' ? 'text-horizon-sky translate-y-0' : 'text-slate-400'}`}>03 // Project ID</label>
+                  <input
+                    type="text"
+                    name="subject"
+                    required
+                    value={formData.subject}
+                    onFocus={() => setFocusedField('subject')}
+                    onBlur={() => setFocusedField(null)}
+                    onChange={handleChange}
+                    className="w-full py-4 bg-transparent border-b border-slate-200 dark:border-midnight-700 text-lg text-slate-900 dark:text-white outline-none font-sans font-semibold placeholder:text-slate-300 dark:placeholder:text-midnight-700"
+                    placeholder="Subject Header"
+                  />
+                </div>
 
-              <div className="sm:col-span-2">
-                <label htmlFor="message" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 font-sans">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-midnight-900 border border-slate-300 dark:border-midnight-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-y min-h-[120px] font-sans"
-                  placeholder="Hello, I'd like to discuss..."
-                ></textarea>
-              </div>
+                <div className="input-focus-line">
+                  <label className={`block text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${focusedField === 'message' ? 'text-horizon-sky translate-y-0' : 'text-slate-400'}`}>04 // Payload</label>
+                  <textarea
+                    name="message"
+                    required
+                    rows={4}
+                    value={formData.message}
+                    onFocus={() => setFocusedField('message')}
+                    onBlur={() => setFocusedField(null)}
+                    onChange={handleChange}
+                    className="w-full py-4 bg-transparent border-b border-slate-200 dark:border-midnight-700 text-lg text-slate-900 dark:text-white outline-none font-sans font-semibold placeholder:text-slate-300 dark:placeholder:text-midnight-700 resize-none"
+                    placeholder="Describe mission details..."
+                  ></textarea>
+                </div>
 
-              <div className="sm:col-span-2">
-                <button
-                  type="submit"
-                  className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-bold rounded-lg text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all shadow-sm font-sans"
-                >
-                  Send Message
-                  <Send className="ml-2 h-4 w-4" />
-                </button>
-              </div>
-            </form>
+                <div className="pt-6">
+                    <button
+                        type="submit"
+                        className="group relative inline-flex items-center justify-center px-12 py-5 bg-slate-900 dark:bg-white text-white dark:text-midnight-950 text-base font-black rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-xl glow-shadow-sky w-full"
+                    >
+                        Execute Request
+                        <Send className="ml-3 h-5 w-5 group-hover:translate-x-1.5 group-hover:-translate-y-1.5 transition-transform" />
+                    </button>
+                </div>
+              </form>
+            </div>
           </div>
 
         </div>
