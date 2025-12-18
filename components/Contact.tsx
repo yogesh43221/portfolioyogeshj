@@ -45,7 +45,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 w-full bg-slate-50 dark:bg-slate-950 transition-colors duration-300 relative">
+    <section id="contact" className="py-24 w-full bg-horizon-light dark:bg-midnight-900 transition-colors duration-500 relative">
       
       {/* Success Toast */}
       {showSuccess && (
@@ -70,7 +70,7 @@ const Contact: React.FC = () => {
         
         {/* Architectural Header */}
         <div className="border-b border-slate-200 dark:border-slate-800 pb-8 mb-16">
-            <span className="text-blue-600 dark:text-blue-500 font-mono text-xs font-bold tracking-wider uppercase mb-2 block">
+            <span className="text-horizon-sky font-mono text-xs font-bold tracking-wider uppercase mb-2 block">
                 ./contact
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white font-sans tracking-tight">Let's Connect</h2>
@@ -87,7 +87,7 @@ const Contact: React.FC = () => {
 
             <div className="space-y-6">
               {/* LinkedIn Direct Action Card */}
-              <div className="p-6 rounded-xl bg-blue-50/50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-800/50">
+              <div className="p-6 rounded-xl bg-blue-50/50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-800/50 transition-colors duration-500">
                   <div className="flex items-center gap-2 mb-4">
                       <Sparkles className="h-4 w-4 text-blue-600 dark:text-blue-400" />
                       <span className="text-xs font-mono font-bold text-blue-700 dark:text-blue-400 uppercase tracking-widest">Recruiter Quick Action</span>
@@ -97,8 +97,8 @@ const Contact: React.FC = () => {
                   <LinkedInButton />
               </div>
 
-              <div className="flex items-start gap-4 p-4 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                <div className="p-2 bg-slate-50 dark:bg-slate-800 rounded text-slate-700 dark:text-slate-300">
+              <div className="flex items-start gap-4 p-4 rounded-lg bg-white dark:bg-midnight-800 border border-slate-200 dark:border-midnight-700 shadow-sm transition-colors duration-500">
+                <div className="p-2 bg-slate-50 dark:bg-midnight-900 rounded text-slate-700 dark:text-slate-300 transition-colors duration-500">
                   <Mail className="h-5 w-5" />
                 </div>
                 <div>
@@ -109,8 +109,8 @@ const Contact: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                <div className="p-2 bg-slate-50 dark:bg-slate-800 rounded text-slate-700 dark:text-slate-300">
+              <div className="flex items-start gap-4 p-4 rounded-lg bg-white dark:bg-midnight-800 border border-slate-200 dark:border-midnight-700 shadow-sm transition-colors duration-500">
+                <div className="p-2 bg-slate-50 dark:bg-midnight-900 rounded text-slate-700 dark:text-slate-300 transition-colors duration-500">
                   <MapPin className="h-5 w-5" />
                 </div>
                 <div>
@@ -124,7 +124,7 @@ const Contact: React.FC = () => {
           </div>
 
           {/* Right Column: Form */}
-          <div className="bg-white dark:bg-slate-900 p-8 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div className="bg-white dark:bg-midnight-800 p-8 rounded-xl border border-slate-200 dark:border-midnight-700 shadow-sm transition-colors duration-500">
             <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="sm:col-span-1">
                 <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2 font-sans">Name</label>
@@ -135,7 +135,7 @@ const Contact: React.FC = () => {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all font-sans"
+                  className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-midnight-900 border border-slate-300 dark:border-midnight-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all font-sans"
                   placeholder="John Doe"
                 />
               </div>
@@ -149,7 +149,7 @@ const Contact: React.FC = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all font-sans"
+                  className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-midnight-900 border border-slate-300 dark:border-midnight-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all font-sans"
                   placeholder="john@example.com"
                 />
               </div>
@@ -163,7 +163,7 @@ const Contact: React.FC = () => {
                   required
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all font-sans"
+                  className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-midnight-900 border border-slate-300 dark:border-midnight-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all font-sans"
                   placeholder="Project Inquiry"
                 />
               </div>
@@ -177,7 +177,7 @@ const Contact: React.FC = () => {
                   rows={4}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-y min-h-[120px] font-sans"
+                  className="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-midnight-900 border border-slate-300 dark:border-midnight-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-y min-h-[120px] font-sans"
                   placeholder="Hello, I'd like to discuss..."
                 ></textarea>
               </div>

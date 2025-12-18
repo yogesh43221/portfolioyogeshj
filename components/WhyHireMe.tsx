@@ -3,7 +3,7 @@ import { BookOpen, Server, TrendingUp } from 'lucide-react';
 
 const WhyHireMe: React.FC = () => {
   return (
-    <section className="py-24 w-full bg-white dark:bg-midnight-900 border-b border-slate-200 dark:border-midnight-800 transition-colors duration-500">
+    <section className="py-24 w-full bg-white dark:bg-midnight-950 transition-colors duration-500 relative">
       <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
         
         {/* Architectural Header */}
@@ -71,6 +71,9 @@ const WhyHireMe: React.FC = () => {
             </div>
         </div>
       </div>
+      
+      {/* Subtle Bottom Divider */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-midnight-700 to-transparent opacity-60"></div>
     </section>
   );
 };

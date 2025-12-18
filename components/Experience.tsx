@@ -7,7 +7,7 @@ const Experience: React.FC = () => {
   const [showEarlyCareer, setShowEarlyCareer] = useState(false);
 
   return (
-    <section id="experience" className="py-32 w-full bg-white dark:bg-midnight-900 border-b border-slate-200 dark:border-midnight-800 transition-colors duration-500">
+    <section id="experience" className="py-32 w-full bg-white dark:bg-midnight-950 transition-colors duration-500 relative">
       <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
         
         {/* Architectural Header */}
@@ -212,6 +212,9 @@ const Experience: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Subtle Bottom Divider */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-midnight-700 to-transparent opacity-60"></div>
     </section>
   );
 };

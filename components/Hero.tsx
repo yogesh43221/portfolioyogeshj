@@ -132,6 +132,9 @@ const Hero: React.FC = () => {
             </a>
         </div>
       </div>
+
+      {/* Subtle Bottom Divider */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-midnight-700 to-transparent opacity-60"></div>
     </section>
   );
 };
