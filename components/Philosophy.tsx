@@ -47,38 +47,38 @@ const Philosophy: React.FC = () => {
         <div className="grid md:grid-cols-12 gap-12 lg:gap-20 items-start mb-28">
              {/* Left: Hexagon Profile Photo */}
              <div className="md:col-span-5 lg:col-span-4 flex justify-center md:justify-start pt-4">
-                 <div className="relative w-[280px] h-[320px] flex-shrink-0 group">
-                    {/* Glow/Shadow behind */}
-                    <div className="absolute inset-0 bg-horizon-sky/20 blur-3xl rounded-full scale-75 group-hover:scale-100 transition-transform duration-700" />
+                 <div className="relative w-64 h-72 lg:w-72 lg:h-80 group">
+                    {/* Glow effect */}
+                    <div className="absolute inset-0 bg-horizon-sky/30 dark:bg-horizon-sky/20 blur-3xl rounded-full scale-90 group-hover:scale-110 transition-transform duration-700 opacity-50" />
                     
-                    {/* SVG Hexagon */}
-                    <svg viewBox="0 0 100 115" className="w-full h-full drop-shadow-2xl" preserveAspectRatio="xMidYMid meet">
-                      <defs>
-                        <clipPath id="hex-clip">
-                          {/* Pointy-top rounded hexagon path */}
-                          <path d="M50 2 L92 26 C94 27 95 29 95 31 L95 84 C95 86 94 88 92 89 L50 113 C48 114 46 114 44 113 L2 89 C0 88 -1 86 -1 84 L-1 31 C-1 29 0 27 2 26 L44 2 C46 1 48 1 50 2 Z" transform="translate(3,0)" />
-                        </clipPath>
-                      </defs>
-                      
-                      {/* Background/Border Shape (Stroke) */}
-                      <path d="M50 2 L92 26 C94 27 95 29 95 31 L95 84 C95 86 94 88 92 89 L50 113 C48 114 46 114 44 113 L2 89 C0 88 -1 86 -1 84 L-1 31 C-1 29 0 27 2 26 L44 2 C46 1 48 1 50 2 Z" 
-                            fill="none" 
-                            stroke="#3D7EAE" 
-                            strokeWidth="1.5"
-                            className="opacity-60 group-hover:opacity-100 transition-opacity duration-500"
-                            transform="translate(3,0)"
-                      />
-                      
-                      {/* Image masked by Hexagon */}
-                      <image 
-                        href={PROFILE.profileImage} 
-                        width="100" 
-                        height="115" 
-                        clipPath="url(#hex-clip)" 
-                        preserveAspectRatio="xMidYMid slice"
-                        className="grayscale group-hover:grayscale-0 transition-all duration-700 ease-out"
-                      />
-                    </svg>
+                    {/* Hexagon Container */}
+                    <div className="relative w-full h-full p-[2px] bg-gradient-to-b from-horizon-sky to-horizon-clouds dark:from-horizon-sky dark:to-midnight-700 transition-all duration-500 shadow-2xl"
+                         style={{
+                           clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
+                         }}>
+                        {/* Image inside hexagon */}
+                        <div className="w-full h-full bg-slate-200 dark:bg-midnight-800 overflow-hidden"
+                             style={{
+                               clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
+                             }}>
+                            <img 
+                                src={PROFILE.profileImage} 
+                                alt={PROFILE.name}
+                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out scale-105 group-hover:scale-110"
+                                onError={(e) => {
+                                    // Fallback if image fails to load
+                                    (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=Yogesh+Jadhav&background=3D7EAE&color=fff&size=512`;
+                                }}
+                            />
+                        </div>
+                    </div>
+                    
+                    {/* Hexagon Frame Decoration */}
+                    <div className="absolute inset-0 border-2 border-horizon-sky/20 pointer-events-none group-hover:border-horizon-sky/40 transition-colors duration-500"
+                         style={{
+                           clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
+                           transform: 'scale(1.03)'
+                         }} />
                  </div>
              </div>
 
