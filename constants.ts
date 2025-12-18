@@ -7,8 +7,8 @@ import { Project, Experience, Skill, Education, Achievement, Publication, Certif
 export const PROFILE = {
   name: "Yogesh Jadhav",
   title: "AI Researcher & Data Engineer",
-  // TODO: Replace this URL with your actual photo path (e.g., "/profile.jpg")
-  profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=300&h=300", 
+  // The user should save their uploaded image as 'profile.jpg' in the root folder
+  profileImage: "/profile.jpg", 
   shortBio: "AI Researcher building agentic systems, LLM workflows, and production-grade data pipelines.",
   about: `I am an AI Researcher and Data Engineer with a strong foundation in Electronics & Telecommunications. Currently working at Hub9, I design autonomous AI agents and optimize large-scale clinical data pipelines. My expertise spans across building RAG systems, fine-tuning LLMs, and architecting robust ETL workflows. I have a proven track record of reducing operational costs and improving system efficiency, demonstrated through my work with the MIMIC-IV dataset and high-volume sales forecasting systems.`,
   email: "yj43221@gmail.com",
