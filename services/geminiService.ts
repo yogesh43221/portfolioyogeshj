@@ -11,9 +11,9 @@ const getChatSession = (): Chat => {
 
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
-  // Using gemini-2.5-flash for speed and efficiency in a chat context
+  // Using gemini-3-flash-preview for speed and efficiency in a chat context
   chatSession = ai.chats.create({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-3-flash-preview',
     config: {
       systemInstruction: SYSTEM_INSTRUCTION,
       temperature: 0.7,
