@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Database, GitMerge, Zap } from 'lucide-react';
 import MLSystemPipeline from './MLSystemPipeline';
 import { PROFILE } from '../constants';
 
 const Philosophy: React.FC = () => {
+  const [imgError, setImgError] = useState(false);
+
   const principles = [
     {
       icon: <Database className="h-6 w-6" />,
@@ -57,19 +59,24 @@ const Philosophy: React.FC = () => {
                            clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
                          }}>
                         {/* Image inside hexagon */}
-                        <div className="w-full h-full bg-slate-200 dark:bg-midnight-800 overflow-hidden"
+                        <div className="w-full h-full bg-slate-200 dark:bg-midnight-800 overflow-hidden flex items-center justify-center relative"
                              style={{
                                clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
                              }}>
-                            <img 
-                                src={PROFILE.profileImage} 
-                                alt={PROFILE.name}
-                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out scale-105 group-hover:scale-110"
-                                onError={(e) => {
-                                    // Fallback if image fails to load
-                                    (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=Yogesh+Jadhav&background=3D7EAE&color=fff&size=512`;
-                                }}
-                            />
+                            
+                            {!imgError ? (
+                                <img 
+                                    src={PROFILE.profileImage} 
+                                    alt={PROFILE.name}
+                                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out scale-105 group-hover:scale-110"
+                                    onError={() => setImgError(true)}
+                                />
+                            ) : (
+                                <div className="w-full h-full bg-midnight-800 flex items-center justify-center text-white font-bold text-5xl font-mono tracking-tighter">
+                                    YJ
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-horizon-sky/20 to-transparent"></div>
+                                </div>
+                            )}
                         </div>
                     </div>
                     
