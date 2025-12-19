@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Github, Linkedin, Mail, Terminal, Cpu, Network } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail, Terminal } from 'lucide-react';
 import { PROFILE } from '../constants';
 import ResumeDropdown from './ResumeDropdown';
 
@@ -44,10 +44,29 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="about" className="relative min-h-[95vh] flex items-center justify-center pt-24 pb-16 z-20 overflow-hidden">
+    <section id="about" className="relative min-h-[95vh] flex items-center justify-center pt-24 pb-16 z-20 overflow-hidden bg-grain">
       {/* Dynamic Mesh Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-horizon-light dark:bg-midnight-950 transition-colors duration-500">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.05)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+          
+          {/* Floating Data Packets (Engineering visualization) */}
+          <div className="absolute inset-0">
+             {[...Array(6)].map((_, i) => (
+                <div 
+                    key={i} 
+                    className="absolute bg-horizon-sky/20 dark:bg-horizon-sky/40 rounded-sm animate-pulse"
+                    style={{
+                        width: '4px',
+                        height: '4px',
+                        top: `${Math.random() * 100}%`,
+                        left: `${Math.random() * 100}%`,
+                        animationDelay: `${Math.random() * 5}s`,
+                        animationDuration: `${3 + Math.random() * 4}s`
+                    }}
+                />
+             ))}
+          </div>
+
           <div className="absolute left-1/4 top-1/4 h-[600px] w-[600px] rounded-full bg-horizon-sky/10 dark:bg-horizon-sky/20 blur-[150px] animate-pulse-slow"></div>
           <div className="absolute right-1/4 bottom-1/4 h-[500px] w-[500px] rounded-full bg-horizon-gold/10 dark:bg-horizon-gold/10 blur-[130px] animate-pulse-slow delay-1000"></div>
       </div>

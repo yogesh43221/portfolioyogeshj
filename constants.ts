@@ -1,6 +1,4 @@
 import { Project, Experience, Skill, Education, Achievement, Publication, Certification } from './types';
-// @ts-ignore - Vite handles image imports as URL strings
-import profileImageFile from './profile.jpg';
 
 // ==========================================
 // YOGESH JADHAV PORTFOLIO DATA
@@ -9,8 +7,9 @@ import profileImageFile from './profile.jpg';
 export const PROFILE = {
   name: "Yogesh Jadhav",
   title: "AI Researcher & Data Engineer",
-  // Using direct import ensures Vite bundles this file during the build
-  profileImage: profileImageFile, 
+  // Since the file is in the 'public' folder, we use the absolute path string.
+  // Vite/Vercel will resolve this to your-domain.com/profile.jpg
+  profileImage: "/profile.jpg", 
   shortBio: "AI Researcher building agentic systems, LLM workflows, and production-grade data pipelines.",
   about: `I am an AI Researcher and Data Engineer with a strong foundation in Electronics & Telecommunications. Currently working at Hub9, I design autonomous AI agents and optimize large-scale clinical data pipelines. My expertise spans across building RAG systems, fine-tuning LLMs, and architecting robust ETL workflows. I have a proven track record of reducing operational costs and improving system efficiency, demonstrated through my work with the MIMIC-IV dataset and high-volume sales forecasting systems.`,
   email: "yj43221@gmail.com",

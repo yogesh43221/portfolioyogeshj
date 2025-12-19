@@ -56,12 +56,16 @@ const Philosophy: React.FC = () => {
                          style={{
                            clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
                          }}>
+                        
                         {/* Image inside hexagon */}
                         <div className="w-full h-full bg-slate-200 dark:bg-midnight-800 overflow-hidden flex items-center justify-center relative"
                              style={{
                                clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
                              }}>
                             
+                            {/* NEW: Scanning Animation Overlay */}
+                            <div className="neural-scanner"></div>
+
                             {PROFILE.profileImage ? (
                                 <img 
                                     src={PROFILE.profileImage} 

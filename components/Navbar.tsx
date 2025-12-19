@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Terminal } from 'lucide-react';
+import { Menu, X, Terminal, Activity } from 'lucide-react';
 import { NAV_LINKS } from '../constants';
 import ThemeToggle from './ThemeToggle';
 
@@ -46,13 +46,26 @@ const Navbar: React.FC = () => {
         ? 'bg-white/80 dark:bg-midnight-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-midnight-700' 
         : 'bg-transparent border-b border-transparent'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
-          <div className="flex-shrink-0 flex items-center gap-2">
-             <Terminal className="text-horizon-sky h-5 w-5" />
-            <span className="font-bold text-xl text-slate-900 dark:text-white tracking-tight font-sans">
-              Yogesh Jadhav
-            </span>
+          <div className="flex-shrink-0 flex items-center gap-4">
+             <div className="flex items-center gap-2">
+                <Terminal className="text-horizon-sky h-5 w-5" />
+                <span className="font-bold text-xl text-slate-900 dark:text-white tracking-tight font-sans">
+                  Yogesh Jadhav
+                </span>
+             </div>
+             
+             {/* HUD Status Badge - Hidden on very small mobile */}
+             <div className="hidden lg:flex items-center gap-2 px-3 py-1 bg-emerald-500/5 border border-emerald-500/20 rounded-md">
+                <div className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </div>
+                <span className="text-[9px] font-mono font-bold text-emerald-600 dark:text-emerald-400 tracking-widest uppercase">
+                    System: Nominal
+                </span>
+             </div>
           </div>
           
           <div className="hidden md:block">
