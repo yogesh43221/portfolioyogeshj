@@ -11,12 +11,15 @@ const getChatSession = (): Chat => {
 
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
-  // Using gemini-3-flash-preview for speed and efficiency in a chat context
+  // Upgraded to Pro for researcher-level logic and complex reasoning
   chatSession = ai.chats.create({
-    model: 'gemini-3-flash-preview',
+    model: 'gemini-3-pro-preview',
     config: {
       systemInstruction: SYSTEM_INSTRUCTION,
       temperature: 0.7,
+      thinkingConfig: {
+        thinkingBudget: 2000 // Subtle reasoning boost for technical queries
+      }
     },
   });
 
