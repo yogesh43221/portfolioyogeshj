@@ -1,5 +1,7 @@
+
 import React, { useState } from 'react';
-import { Send, Mail, MapPin, CheckCircle, X, Sparkles, MessageSquare } from 'lucide-react';
+import { Send, Mail, MapPin, CheckCircle, X, Sparkles, MessageSquare, Loader2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import { PROFILE } from '../constants';
 import LinkedInButton from './LinkedInButton';
 
@@ -11,17 +13,59 @@ const Contact: React.FC = () => {
     message: ''
   });
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`[Portfolio Contact] ${formData.subject}`);
-    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
-    const mailtoLink = `mailto:${PROFILE.email}?subject=${subject}&body=${body}`;
-    window.location.href = mailtoLink;
-    setShowSuccess(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setTimeout(() => setShowSuccess(false), 5000);
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setShowError(false);
+
+    // Fix: Cast import.meta to any to access the env property which is injected by Vite but may not be in standard TypeScript types
+    const serviceId = (import.meta as any).env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = (import.meta as any).env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = (import.meta as any).env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      console.error("EmailJS credentials missing. Check your .env file or Vercel settings.");
+      setShowError(true);
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: PROFILE.email,
+      };
+
+      const response = await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      );
+
+      if (response.status === 200) {
+        setShowSuccess(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setShowSuccess(false), 5000);
+      } else {
+        throw new Error('Delivery failed');
+      }
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setShowError(true);
+      setTimeout(() => setShowError(false), 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -34,15 +78,32 @@ const Contact: React.FC = () => {
       {/* Mesh Glow Background */}
       <div className="absolute right-0 top-0 w-1/3 h-full bg-horizon-sky/5 blur-[120px] pointer-events-none"></div>
 
+      {/* Success Notification */}
       {showSuccess && (
         <div className="fixed bottom-6 right-6 z-50 animate-fadeIn">
             <div className="glass-card text-slate-900 dark:text-white px-8 py-5 rounded-2xl shadow-2xl flex items-center gap-4 border-emerald-500/30">
                 <CheckCircle className="h-8 w-8 text-emerald-500" />
                 <div>
-                    <h4 className="font-bold text-base font-sans">Deployment Successful</h4>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 font-sans">Your message is on its way to my inbox.</p>
+                    <h4 className="font-bold text-base font-sans">Message Sent</h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 font-sans">It's safely landed in my inbox.</p>
                 </div>
                 <button onClick={() => setShowSuccess(false)} className="ml-4 hover:bg-slate-100 dark:hover:bg-midnight-800 p-2 rounded-full">
+                    <X className="h-4 w-4" />
+                </button>
+            </div>
+        </div>
+      )}
+
+      {/* Error Notification */}
+      {showError && (
+        <div className="fixed bottom-6 right-6 z-50 animate-fadeIn">
+            <div className="glass-card text-slate-900 dark:text-white px-8 py-5 rounded-2xl shadow-2xl flex items-center gap-4 border-red-500/30">
+                <X className="h-8 w-8 text-red-500" />
+                <div>
+                    <h4 className="font-bold text-base font-sans">Delivery Failed</h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 font-sans">Something went wrong. Please try LinkedIn.</p>
+                </div>
+                <button onClick={() => setShowError(false)} className="ml-4 hover:bg-slate-100 dark:hover:bg-midnight-800 p-2 rounded-full">
                     <X className="h-4 w-4" />
                 </button>
             </div>
@@ -163,10 +224,20 @@ const Contact: React.FC = () => {
                 <div className="pt-6">
                     <button
                         type="submit"
-                        className="group relative inline-flex items-center justify-center px-12 py-5 bg-slate-900 dark:bg-white text-white dark:text-midnight-950 text-base font-black rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-xl glow-shadow-sky w-full"
+                        disabled={isSubmitting}
+                        className="group relative inline-flex items-center justify-center px-12 py-5 bg-slate-900 dark:bg-white text-white dark:text-midnight-950 text-base font-black rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-xl glow-shadow-sky w-full disabled:opacity-70 disabled:cursor-not-allowed"
                     >
-                        Execute Request
-                        <Send className="ml-3 h-5 w-5 group-hover:translate-x-1.5 group-hover:-translate-y-1.5 transition-transform" />
+                        {isSubmitting ? (
+                          <>
+                            Executing...
+                            <Loader2 className="ml-3 h-5 w-5 animate-spin" />
+                          </>
+                        ) : (
+                          <>
+                            Execute Request
+                            <Send className="ml-3 h-5 w-5 group-hover:translate-x-1.5 group-hover:-translate-y-1.5 transition-transform" />
+                          </>
+                        )}
                     </button>
                 </div>
               </form>
