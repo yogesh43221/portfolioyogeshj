@@ -186,7 +186,7 @@ const Experience: React.FC = () => {
                         Certifications
                     </h3>
                     <a href={ALL_CERTIFICATIONS_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-[11px] font-bold text-horizon-sky hover:text-horizon-gold transition-colors font-mono bg-horizon-sky/5 dark:bg-midnight-800 px-3 py-1.5 rounded-md border border-horizon-sky/10">
-                        VIEW_ARCHIVE <ExternalLink className="w-3 h-3" />
+                        View all certifications <ExternalLink className="w-3 h-3" />
                     </a>
                 </div>
                 

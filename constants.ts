@@ -36,7 +36,7 @@ export const PROJECTS: Project[] = [
   {
     id: 101,
     title: "Automated E2E Test Suite for Clinical Workflows",
-    description: "Designed a robust automation framework reducing manual regression testing time by automating complex clinical workflows using Playwright and AI agents.",
+    description: "Designed a robust automation framework reducing manual regression testing time by automating complex clinical workflows (MFA, Patient Analysis) using Playwright and AI agents.",
     techStack: ["Python", "Playwright", "Browser Use AI", "Automated Testing", "CI/CD"],
     category: "QA & Systems Engineering",
     github: "https://github.com/yogesh43221",
@@ -49,17 +49,17 @@ export const PROJECTS: Project[] = [
       solution: "Engineered a Python & Playwright framework with dynamic UI handling and AI-driven exploratory testing.",
       results: "Reduced manual regression time significantly and stabilized tests against asynchronous AI summaries.",
       contributions: [
-        "Scripted end-to-end user journeys (Login → MFA → Role Switching → Report Generation).",
-        "Engineered 'retry loops' and explicit wait strategies to stabilize tests against dynamic UI updates.",
-        "Integrated Browser Use AI agents to validate medical summaries for edge cases.",
-        "Implemented deep validation for audio playback, tab navigation, and session timeouts."
+        "Complex Workflow Automation: Scripted end-to-end user journeys (Login → MFA → Role Switching → Report Generation) using Python & Playwright.",
+        "Dynamic UI Handling: Engineered 'retry loops' and explicit wait strategies to stabilize tests against asynchronous UI updates and slow-loading AI summaries.",
+        "AI-Driven Exploratory Testing: Integrated Browser Use AI agents to validate 'Concise' vs. 'Detailed' medical summaries, catching edge cases standard scripts missed.",
+        "Deep Validation: Implemented logic to verify audio playback, tab navigation, and form data retention across session timeouts."
       ]
     }
   },
   {
     id: 102,
     title: "Radiology Report Management System",
-    description: "A full-stack healthcare app built with FastAPI and React, optimized for Gray Box testing and production-grade backend integrity.",
+    description: "A full-stack healthcare app built to bridge the gap between Dev and QA. Features JWT auth, complex SQL schemas, and a Dockerized environment for Gray Box testing.",
     techStack: ["FastAPI", "React.js", "PostgreSQL", "Docker", "Gray Box Testing"],
     category: "Backend & API Development",
     github: "https://github.com/yogesh43221",
@@ -72,10 +72,10 @@ export const PROJECTS: Project[] = [
       solution: "Built a radiology management system from scratch using FastAPI, React, and PostgreSQL, deployed via Docker.",
       results: "Created a reproducible environment for testing deployment workflows and backend integrity validation.",
       contributions: [
-        "API & Backend Logic: Designed RESTful APIs with strict payload validation and JWT authentication.",
-        "Database Integrity: Architected PostgreSQL schema with complex constraints to prevent orphaned records.",
-        "Frontend-Backend Sync: Built React frontend to visualize report data and inspect network calls during debugging.",
-        "DevOps: Containerized services using Docker for reproducible testing environments."
+        "API & Backend Logic: Designed RESTful APIs using FastAPI, implementing strict payload validation and JWT authentication to debug 401/403 integration errors.",
+        "Database Integrity: Architected a PostgreSQL schema with complex constraints. Used this for 'Gray Box' testing—verifying frontend actions correctly updated backend tables without creating orphaned records.",
+        "Frontend-Backend Sync: Built a React frontend to visualize report data, allowing direct inspection of network calls and state management during debugging.",
+        "DevOps: Containerized the application services using Docker, creating reproducible environments for testing deployment workflows."
       ]
     }
   },
@@ -89,12 +89,12 @@ export const PROJECTS: Project[] = [
     link: "https://github.com/yogesh43221/Booking-Analytics-RAG-System",
     image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80&w=600",
     impact: "Automated QA for booking data",
-    featured: false,
+    featured: true,
     tags: ["RAG", "LLM", "Analytics", "NLP"],
     extendedDetails: {
-      problem: "Extracting insights from complex booking databases required technical SQL knowledge.",
-      solution: "Built a RAG pipeline where user queries are converted to vector embeddings and processed by an LLM.",
-      results: "Enabled instant, natural language access to booking analytics.",
+      problem: "Traditional analytics dashboards for booking data required complex SQL knowledge to extract deep insights, creating a bottleneck for non-technical stakeholders.",
+      solution: "Implemented a Retrieval-Augmented Generation (RAG) architecture using LangChain and Pinecone. User queries in plain English are converted into vector embeddings, matched against relevant documentation and metadata, and processed by an LLM to generate accurate SQL or direct answers.",
+      results: "Reduced the time-to-insight for operational teams by 80%. Non-technical users can now perform self-service analytics without writing a single line of code.",
       architecture: "User Query → Embedding Model → Vector DB (Pinecone) → Context Retrieval → LLM (GPT) → Natural Language Answer"
     }
   },

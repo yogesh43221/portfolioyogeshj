@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Send, Mail, MapPin, CheckCircle, X, Sparkles, MessageSquare, Loader2 } from 'lucide-react';
+import { Send, Mail, MapPin, CheckCircle, X, Sparkles, MessageSquare, Loader2, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { PROFILE } from '../constants';
 import LinkedInButton from './LinkedInButton';
@@ -12,25 +12,58 @@ const Contact: React.FC = () => {
     subject: '',
     message: ''
   });
+  
+  const [errors, setErrors] = useState({
+    email: '',
+    form: ''
+  });
+
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
+  const MAX_MESSAGE_CHARS = 1000;
+
+  const validateEmail = (email: string) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isSubmitting) return;
 
+    // Local Validation
+    let hasError = false;
+    const newErrors = { email: '', form: '' };
+
+    if (!validateEmail(formData.email)) {
+      newErrors.email = 'Please enter a valid email address.';
+      hasError = true;
+    }
+
+    if (!formData.name.trim() || !formData.message.trim()) {
+      newErrors.form = 'All fields are required.';
+      hasError = true;
+    }
+
+    if (hasError) {
+      setErrors(newErrors);
+      return;
+    }
+
     setIsSubmitting(true);
     setShowError(false);
+    setErrors({ email: '', form: '' });
 
-    // Fix: Cast import.meta to any to access the env property which is injected by Vite but may not be in standard TypeScript types
+    // Access injected keys
     const serviceId = (import.meta as any).env.VITE_EMAILJS_SERVICE_ID;
     const templateId = (import.meta as any).env.VITE_EMAILJS_TEMPLATE_ID;
     const publicKey = (import.meta as any).env.VITE_EMAILJS_PUBLIC_KEY;
 
     if (!serviceId || !templateId || !publicKey) {
-      console.error("EmailJS credentials missing. Check your .env file or Vercel settings.");
+      console.error("EmailJS credentials missing.");
       setShowError(true);
       setIsSubmitting(false);
       return;
@@ -69,7 +102,19 @@ const Contact: React.FC = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    
+    if (name === 'message' && value.length > MAX_MESSAGE_CHARS) return;
+
+    setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Clear field-specific error as user types
+    if (name === 'email' && errors.email) {
+      setErrors(prev => ({ ...prev, email: '' }));
+    }
+    if (errors.form) {
+      setErrors(prev => ({ ...prev, form: '' }));
+    }
   };
 
   return (
@@ -176,7 +221,9 @@ const Contact: React.FC = () => {
                   </div>
                   
                   <div className="input-focus-line">
-                    <label className={`block text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${focusedField === 'email' ? 'text-horizon-sky translate-y-0' : 'text-slate-400'}`}>02 // Return Path</label>
+                    <label className={`block text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${focusedField === 'email' ? 'text-horizon-sky translate-y-0' : 'text-slate-400'} ${errors.email ? 'text-red-500' : ''}`}>
+                      02 // Return Path
+                    </label>
                     <input
                       type="email"
                       name="email"
@@ -185,9 +232,14 @@ const Contact: React.FC = () => {
                       onFocus={() => setFocusedField('email')}
                       onBlur={() => setFocusedField(null)}
                       onChange={handleChange}
-                      className="w-full py-4 bg-transparent border-b border-slate-200 dark:border-midnight-700 text-lg text-slate-900 dark:text-white outline-none font-sans font-semibold placeholder:text-slate-300 dark:placeholder:text-midnight-700"
+                      className={`w-full py-4 bg-transparent border-b ${errors.email ? 'border-red-500' : 'border-slate-200 dark:border-midnight-700'} text-lg text-slate-900 dark:text-white outline-none font-sans font-semibold placeholder:text-slate-300 dark:placeholder:text-midnight-700`}
                       placeholder="email@example.com"
                     />
+                    {errors.email && (
+                      <p className="mt-2 text-[10px] text-red-500 font-mono font-bold flex items-center gap-1">
+                        <AlertCircle className="w-3 h-3" /> {errors.email}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -207,7 +259,12 @@ const Contact: React.FC = () => {
                 </div>
 
                 <div className="input-focus-line">
-                  <label className={`block text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${focusedField === 'message' ? 'text-horizon-sky translate-y-0' : 'text-slate-400'}`}>04 // Payload</label>
+                  <div className="flex justify-between items-center mb-1">
+                    <label className={`block text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 ${focusedField === 'message' ? 'text-horizon-sky translate-y-0' : 'text-slate-400'}`}>04 // Payload</label>
+                    <span className={`text-[10px] font-mono ${formData.message.length > MAX_MESSAGE_CHARS * 0.9 ? 'text-horizon-gold' : 'text-slate-500'}`}>
+                      {formData.message.length} / {MAX_MESSAGE_CHARS}
+                    </span>
+                  </div>
                   <textarea
                     name="message"
                     required
@@ -221,7 +278,14 @@ const Contact: React.FC = () => {
                   ></textarea>
                 </div>
 
-                <div className="pt-6">
+                <div className="pt-6 space-y-4">
+                    {errors.form && (
+                      <div className="bg-red-500/10 border border-red-500/20 p-4 rounded-xl flex items-center gap-3">
+                        <AlertCircle className="w-5 h-5 text-red-500" />
+                        <p className="text-xs font-bold text-red-500 font-sans">{errors.form}</p>
+                      </div>
+                    )}
+                    
                     <button
                         type="submit"
                         disabled={isSubmitting}

@@ -125,6 +125,10 @@ const Projects: React.FC = () => {
                                 <span className="text-[10px] font-black text-horizon-gold uppercase tracking-widest">The Solution</span>
                                 <p className="text-xs font-sans text-slate-700 dark:text-slate-300 leading-relaxed">{project.extendedDetails.solution}</p>
                             </div>
+                            <div className="space-y-2">
+                                <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">Results & Impact</span>
+                                <p className="text-xs font-sans text-slate-700 dark:text-slate-300 leading-relaxed">{project.extendedDetails.results}</p>
+                            </div>
                             {project.extendedDetails.contributions && (
                                 <div className="space-y-2">
                                     <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">Key Contributions</span>
@@ -147,7 +151,7 @@ const Projects: React.FC = () => {
                         }}
                         className="w-full py-6 flex items-center justify-center gap-3 text-xs font-mono font-bold text-slate-500 hover:text-horizon-sky transition-colors border-t border-dashed border-slate-200 dark:border-midnight-700 mt-auto"
                       >
-                        {expandedProjectId === project.id ? 'Hide Specifications' : 'View Core Architecture'}
+                        {expandedProjectId === project.id ? 'Hide Details' : 'More Details'}
                         {expandedProjectId === project.id ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
                       </button>
                  </div>
