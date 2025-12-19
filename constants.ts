@@ -49,10 +49,10 @@ export const PROJECTS: Project[] = [
       solution: "Engineered a Python & Playwright framework with dynamic UI handling and AI-driven exploratory testing to ensure clinical accuracy.",
       results: "Significantly stabilized flaky UI tests and reduced manual regression cycles, ensuring high reliability for medical decision agents.",
       contributions: [
-        "Automated complete user journeys (Login → MFA → Role Switching → Report Generation) using Python & Playwright.",
-        "Implemented retry loops and explicit waits to stabilize flaky UI tests against dynamic elements.",
-        "Integrated Browser-Use AI for exploratory testing of medical summaries.",
-        "Validated audio playback, tab navigation, and session persistence across multi-page workflows."
+        "Automated complete user journeys (Login → MFA → Role Switching → Report Generation) using Python & Playwright",
+        "Implemented retry loops and explicit waits to stabilize flaky UI tests",
+        "Integrated Browser-Use AI for exploratory testing of medical summaries",
+        "Validated audio playback, tab navigation, and session persistence"
       ]
     }
   },
@@ -69,13 +69,13 @@ export const PROJECTS: Project[] = [
     tags: ["FastAPI", "Docker", "Full Stack"],
     extendedDetails: {
       problem: "Traditional 'Black Box' testing often misses deep integration defects at the data and API layer during rapid deployment cycles.",
-      solution: "Build a real-world app to expose integration defects across frontend, backend, and database layers through Grey-Box strategies.",
-      results: "Exposed and fixed 15+ potential integration defects before staging, ensuring data integrity across complex radiology schemas.",
+      solution: "Build a real-world app with FastAPI and React to expose and resolve integration defects across frontend, backend, and database layers.",
+      results: "Exposed and resolved critical integration failures in the medical data pipeline via systematic gray-box testing.",
       contributions: [
-        "Designed REST APIs with FastAPI, JWT authentication, and strict Pydantic payload validation.",
-        "Built a normalized PostgreSQL schema with constraints for data integrity testing.",
-        "Implemented Gray-Box testing to ensure frontend actions correctly updated backend data.",
-        "Containerized services using Docker for reproducible and isolated test environments."
+        "Designed REST APIs with FastAPI, JWT authentication, and strict payload validation",
+        "Built a normalized PostgreSQL schema with constraints for integrity testing",
+        "Implemented Gray-Box testing to ensure frontend actions correctly updated backend data",
+        "Containerized services using Docker for reproducible test environments"
       ]
     }
   },
@@ -114,24 +114,6 @@ export const PROJECTS: Project[] = [
       solution: "Applied SMOTE for synthetic oversampling and trained an XGBoost classifier.",
       results: "Achieved high detection rate while minimizing false positives in testing.",
       architecture: "Raw Transaction Data → Cleaning & Encoding → SMOTE Oversampling → XGBoost Classifier → Prediction API"
-    }
-  },
-  {
-    id: 6,
-    title: "Brainlox Chatbot API",
-    description: "Scalable REST API built with Flask to serve chatbot responses and handle user sessions.",
-    techStack: ["Flask", "Python", "REST API", "JSON"],
-    category: "Backend & API Development",
-    github: "https://github.com/yogesh43221/FlaskProjects/tree/main/BrainloxChatbot-API",
-    image: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&q=80&w=600",
-    impact: "Robust API Architecture",
-    featured: false,
-    tags: ["Backend", "API", "Flask"],
-    extendedDetails: {
-      problem: "Need for a decoupled backend to handle chatbot logic independently from frontends.",
-      solution: "Designed a RESTful API using Flask that processes user input and returns structured JSON responses.",
-      results: "Enabled seamless integration with multiple frontend clients via standardized JSON payloads.",
-      architecture: "Client Request (JSON) → Flask Routes → Input Validation → Logic Processing → Response Formatting → Client"
     }
   }
 ];

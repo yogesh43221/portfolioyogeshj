@@ -36,14 +36,11 @@ const ProjectCard: React.FC<{
          </p>
 
          <div className="flex flex-wrap gap-2 mb-10">
-            {project.techStack.map(tech => {
-                const isHighlighted = tech === 'Playwright' || tech === 'FastAPI' || tech === 'Docker';
-                return (
-                    <span key={tech} className={`px-3 py-1.5 rounded-lg text-[10px] font-mono font-bold border transition-all ${isHighlighted ? 'bg-horizon-sky/20 text-horizon-sky border-horizon-sky/50 shadow-[0_0_10px_rgba(61,126,174,0.3)] scale-105' : 'bg-slate-50 dark:bg-midnight-900/50 text-slate-700 dark:text-slate-400 border-slate-200 dark:border-midnight-700'}`}>
-                        {tech}
-                    </span>
-                );
-            })}
+            {project.techStack.map(tech => (
+                <span key={tech} className="px-3 py-1.5 rounded-lg text-[10px] font-mono font-bold border bg-slate-50 dark:bg-midnight-900/50 text-slate-700 dark:text-slate-400 border-slate-200 dark:border-midnight-700 transition-colors">
+                    {tech}
+                </span>
+            ))}
          </div>
       </div>
 
@@ -53,7 +50,7 @@ const ProjectCard: React.FC<{
             {isExpanded && (
                 <div className="py-6 space-y-5 animate-fadeIn border-t border-slate-200 dark:border-midnight-700">
                     <div className="space-y-2">
-                        <span className="text-[10px] font-black text-horizon-sky uppercase tracking-widest">The Challenge / Goal</span>
+                        <span className="text-[10px] font-black text-horizon-sky uppercase tracking-widest">The Challenge</span>
                         <p className="text-xs font-sans text-slate-700 dark:text-slate-300 leading-relaxed">{project.extendedDetails.problem}</p>
                     </div>
                     <div className="space-y-2">
@@ -168,7 +165,7 @@ const Projects: React.FC = () => {
         <div className="mb-24">
              <div className="flex items-center gap-3 mb-10">
                 <Sparkles className="w-6 h-6 text-horizon-gold" />
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-sans uppercase tracking-tight">🔥 FEATURED PROJECTS: ENGINEERING & QA</h3>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-sans">Featured Highlights: Engineering & QA</h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 {featuredHighlights.map(project => (
