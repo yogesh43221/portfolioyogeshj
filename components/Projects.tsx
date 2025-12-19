@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Code, Brain, Database, Server, ChevronDown, ChevronUp, Network, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { ExternalLink, Github, Code, Brain, Database, Server, ChevronDown, ChevronUp, Network, ArrowUpRight, ShieldCheck, ListFilter } from 'lucide-react';
 import { PROJECTS } from '../constants';
 import { ProjectCategory, Project } from '../types';
 
@@ -111,7 +111,8 @@ const ProjectCard: React.FC<{
 };
 
 const Projects: React.FC = () => {
-  const categories: ProjectCategory[] = [
+  const categories: (ProjectCategory | 'All')[] = [
+    'All',
     'QA & Systems Engineering',
     'AI / LLM / NLP Systems',
     'Machine Learning Systems',
@@ -119,17 +120,20 @@ const Projects: React.FC = () => {
     'Data Analytics & Business Intelligence'
   ];
 
-  const [activeCategory, setActiveCategory] = useState<ProjectCategory>('QA & Systems Engineering');
+  const [activeCategory, setActiveCategory] = useState<ProjectCategory | 'All'>('All');
   const [expandedProjectId, setExpandedProjectId] = useState<number | null>(null);
 
-  const filteredProjects = PROJECTS.filter(p => p.category === activeCategory);
+  const filteredProjects = activeCategory === 'All' 
+    ? PROJECTS 
+    : PROJECTS.filter(p => p.category === activeCategory);
   
   const toggleProjectDetails = (projectId: number) => {
     setExpandedProjectId(prev => (prev === projectId ? null : projectId));
   };
 
-  const getCategoryIcon = (cat: ProjectCategory) => {
+  const getCategoryIcon = (cat: string) => {
     switch (cat) {
+      case 'All': return <ListFilter className="w-4 h-4" />;
       case 'AI / LLM / NLP Systems': return <Brain className="w-4 h-4" />;
       case 'Machine Learning Systems': return <Network className="w-4 h-4" />;
       case 'Backend & API Development': return <Server className="w-4 h-4" />;
@@ -172,7 +176,7 @@ const Projects: React.FC = () => {
                         }`}
                     >
                         {getCategoryIcon(cat)}
-                        {cat.split(' ')[0]}
+                        {cat === 'All' ? 'View All' : cat.split(' ')[0]}
                     </button>
                     ))}
                 </div>
