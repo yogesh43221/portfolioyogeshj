@@ -40,23 +40,6 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-horizon-light dark:bg-midnight-950 transition-colors duration-500">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.05)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
           
-          <div className="absolute inset-0">
-             {[...Array(10)].map((_, i) => (
-                <div 
-                    key={i} 
-                    className="absolute bg-horizon-sky/20 dark:bg-horizon-sky/40 rounded-full animate-pulse"
-                    style={{
-                        width: '3px',
-                        height: '3px',
-                        top: `${Math.random() * 100}%`,
-                        left: `${Math.random() * 100}%`,
-                        animationDelay: `${Math.random() * 5}s`,
-                        animationDuration: `${2 + Math.random() * 3}s`
-                    }}
-                />
-             ))}
-          </div>
-
           <div className="absolute left-1/4 top-1/3 h-[500px] w-[500px] rounded-full bg-horizon-sky/5 dark:bg-horizon-sky/10 blur-[120px] animate-pulse-slow"></div>
           <div className="absolute right-1/4 bottom-1/3 h-[400px] w-[400px] rounded-full bg-horizon-gold/5 dark:bg-horizon-gold/5 blur-[100px] animate-pulse-slow delay-700"></div>
       </div>
@@ -77,25 +60,9 @@ const Hero: React.FC = () => {
                     </span>
                 </div>
             </div>
-
-            <div className="relative glass-card px-8 py-4 rounded-xl border-slate-200/50 dark:border-midnight-700/50">
-                <div className="scanline-effect"></div>
-                <div className="flex items-center gap-4">
-                    <Terminal className="w-4 h-4 text-horizon-sky animate-pulse" />
-                    <div className={`flex items-center gap-4 transition-all duration-500 transform ${isExiting ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
-                        <span className="font-bold text-slate-900 dark:text-white text-base sm:text-lg font-sans">
-                            {ROLES[roleIndex].title}
-                        </span>
-                        <div className="h-4 w-px bg-slate-300 dark:bg-midnight-700"></div>
-                        <span className="font-mono text-xs sm:text-sm text-horizon-sky opacity-80">
-                            {ROLES[roleIndex].subtitle}
-                        </span>
-                    </div>
-                </div>
-            </div>
         </div>
 
-        <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter text-slate-900 dark:text-white mb-8 font-sans leading-[0.8] uppercase">
+        <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter text-slate-900 dark:text-white mb-8 font-sans leading-[1.1] uppercase">
           Building <span className="text-horizon-sky">Logic.</span> <br />
           Testing <span className="text-horizon-gold">Limits.</span> <br />
           Analyzing <span className="text-horizon-clouds">Data.</span>
