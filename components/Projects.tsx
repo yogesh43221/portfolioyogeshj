@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Code, Brain, Database, Server, ChevronDown, ChevronUp, Network, ArrowUpRight, ShieldCheck, Sparkles } from 'lucide-react';
+import { ExternalLink, Github, Code, Brain, Database, Server, ChevronDown, ChevronUp, Network, ArrowUpRight, ShieldCheck } from 'lucide-react';
 import { PROJECTS } from '../constants';
 import { ProjectCategory, Project } from '../types';
 
@@ -11,62 +11,58 @@ const ProjectCard: React.FC<{
 }> = ({ project, isExpanded, onToggle, getCategoryIcon }) => {
   return (
     <div 
-      className={`group flex flex-col glass-card rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl h-full border ${project.featured ? 'border-horizon-sky/40 dark:border-horizon-sky/30 shadow-lg' : 'border-slate-200 dark:border-midnight-800'}`}
+      className={`group flex flex-col glass-card rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl h-full border border-slate-200 dark:border-midnight-800`}
     >
       {/* Visual Card Top */}
-      <div className="p-6 sm:p-8 pb-0 flex-grow">
+      <div className="p-8 pb-0 flex-grow">
          <div className="flex justify-between items-start mb-6">
-            <div className="p-2.5 bg-horizon-sky/10 dark:bg-horizon-sky/5 rounded-xl border border-horizon-sky/20">
+            <div className="p-3 bg-horizon-sky/10 dark:bg-horizon-sky/5 rounded-xl border border-horizon-sky/20">
                 {getCategoryIcon(project.category)}
             </div>
             {project.featured && (
                  <div className="flex items-center gap-2 bg-horizon-gold/10 text-horizon-gold text-[10px] font-black px-3 py-1 rounded-full border border-horizon-gold/30 uppercase tracking-widest">
-                   <span className="w-1.5 h-1.5 rounded-full bg-horizon-gold animate-pulse"></span>
                    Featured
                  </div>
             )}
          </div>
 
-         <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white group-hover:text-horizon-sky transition-colors font-sans mb-3 leading-tight tracking-tight">
+         <h3 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-horizon-sky transition-colors font-sans mb-4 leading-tight">
             {project.title}
          </h3>
 
-         <p className="text-slate-600 dark:text-slate-400 text-sm/relaxed font-sans font-medium mb-6">
+         <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 font-sans font-medium">
             {project.description}
          </p>
 
-         <div className="flex flex-wrap gap-2 mb-8">
-            {project.techStack.map(tech => {
-                const isHighlighted = tech === 'Playwright' || tech === 'FastAPI' || tech === 'Docker';
-                return (
-                    <span key={tech} className={`px-3 py-1.5 rounded-lg text-[10px] font-mono font-bold border transition-all ${isHighlighted ? 'bg-horizon-sky/20 text-horizon-sky border-horizon-sky/50 shadow-[0_0_10px_rgba(61,126,174,0.3)] scale-105' : 'bg-slate-50 dark:bg-midnight-900/50 text-slate-700 dark:text-slate-400 border-slate-200 dark:border-midnight-700'}`}>
-                        {tech}
-                    </span>
-                );
-            })}
+         <div className="flex flex-wrap gap-2 mb-10">
+            {project.techStack.map(tech => (
+                <span key={tech} className="px-3 py-1.5 rounded-lg text-[10px] font-mono font-bold border bg-slate-50 dark:bg-midnight-900/50 text-slate-700 dark:text-slate-400 border-slate-200 dark:border-midnight-700">
+                    {tech}
+                </span>
+            ))}
          </div>
       </div>
 
       {/* Case Study Section */}
       {project.extendedDetails && (
-         <div className="px-6 sm:px-8">
+         <div className="px-8">
             {isExpanded && (
                 <div className="py-6 space-y-5 animate-fadeIn border-t border-slate-200 dark:border-midnight-700">
                     <div className="space-y-2">
-                        <span className="text-[10px] font-black text-horizon-sky uppercase tracking-widest">The Challenge / Goal</span>
+                        <span className="text-[10px] font-black text-horizon-sky uppercase tracking-widest">Problem</span>
                         <p className="text-xs font-sans text-slate-700 dark:text-slate-300 leading-relaxed">{project.extendedDetails.problem}</p>
                     </div>
                     <div className="space-y-2">
-                        <span className="text-[10px] font-black text-horizon-gold uppercase tracking-widest">The Solution</span>
+                        <span className="text-[10px] font-black text-horizon-gold uppercase tracking-widest">Solution</span>
                         <p className="text-xs font-sans text-slate-700 dark:text-slate-300 leading-relaxed">{project.extendedDetails.solution}</p>
                     </div>
                     <div className="space-y-2">
-                        <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">Results & Impact</span>
+                        <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">Results</span>
                         <p className="text-xs font-sans text-slate-700 dark:text-slate-300 leading-relaxed">{project.extendedDetails.results}</p>
                     </div>
                     {project.extendedDetails.contributions && (
                         <div className="space-y-2">
-                            <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Key Contributions</span>
+                            <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Contributions</span>
                             <ul className="space-y-1">
                                 {project.extendedDetails.contributions.map((c, i) => (
                                     <li key={i} className="text-xs font-sans text-slate-700 dark:text-slate-300 flex items-start gap-2">
@@ -84,9 +80,9 @@ const ProjectCard: React.FC<{
                     e.stopPropagation(); 
                     onToggle();
                 }}
-                className="w-full py-5 flex items-center justify-center gap-3 text-xs font-mono font-bold text-slate-500 hover:text-horizon-sky transition-colors border-t border-dashed border-slate-200 dark:border-midnight-700"
+                className="w-full py-6 flex items-center justify-center gap-3 text-xs font-mono font-bold text-slate-500 hover:text-horizon-sky transition-colors border-t border-dashed border-slate-200 dark:border-midnight-700"
               >
-                {isExpanded ? 'Hide Details' : 'More Details'}
+                {isExpanded ? 'Hide Details' : 'View Case Study'}
                 {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
               </button>
          </div>
@@ -126,9 +122,7 @@ const Projects: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>('QA & Systems Engineering');
   const [expandedProjectId, setExpandedProjectId] = useState<number | null>(null);
 
-  const featuredHighlights = PROJECTS.filter(p => p.id === 101 || p.id === 102);
-  const otherProjects = PROJECTS.filter(p => !featuredHighlights.some(fh => fh.id === p.id));
-  const filteredProjects = otherProjects.filter(p => p.category === activeCategory);
+  const filteredProjects = PROJECTS.filter(p => p.category === activeCategory);
   
   const toggleProjectDetails = (projectId: number) => {
     setExpandedProjectId(prev => (prev === projectId ? null : projectId));
@@ -157,37 +151,12 @@ const Projects: React.FC = () => {
                         <div className="w-8 h-px bg-horizon-sky"></div>
                         Portfolio_Directory
                     </span>
-                    <h2 className="text-5xl md:text-6xl font-bold text-slate-900 dark:text-white font-sans tracking-tight leading-none">
+                    <h2 className="text-5xl md:text-6xl font-bold text-slate-900 dark:text-white font-sans tracking-tight">
                         Selected Works.
                     </h2>
                 </div>
-            </div>
-        </div>
 
-        {/* 1. Featured Highlights: Engineering & QA */}
-        <div className="mb-24">
-             <div className="flex items-center gap-3 mb-10">
-                <Sparkles className="w-6 h-6 text-horizon-gold" />
-                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-sans uppercase tracking-tight">🔥 FEATURED PROJECTS: ENGINEERING & QA</h3>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-                {featuredHighlights.map(project => (
-                    <ProjectCard 
-                        key={project.id} 
-                        project={project} 
-                        isExpanded={expandedProjectId === project.id}
-                        onToggle={() => toggleProjectDetails(project.id)}
-                        getCategoryIcon={getCategoryIcon}
-                    />
-                ))}
-            </div>
-        </div>
-
-        {/* 2. Categorized Projects Exploration */}
-        <div className="space-y-12">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-slate-100 dark:border-midnight-900 pb-8">
-                <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white font-sans uppercase">Full Project Library</h3>
-                {/* Modern Filter Pills */}
+                {/* Filter Pills */}
                 <div className="flex flex-wrap gap-2 p-1 bg-slate-100 dark:bg-midnight-900 rounded-2xl w-fit">
                     {categories.map((cat) => (
                     <button
@@ -208,19 +177,26 @@ const Projects: React.FC = () => {
                     ))}
                 </div>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
-            {filteredProjects.map((project) => (
-                <ProjectCard 
-                    key={project.id} 
-                    project={project} 
-                    isExpanded={expandedProjectId === project.id}
-                    onToggle={() => toggleProjectDetails(project.id)}
-                    getCategoryIcon={getCategoryIcon}
-                />
-            ))}
-            </div>
         </div>
+
+        {/* Project Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 animate-fadeIn items-start">
+          {filteredProjects.map((project) => (
+            <ProjectCard 
+                key={project.id} 
+                project={project} 
+                isExpanded={expandedProjectId === project.id}
+                onToggle={() => toggleProjectDetails(project.id)}
+                getCategoryIcon={getCategoryIcon}
+            />
+          ))}
+        </div>
+
+        {filteredProjects.length === 0 && (
+          <div className="py-20 text-center">
+            <p className="text-slate-500 dark:text-slate-400 font-mono">No projects found in this category.</p>
+          </div>
+        )}
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-midnight-800 to-transparent"></div>
