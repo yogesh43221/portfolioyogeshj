@@ -24,6 +24,15 @@ const Philosophy: React.FC = () => {
 
   return (
     <section className="py-24 w-full bg-horizon-light dark:bg-midnight-900 transition-colors duration-500 relative">
+      {/* Hidden SVG for rounded hexagon clip-path */}
+      <svg width="0" height="0" className="absolute">
+        <defs>
+          <clipPath id="rounded-hex" clipPathUnits="objectBoundingBox">
+            <path d="M0.5,0 L0.9,0.15 Q1,0.2 1,0.3 L1,0.7 Q1,0.8 0.9,0.85 L0.5,1 L0.1,0.85 Q0,0.8 0,0.7 L0,0.3 Q0,0.2 0.1,0.15 Z" />
+          </clipPath>
+        </defs>
+      </svg>
+
       <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
         
         {/* Architectural Header */}
@@ -48,22 +57,22 @@ const Philosophy: React.FC = () => {
              {/* Left: Hexagon Profile Photo */}
              <div className="md:col-span-5 lg:col-span-4 flex justify-center md:justify-start pt-4">
                  <div className="relative w-64 h-72 lg:w-72 lg:h-80 group">
-                    {/* Glow effect */}
-                    <div className="absolute inset-0 bg-horizon-sky/30 dark:bg-horizon-sky/20 blur-3xl rounded-full scale-90 group-hover:scale-110 transition-transform duration-700 opacity-50" />
+                    {/* Primary Accent Glow */}
+                    <div className="absolute inset-0 bg-horizon-sky/40 dark:bg-horizon-sky/30 blur-3xl rounded-full scale-75 group-hover:scale-100 transition-all duration-1000 opacity-60 pointer-events-none" />
                     
-                    {/* Hexagon Container */}
-                    <div className="relative w-full h-full p-[2px] bg-gradient-to-b from-horizon-sky to-horizon-clouds dark:from-horizon-sky dark:to-midnight-700 transition-all duration-500 shadow-2xl"
+                    {/* Hexagon Container with Border Glow */}
+                    <div className="relative w-full h-full p-[3px] transition-all duration-500 hover:shadow-[0_0_30px_rgba(61,126,174,0.4)]"
                          style={{
-                           clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
+                           clipPath: 'url(#rounded-hex)',
+                           background: 'linear-gradient(135deg, #3D7EAE, #AACADF, #3D7EAE)'
                          }}>
                         
                         {/* Image inside hexagon */}
                         <div className="w-full h-full bg-slate-200 dark:bg-midnight-800 overflow-hidden flex items-center justify-center relative"
                              style={{
-                               clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
+                               clipPath: 'url(#rounded-hex)'
                              }}>
                             
-                            {/* NEW: Scanning Animation Overlay */}
                             <div className="neural-scanner"></div>
 
                             {PROFILE.profileImage ? (
@@ -81,11 +90,11 @@ const Philosophy: React.FC = () => {
                         </div>
                     </div>
                     
-                    {/* Hexagon Frame Decoration */}
-                    <div className="absolute inset-0 border-2 border-horizon-sky/20 pointer-events-none group-hover:border-horizon-sky/40 transition-colors duration-500"
+                    {/* Subtle outer stroke effect */}
+                    <div className="absolute inset-0 border border-horizon-sky/10 dark:border-horizon-sky/20 pointer-events-none group-hover:border-horizon-sky/30 transition-colors duration-500"
                          style={{
-                           clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
-                           transform: 'scale(1.03)'
+                           clipPath: 'url(#rounded-hex)',
+                           transform: 'scale(1.02)'
                          }} />
                  </div>
              </div>
