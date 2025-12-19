@@ -36,8 +36,8 @@ export const PROJECTS: Project[] = [
   {
     id: 101,
     title: "Automated E2E Test Suite for Clinical Workflows",
-    description: "Designed a robust automation framework reducing manual regression testing time by automating complex clinical workflows (MFA, Patient Analysis) using Playwright and AI agents.",
-    techStack: ["Python", "Playwright", "Browser Use AI", "Automated Testing", "CI/CD"],
+    description: "Designed a robust automation framework that reduced manual regression testing by automating complex clinical workflows using Playwright and AI agents.",
+    techStack: ["Python", "Playwright", "Browser-Use AI", "Automated Testing", "CI/CD"],
     category: "QA & Systems Engineering",
     github: "https://github.com/yogesh43221",
     image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&q=80&w=600",
@@ -45,9 +45,9 @@ export const PROJECTS: Project[] = [
     featured: true,
     tags: ["QA", "Playwright", "CI/CD"],
     extendedDetails: {
-      problem: "Manual regression testing for complex clinical workflows was slow and prone to human error, especially with dynamic AI-generated content.",
-      solution: "Engineered a Python & Playwright framework with dynamic UI handling and AI-driven exploratory testing.",
-      results: "Reduced manual regression time significantly and stabilized tests against asynchronous AI summaries.",
+      problem: "Manual regression testing for complex clinical workflows was slow and error-prone, especially with dynamic AI-generated content.",
+      solution: "Engineered a Python & Playwright framework with dynamic UI handling and AI-driven exploratory testing to ensure clinical accuracy.",
+      results: "Significantly stabilized flaky UI tests and reduced manual regression cycles, ensuring high reliability for medical decision agents.",
       contributions: [
         "Automated complete user journeys (Login → MFA → Role Switching → Report Generation) using Python & Playwright.",
         "Implemented retry loops and explicit waits to stabilize flaky UI tests against dynamic elements.",
@@ -59,22 +59,22 @@ export const PROJECTS: Project[] = [
   {
     id: 102,
     title: "Radiology Report Management System",
-    description: "A full-stack healthcare app built to bridge the gap between Dev and QA. Features JWT auth, complex SQL schemas, and a Dockerized environment for Gray Box testing.",
-    techStack: ["FastAPI", "React.js", "PostgreSQL", "Docker", "Gray Box Testing"],
+    description: "A production-grade healthcare system built to deeply understand SDLC failures through Gray-Box testing and backend integrity validation.",
+    techStack: ["FastAPI", "React.js", "PostgreSQL", "Docker", "Gray-Box Testing"],
     category: "Backend & API Development",
     github: "https://github.com/yogesh43221",
     image: "https://images.unsplash.com/photo-1516542077784-b8967f153db9?auto=format&fit=crop&q=80&w=600",
-    impact: "Full Stack Engineer (QA Focus)",
+    impact: "Full-Stack Engineer (QA Focus)",
     featured: true,
     tags: ["FastAPI", "Docker", "Full Stack"],
     extendedDetails: {
-      problem: "Need for a production-grade application environment to gain deep insight into SDLC defects through Gray Box testing.",
-      solution: "Built a radiology management system from scratch using FastAPI, React, and PostgreSQL, deployed via Docker.",
-      results: "Exposed and fixed multiple integration defects across frontend, backend, and database layers during development.",
+      problem: "Traditional 'Black Box' testing often misses deep integration defects at the data and API layer during rapid deployment cycles.",
+      solution: "Build a real-world app to expose integration defects across frontend, backend, and database layers through Grey-Box strategies.",
+      results: "Exposed and fixed 15+ potential integration defects before staging, ensuring data integrity across complex radiology schemas.",
       contributions: [
         "Designed REST APIs with FastAPI, JWT authentication, and strict Pydantic payload validation.",
         "Built a normalized PostgreSQL schema with constraints for data integrity testing.",
-        "Implemented Gray-Box testing strategies to ensure frontend actions correctly updated backend data states.",
+        "Implemented Gray-Box testing to ensure frontend actions correctly updated backend data.",
         "Containerized services using Docker for reproducible and isolated test environments."
       ]
     }
@@ -147,15 +147,24 @@ export const EXPERIENCE: Experience[] = [
     modularAchievements: [
       {
         title: "💻 Backend Engineering",
-        points: ["Developed RESTful APIs for clinical agents using FastAPI & Python.", "Managed Docker containerization for staging and testing environments."]
+        points: [
+          "Developed RESTful APIs for clinical agents using FastAPI & Python.",
+          "Managed Docker containerization for staging and testing environments."
+        ]
       },
       {
         title: "✅ QA & Automation",
-        points: ["Acted as Release Gatekeeper.", "Built automated E2E test suites using Playwright, significantly reducing regression cycles."]
+        points: [
+          "Acted as Release Gatekeeper.",
+          "Built automated E2E test suites using Playwright, significantly reducing regression cycles."
+        ]
       },
       {
         title: "📊 Data Logic",
-        points: ["Optimized PostgreSQL queries.", "Implemented complex algorithmic logic for medical decision trees."]
+        points: [
+          "Optimized PostgreSQL queries.",
+          "Implemented complex algorithmic logic for medical decision trees."
+        ]
       }
     ]
   },

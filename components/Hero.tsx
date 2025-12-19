@@ -3,24 +3,15 @@ import { ArrowRight, Github, Linkedin, Mail, Terminal } from 'lucide-react';
 import { PROFILE } from '../constants';
 import ResumeDropdown from './ResumeDropdown';
 
-const ROLES = [
-  { 
-    title: "Software Engineer", 
-    subtitle: "Building Robust Scalable Logic" 
-  },
-  { 
-    title: "Data Analyst", 
-    subtitle: "Analyzing Logic-Driven Data" 
-  },
-  { 
-    title: "QA Automation", 
-    subtitle: "Testing Limits & Ensuring Quality" 
-  }
-];
-
 const Hero: React.FC = () => {
   const [roleIndex, setRoleIndex] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
+
+  const ROLES = [
+    { title: "Software Engineer", subtitle: "Building Robust Scalable Logic" },
+    { title: "Data Analyst", subtitle: "Analyzing Logic-Driven Data" },
+    { title: "QA Automation", subtitle: "Testing Limits & Ensuring Quality" }
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -49,7 +40,6 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-horizon-light dark:bg-midnight-950 transition-colors duration-500">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.05)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
           
-          {/* Data Packets */}
           <div className="absolute inset-0">
              {[...Array(10)].map((_, i) => (
                 <div 
@@ -105,7 +95,7 @@ const Hero: React.FC = () => {
             </div>
         </div>
 
-        <h1 className="text-5xl md:text-8xl lg:text-[10rem] font-black tracking-tighter text-slate-900 dark:text-white mb-8 font-sans leading-[0.8] uppercase">
+        <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter text-slate-900 dark:text-white mb-8 font-sans leading-[0.8] uppercase">
           Building <span className="text-horizon-sky">Logic.</span> <br />
           Testing <span className="text-horizon-gold">Limits.</span> <br />
           Analyzing <span className="text-horizon-clouds">Data.</span>
@@ -116,7 +106,7 @@ const Hero: React.FC = () => {
         </h2>
 
         <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-3xl leading-relaxed font-sans font-medium tracking-tight mb-12">
-          "I bridge the gap between development and quality. With a background in Backend Engineering (FastAPI), Data Logic (SQL), and QA Automation (Playwright), I build systems that are robust, scalable, and data-driven."
+          I bridge the gap between development and quality. With a background in Backend Engineering (FastAPI), Data Logic (SQL), and QA Automation (Playwright), I build systems that are robust, scalable, and data-driven.
         </p>
 
         {/* Hero CTAs */}

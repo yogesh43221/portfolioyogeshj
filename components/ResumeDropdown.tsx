@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FileText, ChevronDown, Server, BarChart, Brain, Download, ChevronUp, Shield } from 'lucide-react';
+import { FileText, ChevronDown, BarChart, Brain, Download, ChevronUp, Shield } from 'lucide-react';
 import { RESUME_URLS } from '../constants';
 
 interface ResumeDropdownProps {
@@ -46,7 +46,7 @@ const ResumeDropdown: React.FC<ResumeDropdownProps> = ({
     {
       id: 'sde',
       label: "📄 Software Engineer & QA (Backend Focus)",
-      sub: "General SDE, Python, QA Automation",
+      sub: "SDE, Python Developer, QA Automation, Hub9",
       url: RESUME_URLS.BACKEND,
       icon: <Shield className="h-4 w-4" />,
       isPrimary: true
@@ -54,7 +54,7 @@ const ResumeDropdown: React.FC<ResumeDropdownProps> = ({
     {
       id: 'data',
       label: "📊 Data Analyst & BI Engineer",
-      sub: "SQL, Power BI, Data Engineering",
+      sub: "SQL, Power BI, Data Engineering (Celebal)",
       url: RESUME_URLS.DATA_ANALYST,
       icon: <BarChart className="h-4 w-4" />,
       isPrimary: false
@@ -62,7 +62,7 @@ const ResumeDropdown: React.FC<ResumeDropdownProps> = ({
     {
       id: 'ai',
       label: "🧠 AI & Machine Learning Engineer",
-      sub: "GenAI, CV, Python ML",
+      sub: "GenAI, CV, Python ML (InThink)",
       url: RESUME_URLS.AI_ML,
       icon: <Brain className="h-4 w-4" />,
       isPrimary: false
@@ -100,7 +100,7 @@ const ResumeDropdown: React.FC<ResumeDropdownProps> = ({
         >
             <div className="px-4 py-3 bg-slate-50 dark:bg-midnight-800 border-b border-slate-200 dark:border-midnight-700">
                 <span className="text-[10px] font-mono text-slate-600 dark:text-white uppercase tracking-widest font-bold block mb-1">Tailored for Your Team</span>
-                <span className="text-[9px] font-sans text-slate-400 leading-tight block italic">Select the resume version that matches the role you are hiring for:</span>
+                <span className="text-[9px] font-sans text-slate-400 leading-tight block italic">I wear multiple hats. Select the resume version that matches the role you are hiring for:</span>
             </div>
           <div className="py-1">
             {displayedResumes.map((resume) => (

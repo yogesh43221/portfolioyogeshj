@@ -50,7 +50,7 @@ const ProjectCard: React.FC<{
             {isExpanded && (
                 <div className="py-6 space-y-5 animate-fadeIn border-t border-slate-200 dark:border-midnight-700">
                     <div className="space-y-2">
-                        <span className="text-[10px] font-black text-horizon-sky uppercase tracking-widest">The Challenge</span>
+                        <span className="text-[10px] font-black text-horizon-sky uppercase tracking-widest">The Challenge / Goal</span>
                         <p className="text-xs font-sans text-slate-700 dark:text-slate-300 leading-relaxed">{project.extendedDetails.problem}</p>
                     </div>
                     <div className="space-y-2">
@@ -165,7 +165,7 @@ const Projects: React.FC = () => {
         <div className="mb-24">
              <div className="flex items-center gap-3 mb-10">
                 <Sparkles className="w-6 h-6 text-horizon-gold" />
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-sans">Featured: Engineering & QA Highlights</h3>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-sans">🔥 FEATURED PROJECTS: ENGINEERING & QA</h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 {featuredHighlights.map(project => (
