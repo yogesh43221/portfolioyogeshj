@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Database, GitMerge, Zap } from 'lucide-react';
 import MLSystemPipeline from './MLSystemPipeline';
 import { PROFILE } from '../constants';
 
 const Philosophy: React.FC = () => {
-  const [imgError, setImgError] = useState(false);
-
   const principles = [
     {
       icon: <Database className="h-6 w-6" />,
@@ -64,12 +62,11 @@ const Philosophy: React.FC = () => {
                                clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'
                              }}>
                             
-                            {!imgError ? (
+                            {PROFILE.profileImage ? (
                                 <img 
                                     src={PROFILE.profileImage} 
                                     alt={PROFILE.name}
                                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out scale-105 group-hover:scale-110"
-                                    onError={() => setImgError(true)}
                                 />
                             ) : (
                                 <div className="w-full h-full bg-midnight-800 flex items-center justify-center text-white font-bold text-5xl font-mono tracking-tighter">
