@@ -47,14 +47,36 @@ const Experience: React.FC = () => {
                         
                         <div className="text-horizon-sky font-bold mb-5 text-base font-sans">{job.company}</div>
                         
-                        <ul className="space-y-4">
-                            {job.achievements.map((point, index) => (
-                            <li key={index} className="flex items-start text-slate-700 dark:text-slate-300 text-base leading-relaxed font-sans font-medium">
-                                <span className="mr-4 mt-2.5 w-1.5 h-1.5 bg-slate-400 dark:bg-slate-600 rounded-full flex-shrink-0"></span>
-                                {point}
-                            </li>
-                            ))}
-                        </ul>
+                        {/* Modular Card Layout for Hub9 */}
+                        {job.modularAchievements ? (
+                            <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                                {job.modularAchievements.map((block, idx) => (
+                                    <div key={idx} className="p-5 rounded-xl bg-slate-50 dark:bg-midnight-900/50 border border-slate-200 dark:border-midnight-800 transition-all hover:border-horizon-sky/30">
+                                        <h5 className="text-sm font-bold text-slate-900 dark:text-white mb-3 font-mono uppercase tracking-wider flex items-center gap-2">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-horizon-sky"></div>
+                                            {block.title}
+                                        </h5>
+                                        <ul className="space-y-2">
+                                            {block.points.map((pt, i) => (
+                                                <li key={i} className="flex items-start text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
+                                                    <span className="mr-3 mt-1.5 w-1 h-1 bg-slate-400 rounded-full flex-shrink-0"></span>
+                                                    {pt}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <ul className="space-y-4">
+                                {job.achievements.map((point, index) => (
+                                <li key={index} className="flex items-start text-slate-700 dark:text-slate-300 text-base leading-relaxed font-sans font-medium">
+                                    <span className="mr-4 mt-2.5 w-1.5 h-1.5 bg-slate-400 dark:bg-slate-600 rounded-full flex-shrink-0"></span>
+                                    {point}
+                                </li>
+                                ))}
+                            </ul>
+                        )}
                     </div>
                 ))}
                 </div>

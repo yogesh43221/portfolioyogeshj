@@ -6,11 +6,10 @@ import { Project, Experience, Skill, Education, Achievement, Publication, Certif
 
 export const PROFILE = {
   name: "Yogesh Jadhav",
-  title: "AI Researcher & Data Engineer",
-  // This points to the file you manually uploaded to the public folder.
+  title: "Software Engineer | Data Analyst | QA Automation",
   profileImage: "/profile.jpg", 
-  shortBio: "AI Researcher specializing in Agentic workflows, clinical data optimization, and production-grade ML systems.",
-  about: `I am an AI Researcher and Data Engineer with a strong foundation in Electronics & Telecommunications. Currently at Hub9, I focus on architecting autonomous AI agents and optimizing high-volume clinical data pipelines. My work involves designing robust RAG systems, fine-tuning LLMs, and building scalable ETL workflows that drive measurable business ROI. I have a proven track record of reducing operational costs by up to 40% through intelligent system design and rigorous data validation.`,
+  shortBio: "I bridge the gap between development and quality. Building systems that are robust, scalable, and data-driven.",
+  about: `Hello! I'm Yogesh Jadhav. Unlike traditional developers who just write code, or testers who just find bugs, I operate at the intersection of both. During my time at Hub9, I didn't just build Medical Agents using Python; I also containerized them with Docker and built the Playwright Automation Suites to test them. Whether I'm optimizing SQL queries for a Data Analyst role or training CV models for an AI project, my philosophy remains the same: 'Quality is not an afterthought; it is part of the architecture.'`,
   email: "yj43221@gmail.com",
   location: "Pune, India",
   github: "https://github.com/yogesh43221",
@@ -35,6 +34,52 @@ export const ALL_CERTIFICATIONS_URL = "https://drive.google.com/drive/folders/yo
 
 export const PROJECTS: Project[] = [
   {
+    id: 101,
+    title: "Automated E2E Test Suite for Clinical Workflows",
+    description: "Designed a robust automation framework reducing manual regression testing time by automating complex clinical workflows using Playwright and AI agents.",
+    techStack: ["Python", "Playwright", "Browser Use AI", "Automated Testing", "CI/CD"],
+    category: "QA & Systems Engineering",
+    github: "https://github.com/yogesh43221",
+    image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&q=80&w=600",
+    impact: "QA Automation Engineer (Hub9)",
+    featured: true,
+    tags: ["QA", "Playwright", "CI/CD"],
+    extendedDetails: {
+      problem: "Manual regression testing for complex clinical workflows was slow and prone to human error, especially with dynamic AI-generated content.",
+      solution: "Engineered a Python & Playwright framework with dynamic UI handling and AI-driven exploratory testing.",
+      results: "Reduced manual regression time significantly and stabilized tests against asynchronous AI summaries.",
+      contributions: [
+        "Scripted end-to-end user journeys (Login → MFA → Role Switching → Report Generation).",
+        "Engineered 'retry loops' and explicit wait strategies to stabilize tests against dynamic UI updates.",
+        "Integrated Browser Use AI agents to validate medical summaries for edge cases.",
+        "Implemented deep validation for audio playback, tab navigation, and session timeouts."
+      ]
+    }
+  },
+  {
+    id: 102,
+    title: "Radiology Report Management System",
+    description: "A full-stack healthcare app built with FastAPI and React, optimized for Gray Box testing and production-grade backend integrity.",
+    techStack: ["FastAPI", "React.js", "PostgreSQL", "Docker", "Gray Box Testing"],
+    category: "Backend & API Development",
+    github: "https://github.com/yogesh43221",
+    image: "https://images.unsplash.com/photo-1516542077784-b8967f153db9?auto=format&fit=crop&q=80&w=600",
+    impact: "Full Stack Engineer (QA Focus)",
+    featured: true,
+    tags: ["FastAPI", "Docker", "Full Stack"],
+    extendedDetails: {
+      problem: "Need for a production-grade application environment to gain deep insight into SDLC defects through Gray Box testing.",
+      solution: "Built a radiology management system from scratch using FastAPI, React, and PostgreSQL, deployed via Docker.",
+      results: "Created a reproducible environment for testing deployment workflows and backend integrity validation.",
+      contributions: [
+        "API & Backend Logic: Designed RESTful APIs with strict payload validation and JWT authentication.",
+        "Database Integrity: Architected PostgreSQL schema with complex constraints to prevent orphaned records.",
+        "Frontend-Backend Sync: Built React frontend to visualize report data and inspect network calls during debugging.",
+        "DevOps: Containerized services using Docker for reproducible testing environments."
+      ]
+    }
+  },
+  {
     id: 1,
     title: "Booking Analytics RAG System",
     description: "A Retrieval-Augmented Generation system that enables natural language querying of booking data for instant analytics.",
@@ -44,12 +89,12 @@ export const PROJECTS: Project[] = [
     link: "https://github.com/yogesh43221/Booking-Analytics-RAG-System",
     image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80&w=600",
     impact: "Automated QA for booking data",
-    featured: true,
+    featured: false,
     tags: ["RAG", "LLM", "Analytics", "NLP"],
     extendedDetails: {
-      problem: "Extracting insights from complex booking databases required technical SQL knowledge, creating a bottleneck for non-technical stakeholders.",
-      solution: "Built a RAG pipeline where user queries are converted to vector embeddings, matched with schema context, and processed by an LLM to generate accurate answers.",
-      results: "Enabled instant, natural language access to booking analytics, reducing dependency on data analysts for routine queries.",
+      problem: "Extracting insights from complex booking databases required technical SQL knowledge.",
+      solution: "Built a RAG pipeline where user queries are converted to vector embeddings and processed by an LLM.",
+      results: "Enabled instant, natural language access to booking analytics.",
       architecture: "User Query → Embedding Model → Vector DB (Pinecone) → Context Retrieval → LLM (GPT) → Natural Language Answer"
     }
   },
@@ -62,12 +107,12 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/yogesh43221/Data-Science-Projects/tree/main/Transaction%20Fraud%20Detection",
     image: "https://images.unsplash.com/photo-1563986768494-4dee46a38531?auto=format&fit=crop&q=80&w=600",
     impact: "Handled 6.3M+ transactions",
-    featured: true,
+    featured: false,
     tags: ["Fraud Detection", "Classification", "Imbalanced Data"],
     extendedDetails: {
-      problem: "Financial fraud is rare but costly; standard models failed to detect fraud due to extreme class imbalance (0.1% fraud rate).",
-      solution: "Applied SMOTE for synthetic oversampling and trained an XGBoost classifier optimized for high recall.",
-      results: "Achieved high detection rate while minimizing false positives on a dataset of 6.3 million transactions.",
+      problem: "Financial fraud models failed due to extreme class imbalance (0.1% fraud rate).",
+      solution: "Applied SMOTE for synthetic oversampling and trained an XGBoost classifier.",
+      results: "Achieved high detection rate while minimizing false positives.",
       architecture: "Raw Transaction Data → Cleaning & Encoding → SMOTE Oversampling → XGBoost Classifier → Prediction API"
     }
   },
@@ -80,12 +125,12 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/yogesh43221/FlaskProjects/tree/main/BrainloxChatbot-API",
     image: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&q=80&w=600",
     impact: "Robust API Architecture",
-    featured: true,
+    featured: false,
     tags: ["Backend", "API", "Flask"],
     extendedDetails: {
-      problem: "The chatbot needed a decoupled backend to handle logic independently of the frontend UI.",
-      solution: "Designed a RESTful API using Flask that processes user input, interacts with the logic layer, and returns structured JSON responses.",
-      results: "Enabled seamless integration with multiple frontend clients and ensured scalable request handling.",
+      problem: "Need for a decoupled backend to handle chatbot logic independently.",
+      solution: "Designed a RESTful API using Flask that processes user input and returns structured JSON.",
+      results: "Enabled seamless integration with multiple frontend clients.",
       architecture: "Client Request (JSON) → Flask Routes → Input Validation → Logic Processing → Response Formatting → Client"
     }
   }
@@ -94,15 +139,28 @@ export const PROJECTS: Project[] = [
 export const EXPERIENCE: Experience[] = [
   {
     id: 1,
-    role: "AI Researcher",
-    company: "Hub9 (Remote)",
-    period: "Jan 2025 - Present",
-    description: "Leading research on Agentic Workflows and clinical data optimization.",
+    role: "Software Engineer Intern",
+    company: "Hub9 | Jan 2025 – Oct 2025",
+    period: "Jan 2025 - Oct 2025",
+    description: "Bridging the gap between development and quality through full-stack engineering and QA automation.",
     achievements: [
-      "Designed and deployed AI Agents using Python & LLMs to automate clinical data workflows, reducing manual processing time by 40%.",
-      "Optimized operational costs by refactoring inefficient SQL/ORM queries for high-scale clinical environments.",
-      "Analyzed the MIMIC-IV dataset (50k+ patients) using advanced SQL to validate business logic.",
-      "Architected a RAG pipeline for medical documentation retrieval with focus on precision and low-latency."
+      "Backend Engineering: Developed RESTful APIs for clinical agents using FastAPI & Python. Managed Docker containerization.",
+      "QA & Automation: Acted as Release Gatekeeper. Built automated E2E test suites using Playwright.",
+      "Data Logic: Optimized PostgreSQL queries and designed complex algorithmic logic for medical decision trees."
+    ],
+    modularAchievements: [
+      {
+        title: "💻 Backend Engineering",
+        points: ["Developed RESTful APIs for clinical agents using FastAPI & Python.", "Managed Docker containerization for staging environments."]
+      },
+      {
+        title: "✅ QA & Automation",
+        points: ["Acted as Release Gatekeeper.", "Built automated E2E test suites using Playwright to reduce regression cycles."]
+      },
+      {
+        title: "📊 Data Logic",
+        points: ["Optimized PostgreSQL queries.", "Designed complex algorithmic logic for medical decision trees."]
+      }
     ]
   },
   {
@@ -181,16 +239,16 @@ export const ACHIEVEMENTS: Achievement[] = [
 ];
 
 export const SKILLS: Skill[] = [
-  { name: "LLMs (GPT/Llama)", level: 90, icon: "Brain", category: "AI & LLMs", context: "RAG Systems, Fine-tuning" },
-  { name: "LangChain", level: 85, icon: "Link", category: "AI & LLMs", context: "Agentic Workflows" },
-  { name: "FastAPI / Flask", level: 80, icon: "Server", category: "Backend & APIs", context: "Model Serving" },
-  { name: "Advanced SQL", level: 95, icon: "Database", category: "Data Analysis", context: "Complex CTEs, Optimization" },
-  { name: "Docker", level: 80, icon: "Container", category: "Backend & APIs", context: "Deployment" },
+  { name: "FastAPI / Flask", level: 90, icon: "Server", category: "Backend & APIs", context: "Production APIs" },
+  { name: "Playwright", level: 85, icon: "Shield", category: "Tools & Platforms", context: "E2E Automation" },
+  { name: "Advanced SQL", level: 95, icon: "Database", category: "Data Analysis", context: "Optimization, CTEs" },
+  { name: "LLMs (GPT/Llama)", level: 90, icon: "Brain", category: "AI & LLMs", context: "RAG, Agents" },
+  { name: "Docker", level: 85, icon: "Container", category: "Backend & APIs", context: "Containerization" },
 ];
 
 export const SYSTEM_INSTRUCTION = `
 You are an AI twin of ${PROFILE.name}. 
-Focus on technical depth and measurable impact.
-Expertise: Agentic AI, RAG, clinical data engineering, and scalable Python backends.
+Persona: Software Engineer, Data Analyst, and QA Automation expert.
+Expertise: Bridging the gap between dev and quality. Hub9 experience is primary.
 Tone: Professional, direct, and system-oriented.
 `;

@@ -5,16 +5,16 @@ import ResumeDropdown from './ResumeDropdown';
 
 const ROLES = [
   { 
-    title: "AI Researcher & Data Engineer", 
-    subtitle: "Architecting Agentic Systems & Scalable ETL" 
+    title: "Software Engineer", 
+    subtitle: "Building Robust Scalable Logic" 
   },
   { 
-    title: "Machine Learning Engineer", 
-    subtitle: "Production-Grade Predictive Models" 
+    title: "Data Analyst", 
+    subtitle: "Analyzing Logic-Driven Data" 
   },
   { 
-    title: "Systems Architect", 
-    subtitle: "FastAPI, Docker & Distributed Pipelines" 
+    title: "QA Automation", 
+    subtitle: "Testing Limits & Ensuring Quality" 
   }
 ];
 
@@ -83,7 +83,7 @@ const Hero: React.FC = () => {
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                     </span>
                     <span className="text-[10px] font-mono font-bold text-slate-600 dark:text-slate-300 tracking-[0.2em] uppercase">
-                        Available for Strategic Collaboration
+                        Bridging Development & Quality
                     </span>
                 </div>
             </div>
@@ -105,12 +105,18 @@ const Hero: React.FC = () => {
             </div>
         </div>
 
-        <h1 className="text-7xl md:text-9xl lg:text-[11rem] font-black tracking-tighter text-slate-900 dark:text-white mb-8 font-sans leading-[0.8] uppercase">
-          Yogesh <span className="text-horizon-sky">Jadhav</span>
+        <h1 className="text-5xl md:text-8xl lg:text-[10rem] font-black tracking-tighter text-slate-900 dark:text-white mb-8 font-sans leading-[0.8] uppercase">
+          Building <span className="text-horizon-sky">Logic.</span> <br />
+          Testing <span className="text-horizon-gold">Limits.</span> <br />
+          Analyzing <span className="text-horizon-clouds">Data.</span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-slate-700 dark:text-slate-300 max-w-3xl leading-relaxed font-sans font-medium tracking-tight mb-12">
-          {PROFILE.shortBio}
+        <h2 className="text-xl md:text-3xl font-bold text-slate-500 dark:text-slate-400 mb-8 font-mono tracking-tight">
+            Software Engineer | Data Analyst | QA Automation
+        </h2>
+
+        <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-3xl leading-relaxed font-sans font-medium tracking-tight mb-12">
+          "I bridge the gap between development and quality. With a background in Backend Engineering (FastAPI), Data Logic (SQL), and QA Automation (Playwright), I build systems that are robust, scalable, and data-driven."
         </p>
 
         {/* Hero CTAs */}
@@ -120,7 +126,7 @@ const Hero: React.FC = () => {
             onClick={(e) => handleNavClick(e, '#projects')}
             className="group relative inline-flex items-center justify-center px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-midnight-950 text-base font-black rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-xl w-full sm:w-auto"
           >
-            Launch Case Studies
+            Explore My Work
             <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1.5 transition-transform" />
           </a>
           

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { FileText, ChevronDown, Server, BarChart, Brain, Download, ChevronUp } from 'lucide-react';
+import { FileText, ChevronDown, Server, BarChart, Brain, Download, ChevronUp, Shield } from 'lucide-react';
 import { RESUME_URLS } from '../constants';
 
 interface ResumeDropdownProps {
@@ -44,27 +44,27 @@ const ResumeDropdown: React.FC<ResumeDropdownProps> = ({
 
   const allResumes = [
     {
-      id: 'ai',
-      label: "AI_Engineer.pdf",
-      sub: "ML & Data",
-      url: RESUME_URLS.AI_ML,
-      icon: <Brain className="h-4 w-4" />,
+      id: 'sde',
+      label: "📄 Software Engineer & QA (Backend Focus)",
+      sub: "General SDE, Python, QA Automation",
+      url: RESUME_URLS.BACKEND,
+      icon: <Shield className="h-4 w-4" />,
       isPrimary: true
     },
     {
       id: 'data',
-      label: "Data_Analyst.pdf",
-      sub: "BI & Analytics",
+      label: "📊 Data Analyst & BI Engineer",
+      sub: "SQL, Power BI, Data Engineering",
       url: RESUME_URLS.DATA_ANALYST,
       icon: <BarChart className="h-4 w-4" />,
       isPrimary: false
     },
     {
-      id: 'backend',
-      label: "Backend_Dev.pdf",
-      sub: "API & Systems",
-      url: RESUME_URLS.BACKEND,
-      icon: <Server className="h-4 w-4" />,
+      id: 'ai',
+      label: "🧠 AI & Machine Learning Engineer",
+      sub: "GenAI, CV, Python ML",
+      url: RESUME_URLS.AI_ML,
+      icon: <Brain className="h-4 w-4" />,
       isPrimary: false
     }
   ];
@@ -95,11 +95,12 @@ const ResumeDropdown: React.FC<ResumeDropdownProps> = ({
 
       {isOpen && (
         <div 
-          className={`absolute ${alignmentClasses[align]} ${directionClasses} w-64 rounded-xl shadow-2xl bg-white dark:bg-midnight-900 ring-1 ring-black ring-opacity-5 focus:outline-none z-50 animate-fadeIn border border-slate-200 dark:border-midnight-800 overflow-hidden`}
+          className={`absolute ${alignmentClasses[align]} ${directionClasses} w-72 rounded-xl shadow-2xl bg-white dark:bg-midnight-900 ring-1 ring-black ring-opacity-5 focus:outline-none z-50 animate-fadeIn border border-slate-200 dark:border-midnight-800 overflow-hidden`}
           role="menu"
         >
-            <div className="px-4 py-2 bg-slate-50 dark:bg-midnight-800 border-b border-slate-200 dark:border-midnight-700">
-                <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest font-bold">Select Version</span>
+            <div className="px-4 py-3 bg-slate-50 dark:bg-midnight-800 border-b border-slate-200 dark:border-midnight-700">
+                <span className="text-[10px] font-mono text-slate-600 dark:text-white uppercase tracking-widest font-bold block mb-1">Tailored for Your Team</span>
+                <span className="text-[9px] font-sans text-slate-400 leading-tight block italic">Select the resume version that matches the role you are hiring for:</span>
             </div>
           <div className="py-1">
             {displayedResumes.map((resume) => (
@@ -116,10 +117,10 @@ const ResumeDropdown: React.FC<ResumeDropdownProps> = ({
                 </div>
                 
                 <div className="flex-1 flex flex-col">
-                    <span className={`text-xs font-mono font-bold ${resume.isPrimary ? 'text-slate-900 dark:text-white' : 'text-slate-700 dark:text-slate-300'}`}>
+                    <span className={`text-[11px] font-sans font-bold leading-tight ${resume.isPrimary ? 'text-slate-900 dark:text-white' : 'text-slate-700 dark:text-slate-300'}`}>
                         {resume.label}
                     </span>
-                    <span className="text-[9px] text-slate-500 uppercase tracking-tighter">{resume.sub}</span>
+                    <span className="text-[9px] text-slate-500 uppercase tracking-tighter mt-0.5">{resume.sub}</span>
                 </div>
 
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400">

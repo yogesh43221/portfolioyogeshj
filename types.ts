@@ -4,7 +4,8 @@ export type ProjectCategory =
   | 'AI / LLM / NLP Systems' 
   | 'Machine Learning Systems' 
   | 'Backend & API Development' 
-  | 'Data Analytics & Business Intelligence';
+  | 'Data Analytics & Business Intelligence'
+  | 'QA & Systems Engineering';
 
 export interface Project {
   id: number;
@@ -15,14 +16,15 @@ export interface Project {
   link?: string;
   github: string;
   image: string;
-  impact?: string; // Optional field for specific impact metrics
-  tags?: string[]; // New field for filtering tags (e.g., 'LLM', 'Deployment')
-  featured?: boolean; // Added to highlight top projects
+  impact?: string; 
+  tags?: string[]; 
+  featured?: boolean;
   extendedDetails?: {
     problem: string;
     solution: string;
     results: string;
-    architecture?: string; // Added for top projects
+    architecture?: string;
+    contributions?: string[]; // Added for specific contribution bullets
   };
 }
 
@@ -33,6 +35,10 @@ export interface Experience {
   period: string;
   description: string;
   achievements: string[];
+  modularAchievements?: {
+    title: string;
+    points: string[];
+  }[];
 }
 
 export interface Education {
@@ -79,7 +85,7 @@ export interface Skill {
   level: number; // 0-100
   icon: string;
   category: SkillCategory;
-  context?: string; // Added context for how skill is used
+  context?: string; 
 }
 
 export interface ChatMessage {
