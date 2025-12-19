@@ -9,7 +9,7 @@ export const PROFILE = {
   title: "Software Engineer | Data Analyst | QA Automation",
   profileImage: "/profile.jpg", 
   shortBio: "I bridge the gap between development and quality. Building systems that are robust, scalable, and data-driven.",
-  about: `Hello! I'm Yogesh Jadhav. Unlike traditional developers who just write code, or testers who just find bugs, I operate at the intersection of both. During my time at Hub9, I didn't just build Medical Agents using Python; I also containerized them with Docker and built the Playwright Automation Suites to test them. Whether I'm optimizing SQL queries for a Data Analyst role or training CV models for an AI project, my philosophy remains the same: 'Quality is not an afterthought; it is part of the architecture.'`,
+  about: `Hello! I’m Yogesh Jadhav. Unlike traditional developers who just write code, or testers who just find bugs, I operate at the intersection of both. During my time at Hub9, I didn’t just build medical agents using Python — I containerized them with Docker and built Playwright automation suites to test them. Whether I’m optimizing SQL queries for a Data Analyst role or training Computer Vision models for an AI project, my philosophy remains the same: “Quality is not an afterthought; it is part of the architecture.”`,
   email: "yj43221@gmail.com",
   location: "Pune, India",
   github: "https://github.com/yogesh43221",
@@ -49,10 +49,10 @@ export const PROJECTS: Project[] = [
       solution: "Engineered a Python & Playwright framework with dynamic UI handling and AI-driven exploratory testing.",
       results: "Reduced manual regression time significantly and stabilized tests against asynchronous AI summaries.",
       contributions: [
-        "Complex Workflow Automation: Scripted end-to-end user journeys (Login → MFA → Role Switching → Report Generation) using Python & Playwright.",
-        "Dynamic UI Handling: Engineered 'retry loops' and explicit wait strategies to stabilize tests against asynchronous UI updates and slow-loading AI summaries.",
-        "AI-Driven Exploratory Testing: Integrated Browser Use AI agents to validate 'Concise' vs. 'Detailed' medical summaries, catching edge cases standard scripts missed.",
-        "Deep Validation: Implemented logic to verify audio playback, tab navigation, and form data retention across session timeouts."
+        "Automated complete user journeys (Login → MFA → Role Switching → Report Generation) using Python & Playwright.",
+        "Implemented retry loops and explicit waits to stabilize flaky UI tests against dynamic elements.",
+        "Integrated Browser-Use AI for exploratory testing of medical summaries.",
+        "Validated audio playback, tab navigation, and session persistence across multi-page workflows."
       ]
     }
   },
@@ -70,12 +70,12 @@ export const PROJECTS: Project[] = [
     extendedDetails: {
       problem: "Need for a production-grade application environment to gain deep insight into SDLC defects through Gray Box testing.",
       solution: "Built a radiology management system from scratch using FastAPI, React, and PostgreSQL, deployed via Docker.",
-      results: "Created a reproducible environment for testing deployment workflows and backend integrity validation.",
+      results: "Exposed and fixed multiple integration defects across frontend, backend, and database layers during development.",
       contributions: [
-        "API & Backend Logic: Designed RESTful APIs using FastAPI, implementing strict payload validation and JWT authentication to debug 401/403 integration errors.",
-        "Database Integrity: Architected a PostgreSQL schema with complex constraints. Used this for 'Gray Box' testing—verifying frontend actions correctly updated backend tables without creating orphaned records.",
-        "Frontend-Backend Sync: Built a React frontend to visualize report data, allowing direct inspection of network calls and state management during debugging.",
-        "DevOps: Containerized the application services using Docker, creating reproducible environments for testing deployment workflows."
+        "Designed REST APIs with FastAPI, JWT authentication, and strict Pydantic payload validation.",
+        "Built a normalized PostgreSQL schema with constraints for data integrity testing.",
+        "Implemented Gray-Box testing strategies to ensure frontend actions correctly updated backend data states.",
+        "Containerized services using Docker for reproducible and isolated test environments."
       ]
     }
   },
@@ -93,8 +93,8 @@ export const PROJECTS: Project[] = [
     tags: ["RAG", "LLM", "Analytics", "NLP"],
     extendedDetails: {
       problem: "Traditional analytics dashboards for booking data required complex SQL knowledge to extract deep insights, creating a bottleneck for non-technical stakeholders.",
-      solution: "Implemented a Retrieval-Augmented Generation (RAG) architecture using LangChain and Pinecone. User queries in plain English are converted into vector embeddings, matched against relevant documentation and metadata, and processed by an LLM to generate accurate SQL or direct answers.",
-      results: "Reduced the time-to-insight for operational teams by 80%. Non-technical users can now perform self-service analytics without writing a single line of code.",
+      solution: "Implemented a Retrieval-Augmented Generation (RAG) architecture using LangChain and Pinecone to allow natural language queries.",
+      results: "Reduced time-to-insight for operational teams by 80%, enabling self-service analytics.",
       architecture: "User Query → Embedding Model → Vector DB (Pinecone) → Context Retrieval → LLM (GPT) → Natural Language Answer"
     }
   },
@@ -112,7 +112,7 @@ export const PROJECTS: Project[] = [
     extendedDetails: {
       problem: "Financial fraud models failed due to extreme class imbalance (0.1% fraud rate).",
       solution: "Applied SMOTE for synthetic oversampling and trained an XGBoost classifier.",
-      results: "Achieved high detection rate while minimizing false positives.",
+      results: "Achieved high detection rate while minimizing false positives in testing.",
       architecture: "Raw Transaction Data → Cleaning & Encoding → SMOTE Oversampling → XGBoost Classifier → Prediction API"
     }
   },
@@ -128,9 +128,9 @@ export const PROJECTS: Project[] = [
     featured: false,
     tags: ["Backend", "API", "Flask"],
     extendedDetails: {
-      problem: "Need for a decoupled backend to handle chatbot logic independently.",
-      solution: "Designed a RESTful API using Flask that processes user input and returns structured JSON.",
-      results: "Enabled seamless integration with multiple frontend clients.",
+      problem: "Need for a decoupled backend to handle chatbot logic independently from frontends.",
+      solution: "Designed a RESTful API using Flask that processes user input and returns structured JSON responses.",
+      results: "Enabled seamless integration with multiple frontend clients via standardized JSON payloads.",
       architecture: "Client Request (JSON) → Flask Routes → Input Validation → Logic Processing → Response Formatting → Client"
     }
   }
@@ -140,26 +140,22 @@ export const EXPERIENCE: Experience[] = [
   {
     id: 1,
     role: "Software Engineer Intern",
-    company: "Hub9 | Jan 2025 – Oct 2025",
-    period: "Jan 2025 - Oct 2025",
+    company: "Hub9",
+    period: "Jan 2025 – Oct 2025",
     description: "Bridging the gap between development and quality through full-stack engineering and QA automation.",
-    achievements: [
-      "Backend Engineering: Developed RESTful APIs for clinical agents using FastAPI & Python. Managed Docker containerization.",
-      "QA & Automation: Acted as Release Gatekeeper. Built automated E2E test suites using Playwright.",
-      "Data Logic: Optimized PostgreSQL queries and designed complex algorithmic logic for medical decision trees."
-    ],
+    achievements: [],
     modularAchievements: [
       {
         title: "💻 Backend Engineering",
-        points: ["Developed RESTful APIs for clinical agents using FastAPI & Python.", "Managed Docker containerization for staging environments."]
+        points: ["Developed RESTful APIs for clinical agents using FastAPI & Python.", "Managed Docker containerization for staging and testing environments."]
       },
       {
         title: "✅ QA & Automation",
-        points: ["Acted as Release Gatekeeper.", "Built automated E2E test suites using Playwright to reduce regression cycles."]
+        points: ["Acted as Release Gatekeeper.", "Built automated E2E test suites using Playwright, significantly reducing regression cycles."]
       },
       {
         title: "📊 Data Logic",
-        points: ["Optimized PostgreSQL queries.", "Designed complex algorithmic logic for medical decision trees."]
+        points: ["Optimized PostgreSQL queries.", "Implemented complex algorithmic logic for medical decision trees."]
       }
     ]
   },
