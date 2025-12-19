@@ -99,6 +99,28 @@ export const PROJECTS: Project[] = [
     }
   },
   {
+    id: 2,
+    title: "Medical Doc Semantic Search",
+    description: "NLP-powered search engine for clinical documentation using semantic embeddings to retrieve relevant patient histories.",
+    techStack: ["Python", "Sentence-Transformers", "FastAPI", "Pinecone"],
+    category: "AI / LLM / NLP Systems",
+    github: "https://github.com/yogesh43221",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=600",
+    featured: false,
+    tags: ["NLP", "Vector DB", "Search"]
+  },
+  {
+    id: 3,
+    title: "Demand Forecasting Model",
+    description: "Time-series forecasting system built to predict retail demand cycles and optimize inventory stocking levels.",
+    techStack: ["Prophet", "Python", "SQL", "Scikit-learn"],
+    category: "Machine Learning Systems",
+    github: "https://github.com/yogesh43221",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600",
+    featured: false,
+    tags: ["Forecasting", "ML", "Retail"]
+  },
+  {
     id: 4,
     title: "Transaction Fraud Detection",
     description: "Robust fraud detection system handling extreme class imbalance in financial transaction data.",
@@ -115,6 +137,50 @@ export const PROJECTS: Project[] = [
       results: "Achieved high detection rate while minimizing false positives in testing.",
       architecture: "Raw Transaction Data → Cleaning & Encoding → SMOTE Oversampling → XGBoost Classifier → Prediction API"
     }
+  },
+  {
+    id: 5,
+    title: "Scalable Auth Microservice",
+    description: "High-performance authentication service with JWT, OAuth2 integration, and rate limiting for secure API access.",
+    techStack: ["FastAPI", "Redis", "PostgreSQL", "Docker"],
+    category: "Backend & API Development",
+    github: "https://github.com/yogesh43221",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=600",
+    featured: false,
+    tags: ["Backend", "Auth", "Security"]
+  },
+  {
+    id: 6,
+    title: "Executive Sales Dashboard",
+    description: "End-to-end BI solution visualizing customer acquisition and retention trends for executive decision-making.",
+    techStack: ["Power BI", "SQL", "ETL", "Excel"],
+    category: "Data Analytics & Business Intelligence",
+    github: "https://github.com/yogesh43221",
+    image: "https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&q=80&w=600",
+    featured: false,
+    tags: ["Power BI", "Data Viz", "BI"]
+  },
+  {
+    id: 7,
+    title: "Automated ETL Pipeline",
+    description: "Data engineering pipeline for cleaning and migrating retail datasets from legacy systems to cloud warehouses.",
+    techStack: ["Python", "Airflow", "Snowflake", "SQL"],
+    category: "Data Analytics & Business Intelligence",
+    github: "https://github.com/yogesh43221",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600",
+    featured: false,
+    tags: ["ETL", "Airflow", "Data Engineering"]
+  },
+  {
+    id: 8,
+    title: "Performance Testing API Suite",
+    description: "Comprehensive load and stress testing suite for measuring API latency and throughput under high traffic.",
+    techStack: ["K6", "Grafana", "Docker", "JavaScript"],
+    category: "QA & Systems Engineering",
+    github: "https://github.com/yogesh43221",
+    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=600",
+    featured: false,
+    tags: ["QA", "Load Testing", "Performance"]
   }
 ];
 
