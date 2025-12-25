@@ -27,9 +27,7 @@ const ResumeDropdown: React.FC<ResumeDropdownProps> = ({
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const alignmentClasses = {
@@ -38,94 +36,46 @@ const ResumeDropdown: React.FC<ResumeDropdownProps> = ({
     right: 'right-0'
   };
 
-  const directionClasses = direction === 'up' 
-    ? 'bottom-full mb-2' 
-    : 'top-full mt-2';
+  const directionClasses = direction === 'up' ? 'bottom-full mb-4' : 'top-full mt-4';
 
-  const allResumes = [
-    {
-      id: 'sde',
-      label: "📄 Software Engineer & QA (Backend Focus)",
-      sub: "SDE, Python Developer, QA Automation, Hub9",
-      url: RESUME_URLS.BACKEND,
-      icon: <Shield className="h-4 w-4" />,
-      isPrimary: true
-    },
-    {
-      id: 'data',
-      label: "📊 Data Analyst & BI Engineer",
-      sub: "SQL, Power BI, Data Engineering (Celebal)",
-      url: RESUME_URLS.DATA_ANALYST,
-      icon: <BarChart className="h-4 w-4" />,
-      isPrimary: false
-    },
-    {
-      id: 'ai',
-      label: "🧠 AI & Machine Learning Engineer",
-      sub: "GenAI, CV, Python ML (InThink)",
-      url: RESUME_URLS.AI_ML,
-      icon: <Brain className="h-4 w-4" />,
-      isPrimary: false
-    }
+  const resumes = [
+    { id: 'sde', label: "Software & QA (Backend)", url: RESUME_URLS.BACKEND, icon: <Shield className="h-4 w-4" /> },
+    { id: 'data', label: "Data Analyst & BI", url: RESUME_URLS.DATA_ANALYST, icon: <BarChart className="h-4 w-4" /> },
+    { id: 'ai', label: "AI & ML Engineer", url: RESUME_URLS.AI_ML, icon: <Brain className="h-4 w-4" /> }
   ];
 
-  const displayedResumes = variant === 'secondary' 
-    ? allResumes.filter(r => !r.isPrimary)
-    : allResumes;
-
   return (
-    <div className={`relative inline-block text-left ${className}`} ref={dropdownRef}>
+    <div className={`relative inline-block ${className}`} ref={dropdownRef}>
       <button
-        type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`inline-flex items-center justify-center px-5 py-2.5 border text-xs font-mono font-bold rounded-lg transition-all w-full md:w-auto ${
-            isOpen 
-            ? 'border-horizon-sky text-horizon-sky bg-horizon-sky/5'
-            : 'border-slate-200 dark:border-midnight-700 text-slate-600 dark:text-slate-400 hover:border-horizon-sky dark:hover:border-horizon-sky hover:bg-slate-50 dark:hover:bg-white/5'
-        }`}
+        className="btn-secondary w-full md:w-auto !px-6 !py-3.5 !text-[11px] !font-mono"
       >
         <FileText className="mr-2 h-4 w-4" />
         {label}
-        {direction === 'up' ? (
-             <ChevronUp className={`ml-2 h-4 w-4 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`} />
-        ) : (
-             <ChevronDown className={`ml-2 h-4 w-4 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`} />
-        )}
+        {direction === 'up' ? <ChevronUp className="ml-2 h-4 w-4" /> : <ChevronDown className="ml-2 h-4 w-4" />}
       </button>
 
       {isOpen && (
-        <div 
-          className={`absolute ${alignmentClasses[align]} ${directionClasses} w-72 rounded-xl shadow-2xl bg-white dark:bg-midnight-900 ring-1 ring-black ring-opacity-5 focus:outline-none z-50 animate-fadeIn border border-slate-200 dark:border-midnight-800 overflow-hidden`}
-          role="menu"
-        >
-            <div className="px-4 py-3 bg-slate-50 dark:bg-midnight-800 border-b border-slate-200 dark:border-midnight-700">
-                <span className="text-[10px] font-mono text-slate-600 dark:text-white uppercase tracking-widest font-bold block mb-1">Tailored for Your Team</span>
-                <span className="text-[9px] font-sans text-slate-400 leading-tight block italic">I wear multiple hats. Select the resume version that matches the role you are hiring for:</span>
-            </div>
-          <div className="py-1">
-            {displayedResumes.map((resume) => (
+        <div className={`absolute ${alignmentClasses[align]} ${directionClasses} w-72 glass-card !rounded-2xl shadow-2xl z-50 overflow-hidden animate-fadeIn`}>
+          <div className="px-5 py-4 bg-slate-50 dark:bg-midnight-800 border-b border-slate-200 dark:border-midnight-700">
+              <span className="accent-mono !text-[9px] block mb-1">Engineering Specializations</span>
+              <p className="text-[10px] text-slate-500 leading-tight italic">Select the profile most relevant to your requirements.</p>
+          </div>
+          <div className="py-2">
+            {resumes.map((resume) => (
               <a
                 key={resume.id}
                 href={resume.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center px-4 py-3 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors relative"
-                role="menuitem"
+                className="group flex items-center px-5 py-4 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors"
               >
-                <div className={`flex-shrink-0 mr-3 ${resume.isPrimary ? 'text-horizon-sky' : 'text-slate-400'}`}>
-                  {resume.icon}
+                <div className="flex-shrink-0 mr-4 text-horizon-sky">{resume.icon}</div>
+                <div className="flex-1">
+                    <span className="text-xs font-bold text-slate-900 dark:text-white block">{resume.label}</span>
+                    <span className="accent-mono !text-[8px] !text-slate-400">PDF Document</span>
                 </div>
-                
-                <div className="flex-1 flex flex-col">
-                    <span className={`text-[11px] font-sans font-bold leading-tight ${resume.isPrimary ? 'text-slate-900 dark:text-white' : 'text-slate-700 dark:text-slate-300'}`}>
-                        {resume.label}
-                    </span>
-                    <span className="text-[9px] text-slate-500 uppercase tracking-tighter mt-0.5">{resume.sub}</span>
-                </div>
-
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity text-slate-400">
-                    <Download className="h-3.5 w-3.5" />
-                </div>
+                <Download className="h-4 w-4 text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
             ))}
           </div>
