@@ -10,8 +10,9 @@ const ProjectCard: React.FC<{
   getCategoryIcon: (cat: ProjectCategory) => React.ReactNode;
 }> = ({ project, isExpanded, onToggle, getCategoryIcon }) => {
   return (
-    <div className={`group flex flex-col glass-card overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 ${isExpanded ? 'ring-2 ring-horizon-sky/30' : ''}`}>
-      <div className="p-8 pb-0 flex-grow">
+    <div className={`group flex flex-col h-full glass-card overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 ${isExpanded ? 'ring-2 ring-horizon-sky/30' : ''}`}>
+      {/* Top Content Area - This grows to fill space */}
+      <div className="p-8 flex-grow flex flex-col">
          <div className="flex justify-between items-start mb-6">
             <div className="p-3 bg-horizon-sky/10 rounded-xl border border-horizon-sky/20">
                 {getCategoryIcon(project.category)}
@@ -31,44 +32,48 @@ const ProjectCard: React.FC<{
             {project.description}
          </p>
 
-         <div className="flex flex-wrap gap-2 mb-10">
+         <div className="flex flex-wrap gap-2 mb-6">
             {project.techStack.map(tech => (
                 <span key={tech} className="px-3 py-1.5 rounded-lg text-[10px] font-mono font-bold border bg-slate-50 dark:bg-midnight-900/50 text-slate-700 dark:text-slate-400 border-slate-200 dark:border-midnight-700">
                     {tech}
                 </span>
             ))}
          </div>
+         
+         {/* Push everything below this to the bottom of the card content area */}
+         <div className="mt-auto">
+            {project.extendedDetails && (
+               <div className="pt-4 border-t border-dashed border-slate-200 dark:border-midnight-700">
+                  {isExpanded && (
+                      <div className="pb-6 space-y-5 animate-fadeIn">
+                          <div className="space-y-1">
+                              <span className="accent-mono !text-[10px]">Problem</span>
+                              <p className="text-xs text-slate-700 dark:text-slate-300">{project.extendedDetails.problem}</p>
+                          </div>
+                          <div className="space-y-1">
+                              <span className="accent-mono !text-[10px] !text-horizon-gold">Solution</span>
+                              <p className="text-xs text-slate-700 dark:text-slate-300">{project.extendedDetails.solution}</p>
+                          </div>
+                          <div className="space-y-1">
+                              <span className="accent-mono !text-[10px] !text-emerald-500">Results</span>
+                              <p className="text-xs text-slate-700 dark:text-slate-300">{project.extendedDetails.results}</p>
+                          </div>
+                      </div>
+                  )}
+                   <button
+                      onClick={onToggle}
+                      className="w-full py-4 flex items-center justify-center gap-3 text-[11px] font-mono font-bold text-slate-500 hover:text-horizon-sky transition-colors"
+                    >
+                      {isExpanded ? 'Hide Details' : 'View Case Study'}
+                      {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                    </button>
+               </div>
+            )}
+         </div>
       </div>
 
-      {project.extendedDetails && (
-         <div className="px-8">
-            {isExpanded && (
-                <div className="py-6 space-y-5 animate-fadeIn border-t border-slate-200 dark:border-midnight-700">
-                    <div className="space-y-1">
-                        <span className="accent-mono !text-[10px]">Problem</span>
-                        <p className="text-xs text-slate-700 dark:text-slate-300">{project.extendedDetails.problem}</p>
-                    </div>
-                    <div className="space-y-1">
-                        <span className="accent-mono !text-[10px] !text-horizon-gold">Solution</span>
-                        <p className="text-xs text-slate-700 dark:text-slate-300">{project.extendedDetails.solution}</p>
-                    </div>
-                    <div className="space-y-1">
-                        <span className="accent-mono !text-[10px] !text-emerald-500">Results</span>
-                        <p className="text-xs text-slate-700 dark:text-slate-300">{project.extendedDetails.results}</p>
-                    </div>
-                </div>
-            )}
-             <button
-                onClick={onToggle}
-                className="w-full py-6 flex items-center justify-center gap-3 text-[11px] font-mono font-bold text-slate-500 hover:text-horizon-sky border-t border-dashed border-slate-200 dark:border-midnight-700 transition-colors"
-              >
-                {isExpanded ? 'Hide Details' : 'View Case Study'}
-                {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-              </button>
-         </div>
-      )}
-
-      <div className="p-6 bg-slate-50/50 dark:bg-midnight-900/40 border-t border-slate-200 dark:border-midnight-700 flex items-center justify-between mt-auto">
+      {/* Footer - Pinned to the very bottom */}
+      <div className="p-6 bg-slate-50/50 dark:bg-midnight-900/40 border-t border-slate-200 dark:border-midnight-700 flex items-center justify-between">
             <a href={project.github} target="_blank" rel="noopener noreferrer" className="accent-mono !text-slate-600 dark:!text-slate-400 hover:!text-horizon-sky flex items-center">
                 <Github className="h-4 w-4 mr-2" /> SOURCE
             </a>
@@ -145,15 +150,17 @@ const Projects: React.FC = () => {
             </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-start">
+        {/* items-stretch ensures all items in a row are equal height */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 items-stretch">
           {filteredProjects.map((project) => (
-            <ProjectCard 
-                key={project.id} 
-                project={project} 
-                isExpanded={expandedProjectId === project.id}
-                onToggle={() => setExpandedProjectId(expandedProjectId === project.id ? null : project.id)}
-                getCategoryIcon={getCategoryIcon}
-            />
+            <div key={project.id} className="flex">
+              <ProjectCard 
+                  project={project} 
+                  isExpanded={expandedProjectId === project.id}
+                  onToggle={() => setExpandedProjectId(expandedProjectId === project.id ? null : project.id)}
+                  getCategoryIcon={getCategoryIcon}
+              />
+            </div>
           ))}
         </div>
       </div>
