@@ -248,6 +248,39 @@ export const EXPERIENCE: Experience[] = [
         ]
       }
     ]
+  },
+  {
+    id: 3,
+    role: "Machine Learning Intern",
+    company: "InThink Technologies Pvt. Ltd.",
+    period: "Aug 2022 – Dec 2022",
+    description: "Applied statistical modeling and algorithmic optimization to large-scale datasets.",
+    modularAchievements: [
+      {
+        title: "Machine Learning & Modeling",
+        iconType: 'research',
+        points: [
+          "Built and optimized machine learning models for real-world datasets.",
+          "Fine-tuned algorithms using performance metrics to reduce error rates by ~50%."
+        ]
+      },
+      {
+        title: "Data Pipelines & Preprocessing",
+        iconType: 'data',
+        points: [
+          "Designed efficient data preprocessing pipelines for model training.",
+          "Reduced preprocessing time and improved training stability."
+        ]
+      },
+      {
+        title: "Model Evaluation & Optimization",
+        iconType: 'systems',
+        points: [
+          "Analyzed precision, recall, and accuracy to guide model improvements.",
+          "Iteratively refined features and hyperparameters."
+        ]
+      }
+    ]
   }
 ];
 
