@@ -10,7 +10,7 @@ const ProjectCard: React.FC<{
   getCategoryIcon: (cat: ProjectCategory) => React.ReactNode;
 }> = ({ project, isExpanded, onToggle, getCategoryIcon }) => {
   return (
-    <div className="group flex flex-col glass-card h-full overflow-hidden hover:-translate-y-2 hover:shadow-2xl">
+    <div className={`group flex flex-col glass-card overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 ${isExpanded ? 'ring-2 ring-horizon-sky/30' : ''}`}>
       <div className="p-8 pb-0 flex-grow">
          <div className="flex justify-between items-start mb-6">
             <div className="p-3 bg-horizon-sky/10 rounded-xl border border-horizon-sky/20">
