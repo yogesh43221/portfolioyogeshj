@@ -1,21 +1,69 @@
 import React, { useState } from 'react';
-import { Briefcase, GraduationCap, ArrowUpRight, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react';
+import { Briefcase, GraduationCap, ArrowUpRight, ExternalLink, ChevronDown, ChevronUp, Code, Database, ShieldCheck, Settings, Microscope } from 'lucide-react';
 import { EXPERIENCE, EDUCATION, ACHIEVEMENTS, PUBLICATIONS, CERTIFICATIONS, ALL_CERTIFICATIONS_URL, EARLY_ENGINEERING } from '../constants';
 import SkillNetwork from './SkillNetwork';
+
+const getIcon = (type: string) => {
+  switch (type) {
+    case 'engineering': return <Code className="h-4 w-4" />;
+    case 'data': return <Database className="h-4 w-4" />;
+    case 'qa': return <ShieldCheck className="h-4 w-4" />;
+    case 'systems': return <Settings className="h-4 w-4" />;
+    case 'research': return <Microscope className="h-4 w-4" />;
+    default: return <Code className="h-4 w-4" />;
+  }
+};
+
+const ExperienceItem: React.FC<{ job: any }> = ({ job }) => (
+  <div className="relative pl-10 group">
+    {/* Timeline Dot */}
+    <div className="absolute -left-[9px] top-2.5 h-4 w-4 rounded-full bg-slate-200 dark:bg-midnight-700 ring-4 ring-white dark:ring-midnight-900 group-hover:bg-horizon-sky transition-colors"></div>
+    
+    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-3">
+        <h4 className="text-xl font-bold text-slate-900 dark:text-white font-sans">{job.role}</h4>
+        <span className="text-xs font-mono font-bold text-slate-600 dark:text-slate-400 mt-2 sm:mt-0 bg-slate-100 dark:bg-midnight-800 px-3 py-1 rounded-full border border-slate-200 dark:border-midnight-700">
+          {job.period}
+        </span>
+    </div>
+    
+    <div className="text-horizon-sky font-bold mb-5 text-base font-sans">{job.company}</div>
+    
+    <div className="grid grid-cols-1 gap-4">
+        {job.modularAchievements.map((block: any, idx: number) => (
+            <div key={idx} className="p-5 rounded-xl bg-slate-50 dark:bg-midnight-900/50 border border-slate-200 dark:border-midnight-800 transition-all hover:border-horizon-sky/30">
+                <h5 className="text-xs font-bold text-slate-900 dark:text-white mb-3 font-mono uppercase tracking-wider flex items-center gap-2">
+                    <div className="p-1.5 rounded-md bg-white dark:bg-midnight-800 text-horizon-sky border border-slate-200 dark:border-midnight-700">
+                      {getIcon(block.iconType)}
+                    </div>
+                    {block.title}
+                </h5>
+                <ul className="space-y-2">
+                    {block.points.map((pt: string, i: number) => (
+                        <li key={i} className="flex items-start text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
+                            <span className="mr-3 mt-1.5 w-1 h-1 bg-slate-400 rounded-full flex-shrink-0"></span>
+                            {pt}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        ))}
+    </div>
+  </div>
+);
 
 const Experience: React.FC = () => {
   const [showEarlyCareer, setShowEarlyCareer] = useState(false);
 
   return (
     <section id="experience" className="py-32 w-full bg-white dark:bg-midnight-950 transition-colors duration-150 relative">
-      <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="section-container">
         
         {/* Architectural Header */}
         <div className="mb-20 border-b border-slate-300 dark:border-midnight-800 pb-8">
-            <span className="text-horizon-sky font-mono text-sm font-bold tracking-wider uppercase mb-3 block">
+            <span className="accent-mono !text-horizon-sky mb-3 block">
                 ./experience
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white font-sans tracking-tight">
+            <h2 className="text-slate-900 dark:text-white">
                 Professional Trajectory
             </h2>
         </div>
@@ -33,52 +81,9 @@ const Experience: React.FC = () => {
                 </h3>
                 
                 <div className="relative border-l-2 border-slate-200 dark:border-midnight-800 ml-3 space-y-16">
-                {EXPERIENCE.map((job) => (
-                    <div key={job.id} className="relative pl-10 group">
-                        {/* Timeline Dot */}
-                        <div className="absolute -left-[9px] top-2.5 h-4 w-4 rounded-full bg-slate-200 dark:bg-midnight-700 ring-4 ring-white dark:ring-midnight-900 group-hover:bg-horizon-sky transition-colors"></div>
-                        
-                        <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-3">
-                            <h4 className="text-xl font-bold text-slate-900 dark:text-white font-sans">{job.role}</h4>
-                            <span className="text-xs font-mono font-bold text-slate-600 dark:text-slate-400 mt-2 sm:mt-0 bg-slate-100 dark:bg-midnight-800 px-3 py-1 rounded-full border border-slate-200 dark:border-midnight-700">
-                            {job.period}
-                            </span>
-                        </div>
-                        
-                        <div className="text-horizon-sky font-bold mb-5 text-base font-sans">{job.company}</div>
-                        
-                        {/* Modular Card Layout for Hub9 */}
-                        {job.modularAchievements ? (
-                            <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
-                                {job.modularAchievements.map((block, idx) => (
-                                    <div key={idx} className="p-5 rounded-xl bg-slate-50 dark:bg-midnight-900/50 border border-slate-200 dark:border-midnight-800 transition-all hover:border-horizon-sky/30">
-                                        <h5 className="text-sm font-bold text-slate-900 dark:text-white mb-3 font-mono uppercase tracking-wider flex items-center gap-2">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-horizon-sky"></div>
-                                            {block.title}
-                                        </h5>
-                                        <ul className="space-y-2">
-                                            {block.points.map((pt, i) => (
-                                                <li key={i} className="flex items-start text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
-                                                    <span className="mr-3 mt-1.5 w-1 h-1 bg-slate-400 rounded-full flex-shrink-0"></span>
-                                                    {pt}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                ))}
-                            </div>
-                        ) : (
-                            <ul className="space-y-4">
-                                {job.achievements.map((point, index) => (
-                                <li key={index} className="flex items-start text-slate-700 dark:text-slate-300 text-base leading-relaxed font-sans font-medium">
-                                    <span className="mr-4 mt-2.5 w-1.5 h-1.5 bg-slate-400 dark:bg-slate-600 rounded-full flex-shrink-0"></span>
-                                    {point}
-                                </li>
-                                ))}
-                            </ul>
-                        )}
-                    </div>
-                ))}
+                  {EXPERIENCE.map((job) => (
+                      <ExperienceItem key={job.id} job={job} />
+                  ))}
                 </div>
 
                 {/* Collapsible Early Career Section */}
@@ -92,24 +97,9 @@ const Experience: React.FC = () => {
                     </button>
 
                     {showEarlyCareer && (
-                        <div className="mt-6 animate-fadeIn bg-slate-50 dark:bg-midnight-800/20 p-6 rounded-lg border border-slate-100 dark:border-midnight-700">
+                        <div className="mt-6 animate-fadeIn space-y-10">
                             {EARLY_ENGINEERING.map((job) => (
-                                <div key={job.id} className="opacity-90">
-                                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
-                                        <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200 font-sans">{job.role}</h4>
-                                        <span className="text-[10px] font-mono text-slate-500 mt-1 sm:mt-0">{job.period}</span>
-                                    </div>
-                                    <div className="text-xs font-bold text-slate-600 dark:text-slate-400 mb-2">{job.company}</div>
-                                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-3 font-medium italic font-sans">{job.description}</p>
-                                    <ul className="space-y-2">
-                                        {job.achievements.map((point, i) => (
-                                            <li key={i} className="flex items-start text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-sans">
-                                                <span className="mr-2 mt-1.5 w-1 h-1 bg-slate-400 rounded-full flex-shrink-0"></span>
-                                                {point}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
+                                <ExperienceItem key={job.id} job={job} />
                             ))}
                         </div>
                     )}

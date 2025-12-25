@@ -34,9 +34,9 @@ export interface Experience {
   company: string;
   period: string;
   description: string;
-  achievements: string[];
-  modularAchievements?: {
+  modularAchievements: {
     title: string;
+    iconType: 'engineering' | 'data' | 'qa' | 'systems' | 'research';
     points: string[];
   }[];
 }

@@ -197,27 +197,29 @@ export const EXPERIENCE: Experience[] = [
     company: "Hub9",
     period: "Jan 2025 – Oct 2025",
     description: "Bridging the gap between development and quality through full-stack engineering and QA automation.",
-    achievements: [],
     modularAchievements: [
       {
-        title: "💻 Backend Engineering",
+        title: "Backend Engineering",
+        iconType: 'engineering',
         points: [
           "Developed RESTful APIs for clinical agents using FastAPI & Python.",
           "Managed Docker containerization for staging and testing environments."
         ]
       },
       {
-        title: "✅ QA & Automation",
+        title: "QA & Automation",
+        iconType: 'qa',
         points: [
-          "Acted as Release Gatekeeper.",
-          "Built automated E2E test suites using Playwright, significantly reducing regression cycles."
+          "Acted as Release Gatekeeper ensuring zero-defect deployments.",
+          "Built automated E2E test suites using Playwright, significantly reducing manual regression cycles."
         ]
       },
       {
-        title: "📊 Data Logic",
+        title: "Data Systems",
+        iconType: 'data',
         points: [
-          "Optimized PostgreSQL queries.",
-          "Implemented complex algorithmic logic for medical decision trees."
+          "Optimized PostgreSQL queries for medical decision trees.",
+          "Implemented logic for complex clinical decision workflows."
         ]
       }
     ]
@@ -227,11 +229,24 @@ export const EXPERIENCE: Experience[] = [
     role: "Data Engineer Intern",
     company: "Celebal Technologies Pvt. Ltd.",
     period: "June 2023 - Aug 2023",
-    description: "Focused on ETL pipelines and BI Dashboards.",
-    achievements: [
-      "Developed and optimized ETL pipelines for sales data, improving efficiency by 30%.",
-      "Built executive Power BI dashboards for Customer Acquisition & Retention.",
-      "Improved sales forecasting accuracy by 15% through historical trend analysis."
+    description: "Focused on end-to-end ETL pipelines and Business Intelligence architectures.",
+    modularAchievements: [
+      {
+        title: "ETL & Pipeline Dev",
+        iconType: 'data',
+        points: [
+          "Developed and optimized ETL pipelines for sales data, improving efficiency by 30%.",
+          "Engineered historical trend analysis protocols for sales forecasting."
+        ]
+      },
+      {
+        title: "Analytics & BI",
+        iconType: 'systems',
+        points: [
+          "Built executive Power BI dashboards for Customer Acquisition and Retention.",
+          "Improved forecasting accuracy by 15% through historical data normalization."
+        ]
+      }
     ]
   }
 ];
@@ -242,10 +257,24 @@ export const EARLY_ENGINEERING: Experience[] = [
     role: "Hardware Design Engineer Trainee",
     company: "Aeron Systems Pvt. Ltd.",
     period: "Jun 2023 - Dec 2023",
-    description: "Foundational engineering role focusing on high-reliability systems.",
-    achievements: [
-      "Tested defense-grade navigation systems for the Indian Navy, ensuring zero-failure reliability.",
-      "Managed technical documentation and compliance checks for production-ready hardware."
+    description: "Foundational engineering role focusing on high-reliability systems and navigation grade testing.",
+    modularAchievements: [
+      {
+        title: "Systems Validation",
+        iconType: 'systems',
+        points: [
+          "Tested defense-grade navigation systems for the Indian Navy, ensuring zero-failure reliability.",
+          "Executed stress tests for high-reliability hardware compliance."
+        ]
+      },
+      {
+        title: "Engineering Compliance",
+        iconType: 'research',
+        points: [
+          "Managed technical documentation and international compliance checks for production hardware.",
+          "Optimized quality control processes for naval navigation components."
+        ]
+      }
     ]
   }
 ];
