@@ -80,47 +80,47 @@ const Contact: React.FC = () => {
             <div className="space-y-6">
                 <span className="accent-mono text-sm tracking-[0.2em]">./init_connection</span>
                 <h2 className="leading-[0.9] text-5xl md:text-6xl font-black">Let's <br /><span className="text-horizon-sky">Collab.</span></h2>
-                <p className="text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
+                <p className="text-xl text-slate-700 dark:text-slate-300 font-bold leading-relaxed">
                   Available for technical roles in Backend, Data, and QA systems. Let's build something reliable.
                 </p>
             </div>
 
             <div className="space-y-8">
-              <div className="p-8 glass-card border-horizon-sky/20 hover:scale-[1.01] shadow-lg">
+              <div className="p-8 glass-card border-horizon-sky/20 hover:scale-[1.01] shadow-xl">
                   <div className="flex items-center gap-3 mb-6">
                       <MessageSquare className="h-5 w-5 text-horizon-sky" />
-                      <span className="accent-mono">Real-time Interface</span>
+                      <span className="accent-mono text-sm">Real-time Interface</span>
                   </div>
-                  <h3 className="text-xl font-bold mb-3">Immediate Pipeline</h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-8 leading-relaxed font-medium">Fastest response via LinkedIn direct messaging. Let's discuss engineering value.</p>
+                  <h3 className="text-2xl font-black mb-3">Immediate Pipeline</h3>
+                  <p className="text-base text-slate-700 dark:text-slate-300 mb-8 leading-relaxed font-semibold">Fastest response via LinkedIn direct messaging. Let's discuss engineering value.</p>
                   <LinkedInButton />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="p-6 glass-card group shadow-md border-slate-100 dark:border-midnight-700">
-                      <Mail className="h-5 w-5 text-horizon-sky mb-4" />
-                      <h4 className="font-bold text-sm mb-1 uppercase tracking-tight">Direct Mail</h4>
-                      <p className="text-[11px] text-slate-500 truncate font-mono font-bold">{PROFILE.email}</p>
+                  <div className="p-6 glass-card group shadow-xl border-slate-200 dark:border-midnight-700/50">
+                      <Mail className="h-6 w-6 text-horizon-sky mb-4" />
+                      <h4 className="font-black text-sm mb-2 uppercase tracking-tight">Direct Mail</h4>
+                      <p className="text-[12px] text-slate-900 dark:text-white truncate font-mono font-bold">{PROFILE.email}</p>
                   </div>
-                  <div className="p-6 glass-card group shadow-md border-slate-100 dark:border-midnight-700">
-                      <MapPin className="h-5 w-5 text-horizon-sky mb-4" />
-                      <h4 className="font-bold text-sm mb-1 uppercase tracking-tight">Base Ops</h4>
-                      <p className="text-[11px] text-slate-500 font-mono font-bold">{PROFILE.location}</p>
+                  <div className="p-6 glass-card group shadow-xl border-slate-200 dark:border-midnight-700/50">
+                      <MapPin className="h-6 w-6 text-horizon-sky mb-4" />
+                      <h4 className="font-black text-sm mb-2 uppercase tracking-tight">Base Ops</h4>
+                      <p className="text-[12px] text-slate-900 dark:text-white font-mono font-bold">{PROFILE.location}</p>
                   </div>
               </div>
             </div>
           </div>
 
           <div className="lg:w-3/5">
-            <div className="glass-card p-8 md:p-12 shadow-2xl relative overflow-hidden !rounded-[2.5rem] border-slate-200/50 dark:border-midnight-700">
+            <div className="glass-card p-10 md:p-14 shadow-2xl relative overflow-hidden !rounded-[3rem] border-slate-300 dark:border-midnight-600/50">
               {showSuccess && (
-                <div className="absolute inset-0 z-20 bg-emerald-600 flex flex-col items-center justify-center text-white animate-fadeIn">
-                  <CheckCircle className="w-16 h-16 mb-4" />
-                  <h3 className="text-2xl font-bold">Message Transmitted</h3>
-                  <p className="mt-2 text-emerald-50 text-center px-8">Handshake complete. I'll get back to you shortly.</p>
+                <div className="absolute inset-0 z-20 bg-emerald-600 flex flex-col items-center justify-center text-white animate-fadeIn p-12 text-center">
+                  <CheckCircle className="w-20 h-20 mb-6" />
+                  <h3 className="text-3xl font-black">Message Transmitted</h3>
+                  <p className="mt-4 text-xl text-emerald-50 font-medium">Handshake complete. I'll get back to you shortly.</p>
                   <button 
                     onClick={() => setShowSuccess(false)} 
-                    className="mt-8 px-6 py-2 border border-white/30 rounded-full text-xs font-mono hover:bg-white/10 transition-colors uppercase tracking-widest"
+                    className="mt-10 px-10 py-4 bg-white text-emerald-700 rounded-2xl text-sm font-black uppercase tracking-widest hover:bg-emerald-50 transition-all shadow-xl"
                   >
                     Send another
                   </button>
@@ -128,22 +128,22 @@ const Contact: React.FC = () => {
               )}
 
               {showError && (
-                <div className="absolute top-6 left-6 right-6 z-30 p-5 bg-red-500 text-white rounded-2xl flex items-center justify-between shadow-lg animate-fadeIn">
-                  <div className="flex items-center gap-3">
-                    <AlertCircle className="w-5 h-5" />
-                    <span className="text-xs font-bold leading-tight">{errorMessage}</span>
+                <div className="absolute top-8 left-8 right-8 z-30 p-6 bg-red-600 text-white rounded-2xl flex items-center justify-between shadow-2xl animate-fadeIn border border-white/20">
+                  <div className="flex items-center gap-4">
+                    <AlertCircle className="w-6 h-6" />
+                    <span className="text-sm font-black leading-tight uppercase tracking-wide">{errorMessage}</span>
                   </div>
-                  <button onClick={() => setShowError(false)} className="hover:bg-white/10 p-1 rounded-md transition-colors flex-shrink-0 ml-4">
-                    <X className="w-4 h-4" />
+                  <button onClick={() => setShowError(false)} className="hover:bg-white/10 p-2 rounded-xl transition-colors flex-shrink-0">
+                    <X className="w-5 h-5" />
                   </button>
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-3">
-                    <label className="accent-mono text-[11px] flex items-center gap-2">
-                        <span className="w-1 h-1 bg-horizon-sky rounded-full"></span>
+              <form onSubmit={handleSubmit} className="space-y-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                  <div className="space-y-4">
+                    <label className="accent-mono text-sm flex items-center gap-3 font-black text-slate-900 dark:text-white">
+                        <span className="w-2 h-2 bg-horizon-sky rounded-full"></span>
                         01 // Full Name
                     </label>
                     <input
@@ -153,12 +153,12 @@ const Contact: React.FC = () => {
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
                       className="input-field"
-                      placeholder="Ident Name"
+                      placeholder="e.g. Jane Doe"
                     />
                   </div>
-                  <div className="space-y-3">
-                    <label className="accent-mono text-[11px] flex items-center gap-2">
-                        <span className="w-1 h-1 bg-horizon-sky rounded-full"></span>
+                  <div className="space-y-4">
+                    <label className="accent-mono text-sm flex items-center gap-3 font-black text-slate-900 dark:text-white">
+                        <span className="w-2 h-2 bg-horizon-sky rounded-full"></span>
                         02 // Return Path
                     </label>
                     <input
@@ -168,14 +168,14 @@ const Contact: React.FC = () => {
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
                       className="input-field"
-                      placeholder="email@example.com"
+                      placeholder="e.g. name@company.com"
                     />
                   </div>
                 </div>
 
-                <div className="space-y-3">
-                  <label className="accent-mono text-[11px] flex items-center gap-2">
-                      <span className="w-1 h-1 bg-horizon-sky rounded-full"></span>
+                <div className="space-y-4">
+                  <label className="accent-mono text-sm flex items-center gap-3 font-black text-slate-900 dark:text-white">
+                      <span className="w-2 h-2 bg-horizon-sky rounded-full"></span>
                       03 // Project ID / Subject
                   </label>
                   <input
@@ -185,40 +185,40 @@ const Contact: React.FC = () => {
                     value={formData.subject}
                     onChange={(e) => setFormData({...formData, subject: e.target.value})}
                     className="input-field"
-                    placeholder="Subject Header"
+                    placeholder="Brief summary of your inquiry"
                   />
                 </div>
 
-                <div className="space-y-3">
-                  <label className="accent-mono text-[11px] flex items-center gap-2">
-                      <span className="w-1 h-1 bg-horizon-sky rounded-full"></span>
+                <div className="space-y-4">
+                  <label className="accent-mono text-sm flex items-center gap-3 font-black text-slate-900 dark:text-white">
+                      <span className="w-2 h-2 bg-horizon-sky rounded-full"></span>
                       04 // Payload / Message
                   </label>
                   <textarea
                     name="message"
                     required
-                    rows={5}
+                    rows={6}
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
                     className="input-field resize-none"
-                    placeholder="Describe mission details..."
+                    placeholder="Provide details about your project or mission..."
                   ></textarea>
                 </div>
 
                 <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="btn-primary w-full !rounded-2xl flex items-center justify-center py-5 mt-4"
+                    className="btn-primary w-full !rounded-[1.5rem] flex items-center justify-center py-6 mt-6 shadow-2xl hover:shadow-horizon-sky/20"
                 >
                     {isSubmitting ? (
-                      <div className="flex items-center gap-3">
-                        <Loader2 className="h-5 w-5 animate-spin" />
-                        <span className="tracking-widest uppercase text-sm">Transmitting...</span>
+                      <div className="flex items-center gap-4">
+                        <Loader2 className="h-6 w-6 animate-spin" />
+                        <span className="tracking-[0.2em] uppercase text-sm">Transmitting Data...</span>
                       </div>
                     ) : (
-                      <div className="flex items-center gap-3">
-                        <span className="tracking-widest uppercase text-sm">Execute Request</span>
-                        <Send className="h-5 w-5" />
+                      <div className="flex items-center gap-4">
+                        <span className="tracking-[0.2em] uppercase text-sm">Execute Secure Request</span>
+                        <Send className="h-6 w-6" />
                       </div>
                     )}
                 </button>
