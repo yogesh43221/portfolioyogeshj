@@ -55,7 +55,7 @@ export const PROJECTS: Project[] = [
     techStack: ["Python", "Pandas", "Scikit-learn", "Cosine Similarity"],
     category: "Machine Learning Systems",
     github: "https://github.com/yogesh43221/mentor_recommendation_system",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=600",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&get=80&w=600",
     extendedDetails: {
       problem: "Learners often struggle to find the right mentor due to mismatches in skills, interests, and goals.",
       solution: "Built a recommendation engine using Cosine Similarity on encoded categorical features (skills) and normalized numerical attributes (experience).",
@@ -390,7 +390,7 @@ export const ACHIEVEMENTS: Achievement[] = [
 export const SKILLS: Skill[] = [
   // Backend & APIs
   { name: "FastAPI / Flask", level: 90, icon: "Server", category: "Backend & APIs", context: "Primary Frameworks" },
-  { name: "Python (Expert)", level: 95, icon: "Code", category: "Backend & APIs", context: "Main Language" },
+  { name: "Python", level: 95, icon: "Code", category: "Backend & APIs", context: "Main Language" },
   { name: "SQLAlchemy", level: 90, icon: "Layers", category: "Backend & APIs", context: "ORM / Modeling" },
   { name: "Pydantic", level: 92, icon: "CheckCircle", category: "Backend & APIs", context: "Data Validation" },
   { name: "JWT / OAuth2", level: 85, icon: "Lock", category: "Backend & APIs", context: "Auth & Security" },
