@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Terminal, Activity } from 'lucide-react';
+import { Menu, X, Terminal } from 'lucide-react';
 import { NAV_LINKS } from '../constants';
 import ThemeToggle from './ThemeToggle';
 
@@ -15,19 +15,19 @@ const Navbar: React.FC = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const toggleTheme = () => {
     const html = document.documentElement;
-    if (isDark) {
-      html.classList.remove('dark');
-      setIsDark(false);
-    } else {
+    const newDark = !isDark;
+    if (newDark) {
       html.classList.add('dark');
-      setIsDark(true);
+    } else {
+      html.classList.remove('dark');
     }
+    setIsDark(newDark);
   };
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -41,9 +41,9 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ${
+    <nav className={`fixed w-full z-50 transition-all duration-200 ${
       isScrolled 
-        ? 'bg-white/80 dark:bg-midnight-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-midnight-700' 
+        ? 'bg-white/90 dark:bg-midnight-900/90 backdrop-blur-md border-b border-slate-200 dark:border-midnight-700' 
         : 'bg-transparent border-b border-transparent'
     }`}>
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12">
@@ -56,7 +56,6 @@ const Navbar: React.FC = () => {
                 </span>
              </div>
              
-             {/* HUD Status Badge - Hidden on very small mobile */}
              <div className="hidden lg:flex items-center gap-2 px-3 py-1 bg-emerald-500/5 border border-emerald-500/20 rounded-md">
                 <div className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -75,7 +74,7 @@ const Navbar: React.FC = () => {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-slate-600 dark:text-slate-400 hover:text-horizon-sky dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 px-4 py-2 rounded-md text-sm font-medium transition-colors font-sans"
+                  className="text-slate-600 dark:text-slate-400 hover:text-horizon-sky dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 font-sans"
                 >
                   {link.name}
                 </a>
@@ -90,7 +89,7 @@ const Navbar: React.FC = () => {
               <a 
                 href="#contact" 
                 onClick={(e) => handleNavClick(e, '#contact')}
-                className="ml-2 bg-slate-900 dark:bg-horizon-sky text-white dark:text-white hover:opacity-90 px-5 py-2.5 rounded-lg text-sm font-bold transition-all font-sans shadow-sm"
+                className="ml-2 bg-slate-900 dark:bg-horizon-sky text-white dark:text-white hover:opacity-90 px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-200 font-sans shadow-sm"
               >
                 Hire Me
               </a>
@@ -118,7 +117,7 @@ const Navbar: React.FC = () => {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-slate-600 dark:text-slate-300 hover:text-horizon-sky dark:hover:text-white hover:bg-slate-50 dark:hover:bg-midnight-800 block px-4 py-3 rounded-md text-base font-medium transition-colors font-sans"
+                className="text-slate-600 dark:text-slate-300 hover:text-horizon-sky dark:hover:text-white hover:bg-slate-50 dark:hover:bg-midnight-800 block px-4 py-3 rounded-md text-base font-medium transition-colors duration-200 font-sans"
               >
                 {link.name}
               </a>

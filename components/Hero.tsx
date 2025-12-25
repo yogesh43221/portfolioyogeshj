@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Github, Linkedin, Mail, Terminal } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
 import { PROFILE } from '../constants';
 import ResumeDropdown from './ResumeDropdown';
 
 const Hero: React.FC = () => {
   const [roleIndex, setRoleIndex] = useState(0);
-  const [isExiting, setIsExiting] = useState(false);
 
   const ROLES = [
     { title: "Software Engineer", subtitle: "Building Robust Scalable Logic" },
@@ -15,11 +14,7 @@ const Hero: React.FC = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsExiting(true);
-      setTimeout(() => {
-        setRoleIndex((prev) => (prev + 1) % ROLES.length);
-        setIsExiting(false);
-      }, 500);
+      setRoleIndex((prev) => (prev + 1) % ROLES.length);
     }, 5000);
 
     return () => clearInterval(interval);
@@ -37,7 +32,7 @@ const Hero: React.FC = () => {
   return (
     <section id="about" className="relative min-h-[95vh] flex items-center justify-center pt-24 pb-16 z-20 overflow-hidden bg-grain">
       {/* Dynamic Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-horizon-light dark:bg-midnight-950 transition-colors duration-500">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-horizon-light dark:bg-midnight-950 transition-colors duration-200">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.05)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
           
           <div className="absolute left-1/4 top-1/3 h-[500px] w-[500px] rounded-full bg-horizon-sky/5 dark:bg-horizon-sky/10 blur-[120px] animate-pulse-slow"></div>
@@ -50,7 +45,7 @@ const Hero: React.FC = () => {
         <div className="flex flex-col items-center gap-6 mb-12 animate-fadeIn">
             <div className="relative group">
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-horizon-sky to-horizon-gold rounded-full blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
-                <div className="relative inline-flex items-center gap-2 px-4 py-1.5 bg-white dark:bg-midnight-900 border border-slate-200 dark:border-midnight-700 rounded-full">
+                <div className="relative inline-flex items-center gap-2 px-4 py-1.5 bg-white dark:bg-midnight-900 border border-slate-200 dark:border-midnight-700 rounded-full transition-colors duration-200">
                     <span className="relative flex h-2 w-2">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -62,17 +57,17 @@ const Hero: React.FC = () => {
             </div>
         </div>
 
-        <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter text-slate-900 dark:text-white mb-8 font-sans leading-[1.1] uppercase">
+        <h1 className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter text-slate-900 dark:text-white mb-8 font-sans leading-[1.1] uppercase transition-colors duration-200">
           Building <span className="text-horizon-sky">Logic.</span> <br />
           Testing <span className="text-horizon-gold">Limits.</span> <br />
           Analyzing <span className="text-horizon-clouds">Data.</span>
         </h1>
 
-        <h2 className="text-xl md:text-3xl font-bold text-slate-500 dark:text-slate-400 mb-8 font-mono tracking-tight">
+        <h2 className="text-xl md:text-3xl font-bold text-slate-500 dark:text-slate-400 mb-8 font-mono tracking-tight transition-colors duration-200">
             Software Engineer | Data Analyst | QA Automation
         </h2>
 
-        <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-3xl leading-relaxed font-sans font-medium tracking-tight mb-12">
+        <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 max-w-3xl leading-relaxed font-sans font-medium tracking-tight mb-12 transition-colors duration-200">
           I bridge the gap between development and quality. With a background in Backend Engineering (FastAPI), Data Logic (SQL), and QA Automation (Playwright), I build systems that are robust, scalable, and data-driven.
         </p>
 
@@ -81,7 +76,7 @@ const Hero: React.FC = () => {
           <a
             href="#projects"
             onClick={(e) => handleNavClick(e, '#projects')}
-            className="group relative inline-flex items-center justify-center px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-midnight-950 text-base font-black rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-xl w-full sm:w-auto"
+            className="group relative inline-flex items-center justify-center px-10 py-5 bg-slate-900 dark:bg-white text-white dark:text-midnight-950 text-base font-black rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-xl w-full sm:w-auto"
           >
             Explore My Work
             <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-1.5 transition-transform" />
@@ -102,7 +97,7 @@ const Hero: React.FC = () => {
                     href={href} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="text-slate-400 hover:text-horizon-sky transition-all transform hover:scale-110 duration-300"
+                    className="text-slate-400 hover:text-horizon-sky transition-all transform hover:scale-110 duration-200"
                     title={label}
                 >
                     <Icon className="h-7 w-7"/>

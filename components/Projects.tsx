@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ExternalLink, Github, Code, Brain, Database, Server, ChevronDown, ChevronUp, Network, ArrowUpRight, ShieldCheck, ListFilter } from 'lucide-react';
+import { Github, Code, Brain, Database, Server, ChevronDown, ChevronUp, Network, ArrowUpRight, ShieldCheck, ListFilter } from 'lucide-react';
 import { PROJECTS } from '../constants';
 import { ProjectCategory, Project } from '../types';
 
@@ -11,12 +11,12 @@ const ProjectCard: React.FC<{
 }> = ({ project, isExpanded, onToggle, getCategoryIcon }) => {
   return (
     <div 
-      className={`group flex flex-col glass-card rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl h-full border border-slate-200 dark:border-midnight-800`}
+      className={`group flex flex-col glass-card rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl h-full border border-slate-200 dark:border-midnight-800`}
     >
       {/* Visual Card Top */}
       <div className="p-8 pb-0 flex-grow">
          <div className="flex justify-between items-start mb-6">
-            <div className="p-3 bg-horizon-sky/10 dark:bg-horizon-sky/5 rounded-xl border border-horizon-sky/20">
+            <div className="p-3 bg-horizon-sky/10 dark:bg-horizon-sky/5 rounded-xl border border-horizon-sky/20 transition-colors duration-200">
                 {getCategoryIcon(project.category)}
             </div>
             {project.featured && (
@@ -26,17 +26,17 @@ const ProjectCard: React.FC<{
             )}
          </div>
 
-         <h3 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-horizon-sky transition-colors font-sans mb-4 leading-tight">
+         <h3 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-horizon-sky transition-colors duration-200 font-sans mb-4 leading-tight">
             {project.title}
          </h3>
 
-         <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 font-sans font-medium">
+         <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 font-sans font-medium transition-colors duration-200">
             {project.description}
          </p>
 
          <div className="flex flex-wrap gap-2 mb-10">
             {project.techStack.map(tech => (
-                <span key={tech} className="px-3 py-1.5 rounded-lg text-[10px] font-mono font-bold border bg-slate-50 dark:bg-midnight-900/50 text-slate-700 dark:text-slate-400 border-slate-200 dark:border-midnight-700">
+                <span key={tech} className="px-3 py-1.5 rounded-lg text-[10px] font-mono font-bold border bg-slate-50 dark:bg-midnight-900/50 text-slate-700 dark:text-slate-400 border-slate-200 dark:border-midnight-700 transition-colors duration-200">
                     {tech}
                 </span>
             ))}
@@ -60,19 +60,6 @@ const ProjectCard: React.FC<{
                         <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">Results</span>
                         <p className="text-xs font-sans text-slate-700 dark:text-slate-300 leading-relaxed">{project.extendedDetails.results}</p>
                     </div>
-                    {project.extendedDetails.contributions && (
-                        <div className="space-y-2">
-                            <span className="text-[10px] font-black text-indigo-500 uppercase tracking-widest">Contributions</span>
-                            <ul className="space-y-1">
-                                {project.extendedDetails.contributions.map((c, i) => (
-                                    <li key={i} className="text-xs font-sans text-slate-700 dark:text-slate-300 flex items-start gap-2">
-                                        <div className="w-1 h-1 bg-indigo-500 rounded-full mt-1.5 flex-shrink-0"></div>
-                                        {c}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
                 </div>
             )}
              <button
@@ -80,7 +67,7 @@ const ProjectCard: React.FC<{
                     e.stopPropagation(); 
                     onToggle();
                 }}
-                className="w-full py-6 flex items-center justify-center gap-3 text-xs font-mono font-bold text-slate-500 hover:text-horizon-sky transition-colors border-t border-dashed border-slate-200 dark:border-midnight-700"
+                className="w-full py-6 flex items-center justify-center gap-3 text-xs font-mono font-bold text-slate-500 hover:text-horizon-sky transition-colors duration-200 border-t border-dashed border-slate-200 dark:border-midnight-700"
               >
                 {isExpanded ? 'Hide Details' : 'View Case Study'}
                 {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
@@ -89,8 +76,8 @@ const ProjectCard: React.FC<{
       )}
 
       {/* Footer Actions */}
-      <div className="p-6 bg-slate-50/50 dark:bg-midnight-900/40 border-t border-slate-200 dark:border-midnight-700 flex items-center justify-between mt-auto">
-            <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center text-xs font-mono font-bold text-slate-600 dark:text-slate-400 hover:text-horizon-sky transition-colors">
+      <div className="p-6 bg-slate-50/50 dark:bg-midnight-900/40 border-t border-slate-200 dark:border-midnight-700 flex items-center justify-between mt-auto transition-colors duration-200">
+            <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center text-xs font-mono font-bold text-slate-600 dark:text-slate-400 hover:text-horizon-sky transition-colors duration-200">
                 <Github className="h-4 w-4 mr-2" /> 
                 SOURCE
             </a>
@@ -99,7 +86,7 @@ const ProjectCard: React.FC<{
                   href={project.link} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center gap-2 text-xs font-mono font-bold text-white bg-slate-900 dark:bg-horizon-sky px-4 py-2 rounded-xl hover:opacity-90 transition-all"
+                  className="flex items-center gap-2 text-xs font-mono font-bold text-white bg-slate-900 dark:bg-horizon-sky px-4 py-2 rounded-xl hover:opacity-90 transition-all duration-200"
                 >
                     Launch
                     <ArrowUpRight className="h-4 w-4" />
@@ -144,24 +131,24 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-32 w-full bg-white dark:bg-midnight-950 transition-colors duration-500 relative">
+    <section id="projects" className="py-32 w-full bg-white dark:bg-midnight-950 transition-colors duration-200 relative">
       <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
         
         {/* Header Section */}
         <div className="mb-20">
-            <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-10 border-b border-slate-200 dark:border-midnight-800 pb-12">
+            <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-10 border-b border-slate-200 dark:border-midnight-800 pb-12 transition-colors duration-200">
                 <div className="space-y-4">
                     <span className="text-horizon-sky font-mono text-sm font-bold tracking-widest uppercase flex items-center gap-2">
                         <div className="w-8 h-px bg-horizon-sky"></div>
                         Portfolio_Directory
                     </span>
-                    <h2 className="text-5xl md:text-6xl font-bold text-slate-900 dark:text-white font-sans tracking-tight">
+                    <h2 className="text-5xl md:text-6xl font-bold text-slate-900 dark:text-white font-sans tracking-tight transition-colors duration-200">
                         Selected Works.
                     </h2>
                 </div>
 
                 {/* Filter Pills */}
-                <div className="flex flex-wrap gap-2 p-1 bg-slate-100 dark:bg-midnight-900 rounded-2xl w-fit">
+                <div className="flex flex-wrap gap-2 p-1 bg-slate-100 dark:bg-midnight-900 rounded-2xl w-fit transition-colors duration-200">
                     {categories.map((cat) => (
                     <button
                         key={cat}
@@ -169,7 +156,7 @@ const Projects: React.FC = () => {
                             setActiveCategory(cat);
                             setExpandedProjectId(null); 
                         }}
-                        className={`flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-mono font-bold transition-all duration-300 ${
+                        className={`flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-mono font-bold transition-all duration-200 ${
                         activeCategory === cat
                             ? 'bg-white dark:bg-midnight-800 text-horizon-sky shadow-xl scale-[1.02]'
                             : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
@@ -195,15 +182,9 @@ const Projects: React.FC = () => {
             />
           ))}
         </div>
-
-        {filteredProjects.length === 0 && (
-          <div className="py-20 text-center">
-            <p className="text-slate-500 dark:text-slate-400 font-mono">No projects found in this category.</p>
-          </div>
-        )}
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-midnight-800 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-midnight-800 to-transparent transition-colors duration-200"></div>
     </section>
   );
 };
