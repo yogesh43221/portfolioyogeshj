@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="about" className="relative min-h-screen flex items-center justify-center pt-24 pb-16 z-20 overflow-hidden bg-grain">
+    <section id="about" className="relative min-h-screen flex items-center justify-center pt-24 pb-16 z-20 bg-grain">
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10 bg-horizon-light dark:bg-midnight-950 transition-colors duration-150">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.05)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
           <div className="absolute left-1/4 top-1/3 h-[500px] w-[500px] rounded-full bg-horizon-sky/5 dark:bg-horizon-sky/10 blur-[120px]"></div>

@@ -7,7 +7,7 @@ const Experience: React.FC = () => {
   const [showEarlyCareer, setShowEarlyCareer] = useState(false);
 
   return (
-    <section id="experience" className="py-32 w-full bg-white dark:bg-midnight-950 transition-colors duration-500 relative">
+    <section id="experience" className="py-32 w-full bg-white dark:bg-midnight-950 transition-colors duration-150 relative">
       <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
         
         {/* Architectural Header */}
