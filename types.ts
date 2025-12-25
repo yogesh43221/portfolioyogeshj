@@ -36,7 +36,7 @@ export interface Experience {
   description: string;
   modularAchievements: {
     title: string;
-    iconType: 'engineering' | 'data' | 'qa' | 'systems' | 'research';
+    iconType: 'engineering' | 'data' | 'qa' | 'systems' | 'research' | 'analytics';
     points: string[];
   }[];
 }

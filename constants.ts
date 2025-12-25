@@ -232,19 +232,27 @@ export const EXPERIENCE: Experience[] = [
     description: "Focused on end-to-end ETL pipelines and Business Intelligence architectures.",
     modularAchievements: [
       {
-        title: "ETL & Pipeline Dev",
+        title: "ETL & Data Pipelines",
         iconType: 'data',
         points: [
-          "Developed and optimized ETL pipelines for sales data, improving efficiency by 30%.",
-          "Engineered historical trend analysis protocols for sales forecasting."
+          "Developed and optimized ETL pipelines for large-scale sales datasets.",
+          "Improved data processing efficiency by ~30% through query and pipeline optimization."
         ]
       },
       {
         title: "Analytics & BI",
         iconType: 'systems',
         points: [
-          "Built executive Power BI dashboards for Customer Acquisition and Retention.",
-          "Improved forecasting accuracy by 15% through historical data normalization."
+          "Built executive Power BI dashboards for Customer Acquisition & Retention analysis.",
+          "Translated raw transactional data into KPI-driven business insights."
+        ]
+      },
+      {
+        title: "Data Analysis & Forecasting",
+        iconType: 'analytics',
+        points: [
+          "Analyzed historical sales trends to improve forecasting accuracy.",
+          "Supported data-driven decision-making for business stakeholders."
         ]
       }
     ]

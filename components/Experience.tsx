@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Briefcase, GraduationCap, ArrowUpRight, ExternalLink, ChevronDown, ChevronUp, Code, Database, ShieldCheck, Settings, Microscope } from 'lucide-react';
+import { Briefcase, GraduationCap, ArrowUpRight, ExternalLink, ChevronDown, ChevronUp, Code, Database, ShieldCheck, Settings, Microscope, TrendingUp } from 'lucide-react';
 import { EXPERIENCE, EDUCATION, ACHIEVEMENTS, PUBLICATIONS, CERTIFICATIONS, ALL_CERTIFICATIONS_URL, EARLY_ENGINEERING } from '../constants';
 import SkillNetwork from './SkillNetwork';
 
@@ -10,6 +10,7 @@ const getIcon = (type: string) => {
     case 'qa': return <ShieldCheck className="h-4 w-4" />;
     case 'systems': return <Settings className="h-4 w-4" />;
     case 'research': return <Microscope className="h-4 w-4" />;
+    case 'analytics': return <TrendingUp className="h-4 w-4" />;
     default: return <Code className="h-4 w-4" />;
   }
 };
