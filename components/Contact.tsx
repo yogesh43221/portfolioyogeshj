@@ -4,9 +4,11 @@ import emailjs from '@emailjs/browser';
 import { PROFILE } from '../constants';
 import LinkedInButton from './LinkedInButton';
 
+// Declare process to avoid TypeScript errors in environments without node types
+declare const process: any;
+
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
-  const [errors, setErrors] = useState({ email: '', form: '' });
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -15,24 +17,45 @@ const Contact: React.FC = () => {
     e.preventDefault();
     if (isSubmitting) return;
 
+    // Retrieve keys from process.env (mapped in vite.config.ts)
+    const serviceId = process.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = process.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    // Debugging check for missing configuration
+    if (!serviceId || !templateId || !publicKey) {
+      console.error("EmailJS configuration is missing. Please ensure VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, and VITE_EMAILJS_PUBLIC_KEY are set in your environment.");
+      setShowError(true);
+      setTimeout(() => setShowError(false), 5000);
+      return;
+    }
+
     setIsSubmitting(true);
     try {
-      const serviceId = (import.meta as any).env.VITE_EMAILJS_SERVICE_ID;
-      const templateId = (import.meta as any).env.VITE_EMAILJS_TEMPLATE_ID;
-      const publicKey = (import.meta as any).env.VITE_EMAILJS_PUBLIC_KEY;
-
-      await emailjs.send(serviceId, templateId, {
+      const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
         subject: formData.subject,
         message: formData.message,
-        to_email: PROFILE.email,
-      }, publicKey);
+        reply_to: formData.email,
+      };
 
-      setShowSuccess(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setTimeout(() => setShowSuccess(false), 5000);
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      );
+
+      if (result.status === 200) {
+        setShowSuccess(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setShowSuccess(false), 5000);
+      } else {
+        throw new Error(`EmailJS responded with status: ${result.status}`);
+      }
     } catch (error) {
+      console.error("Failed to send email via EmailJS:", error);
       setShowError(true);
       setTimeout(() => setShowError(false), 5000);
     } finally {
@@ -83,6 +106,25 @@ const Contact: React.FC = () => {
 
           <div className="lg:w-3/5">
             <div className="glass-card p-10 md:p-14 shadow-2xl relative overflow-hidden !rounded-[2.5rem]">
+              {showSuccess && (
+                <div className="absolute inset-0 z-20 bg-emerald-500 flex flex-col items-center justify-center text-white animate-fadeIn">
+                  <CheckCircle className="w-16 h-16 mb-4" />
+                  <h3 className="text-2xl font-bold">Message Transmitted</h3>
+                  <p className="mt-2">I'll get back to you shortly.</p>
+                  <button onClick={() => setShowSuccess(false)} className="mt-8 text-sm font-mono underline uppercase tracking-widest">Send another</button>
+                </div>
+              )}
+
+              {showError && (
+                <div className="absolute top-6 left-6 right-6 z-30 p-4 bg-red-500 text-white rounded-xl flex items-center justify-between animate-fadeIn">
+                  <div className="flex items-center gap-3">
+                    <AlertCircle className="w-5 h-5" />
+                    <span className="text-sm font-medium">Transmission Error. Check logs or try LinkedIn.</span>
+                  </div>
+                  <button onClick={() => setShowError(false)}><X className="w-4 h-4" /></button>
+                </div>
+              )}
+
               <form onSubmit={handleSubmit} className="space-y-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                   <div className="space-y-2">
@@ -142,8 +184,17 @@ const Contact: React.FC = () => {
                     disabled={isSubmitting}
                     className="btn-primary w-full !rounded-2xl"
                 >
-                    {isSubmitting ? <Loader2 className="h-5 w-5 animate-spin" /> : 'Execute Request'}
-                    {!isSubmitting && <Send className="ml-3 h-5 w-5" />}
+                    {isSubmitting ? (
+                      <div className="flex items-center gap-2">
+                        <Loader2 className="h-5 w-5 animate-spin" />
+                        <span>Sending...</span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-2">
+                        <span>Execute Request</span>
+                        <Send className="h-5 w-5" />
+                      </div>
+                    )}
                 </button>
               </form>
             </div>
