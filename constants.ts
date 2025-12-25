@@ -34,153 +34,159 @@ export const ALL_CERTIFICATIONS_URL = "https://drive.google.com/drive/folders/yo
 
 export const PROJECTS: Project[] = [
   {
-    id: 101,
-    title: "Automated E2E Test Suite for Clinical Workflows",
-    description: "Designed a robust automation framework that reduced manual regression testing by automating complex clinical workflows using Playwright and AI agents.",
-    techStack: ["Python", "Playwright", "Browser-Use AI", "Automated Testing", "CI/CD"],
-    category: "QA & Systems Engineering",
-    github: "https://github.com/yogesh43221",
-    image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&q=80&w=600",
-    impact: "QA Automation Engineer (Hub9)",
-    featured: true,
-    tags: ["QA", "Playwright", "CI/CD"],
-    extendedDetails: {
-      problem: "Manual regression testing for complex clinical workflows was slow and error-prone, especially with dynamic AI-generated content.",
-      solution: "Engineered a Python & Playwright framework with dynamic UI handling and AI-driven exploratory testing to ensure clinical accuracy.",
-      results: "Significantly stabilized flaky UI tests and reduced manual regression cycles, ensuring high reliability for medical decision agents.",
-      contributions: [
-        "Automated complete user journeys (Login → MFA → Role Switching → Report Generation) using Python & Playwright",
-        "Implemented retry loops and explicit waits to stabilize flaky UI tests",
-        "Integrated Browser-Use AI for exploratory testing of medical summaries",
-        "Validated audio playback, tab navigation, and session persistence"
-      ]
-    }
-  },
-  {
-    id: 102,
-    title: "Radiology Report Management System",
-    description: "A production-grade healthcare system built to deeply understand SDLC failures through Gray-Box testing and backend integrity validation.",
-    techStack: ["FastAPI", "React.js", "PostgreSQL", "Docker", "Gray-Box Testing"],
-    category: "Backend & API Development",
-    github: "https://github.com/yogesh43221",
-    image: "https://images.unsplash.com/photo-1516542077784-b8967f153db9?auto=format&fit=crop&q=80&w=600",
-    impact: "Full-Stack Engineer (QA Focus)",
-    featured: true,
-    tags: ["FastAPI", "Docker", "Full Stack"],
-    extendedDetails: {
-      problem: "Traditional 'Black Box' testing often misses deep integration defects at the data and API layer during rapid deployment cycles.",
-      solution: "Build a real-world app with FastAPI and React to expose and resolve integration defects across frontend, backend, and database layers.",
-      results: "Exposed and resolved critical integration failures in the medical data pipeline via systematic gray-box testing.",
-      contributions: [
-        "Designed REST APIs with FastAPI, JWT authentication, and strict payload validation",
-        "Built a normalized PostgreSQL schema with constraints for integrity testing",
-        "Implemented Gray-Box testing to ensure frontend actions correctly updated backend data",
-        "Containerized services using Docker for reproducible test environments"
-      ]
-    }
-  },
-  {
     id: 1,
     title: "Booking Analytics RAG System",
-    description: "A Retrieval-Augmented Generation system that enables natural language querying of booking data for instant analytics.",
-    techStack: ["LangChain", "OpenAI API", "Pinecone", "Python"],
+    description: "A natural-language-driven analytics system where non-technical users can ask complex questions about booking data using LangChain and Pinecone.",
+    techStack: ["Python", "LangChain", "OpenAI API", "Pinecone", "FAISS", "SQL"],
     category: "AI / LLM / NLP Systems",
     github: "https://github.com/yogesh43221/Booking-Analytics-RAG-System",
-    link: "https://github.com/yogesh43221/Booking-Analytics-RAG-System",
-    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80&w=600",
-    impact: "Automated QA for booking data",
+    image: "https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&q=80&w=600",
     featured: true,
-    tags: ["RAG", "LLM", "Analytics", "NLP"],
     extendedDetails: {
-      problem: "Traditional analytics dashboards for booking data required complex SQL knowledge to extract deep insights, creating a bottleneck for non-technical stakeholders.",
-      solution: "Implemented a Retrieval-Augmented Generation (RAG) architecture using LangChain and Pinecone to allow natural language queries.",
-      results: "Reduced time-to-insight for operational teams by 80%, enabling self-service analytics.",
-      architecture: "User Query → Embedding Model → Vector DB (Pinecone) → Context Retrieval → LLM (GPT) → Natural Language Answer"
+      problem: "Business teams often rely on static dashboards and pre-defined SQL queries, limiting exploration and requiring technical expertise.",
+      solution: "Implemented a Retrieval-Augmented Generation (RAG) pipeline to process user queries via LangChain, retrieving context from a vector DB for LLM-based answering.",
+      results: "Reduced dependency on SQL experts and enabled faster business insights through context-aware natural language querying."
     }
   },
   {
     id: 2,
-    title: "Medical Doc Semantic Search",
-    description: "NLP-powered search engine for clinical documentation using semantic embeddings to retrieve relevant patient histories.",
-    techStack: ["Python", "Sentence-Transformers", "FastAPI", "Pinecone"],
-    category: "AI / LLM / NLP Systems",
-    github: "https://github.com/yogesh43221",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=600",
-    featured: false,
-    tags: ["NLP", "Vector DB", "Search"]
+    title: "Mentor Recommendation System",
+    description: "A personalized mentor recommendation engine built using profile similarity and preferences to match learners with the right mentors.",
+    techStack: ["Python", "Pandas", "Scikit-learn", "Cosine Similarity"],
+    category: "Machine Learning Systems",
+    github: "https://github.com/yogesh43221/mentor_recommendation_system",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=600",
+    extendedDetails: {
+      problem: "Learners often struggle to find the right mentor due to mismatches in skills, interests, and goals.",
+      solution: "Built a recommendation engine using Cosine Similarity on encoded categorical features (skills) and normalized numerical attributes (experience).",
+      results: "Created a scalable content-based recommendation system with explainable matching logic."
+    }
   },
   {
     id: 3,
-    title: "Demand Forecasting Model",
-    description: "Time-series forecasting system built to predict retail demand cycles and optimize inventory stocking levels.",
-    techStack: ["Prophet", "Python", "SQL", "Scikit-learn"],
-    category: "Machine Learning Systems",
-    github: "https://github.com/yogesh43221",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600",
-    featured: false,
-    tags: ["Forecasting", "ML", "Retail"]
-  },
-  {
-    id: 4,
     title: "Transaction Fraud Detection",
-    description: "Robust fraud detection system handling extreme class imbalance in financial transaction data.",
-    techStack: ["XGBoost", "SMOTE", "Scikit-learn", "Python"],
+    description: "A robust fraud detection system designed to handle extreme class imbalance in financial transaction data using SMOTE and Random Forest.",
+    techStack: ["Python", "Pandas", "Scikit-learn", "SMOTE", "Random Forest"],
     category: "Machine Learning Systems",
     github: "https://github.com/yogesh43221/Data-Science-Projects/tree/main/Transaction%20Fraud%20Detection",
     image: "https://images.unsplash.com/photo-1563986768494-4dee46a38531?auto=format&fit=crop&q=80&w=600",
-    impact: "Handled 6.3M+ transactions",
-    featured: false,
-    tags: ["Fraud Detection", "Classification", "Imbalanced Data"],
     extendedDetails: {
-      problem: "Financial fraud models failed due to extreme class imbalance (0.1% fraud rate).",
-      solution: "Applied SMOTE for synthetic oversampling and trained an XGBoost classifier.",
-      results: "Achieved high detection rate while minimizing false positives in testing.",
-      architecture: "Raw Transaction Data → Cleaning & Encoding → SMOTE Oversampling → XGBoost Classifier → Prediction API"
+      problem: "Financial transaction datasets are highly imbalanced, making fraud detection difficult and error-prone.",
+      solution: "Applied SMOTE to balance samples and trained a Random Forest classifier with hyperparameter tuning for recall and precision.",
+      results: "Significantly improved fraud recall and demonstrated an end-to-end imbalance-aware ML workflow."
+    }
+  },
+  {
+    id: 4,
+    title: "Pizza Sales Trends Analysis",
+    description: "End-to-end BI pipeline analyzing sales patterns and building executive dashboards to visualize revenue and category performance.",
+    techStack: ["SQL", "Power BI", "Data Modeling"],
+    category: "Data Analytics & Business Intelligence",
+    github: "https://github.com/yogesh43221/Analyzing-Pizza-Sales-Trends-with-SQL-and-Power-BI",
+    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=600",
+    extendedDetails: {
+      problem: "Raw sales data lacks structured analysis for immediate business insights.",
+      solution: "Structured raw data using SQL queries (revenue by category, trends) and built interactive Power BI visuals.",
+      results: "Developed a KPI-driven dashboard for business storytelling and trend analysis."
     }
   },
   {
     id: 5,
-    title: "Scalable Auth Microservice",
-    description: "High-performance authentication service with JWT, OAuth2 integration, and rate limiting for secure API access.",
-    techStack: ["FastAPI", "Redis", "PostgreSQL", "Docker"],
+    title: "Brainlox Chatbot API",
+    description: "A RESTful chatbot API built to answer student course-related queries using Flask and NLP preprocessing.",
+    techStack: ["Python", "Flask", "NLP", "JSON"],
     category: "Backend & API Development",
-    github: "https://github.com/yogesh43221",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=600",
-    featured: false,
-    tags: ["Backend", "Auth", "Security"]
+    github: "https://github.com/yogesh43221/FlaskProjects/tree/main/BrainloxChatbot-API",
+    image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=600",
+    extendedDetails: {
+      problem: "Students need quick answers about courses without manual browsing.",
+      solution: "Implemented Flask-based API endpoints with NLP preprocessing for intent matching.",
+      results: "Developed a stateless, extendable backend-first chatbot architecture."
+    }
   },
   {
     id: 6,
-    title: "Executive Sales Dashboard",
-    description: "End-to-end BI solution visualizing customer acquisition and retention trends for executive decision-making.",
-    techStack: ["Power BI", "SQL", "ETL", "Excel"],
-    category: "Data Analytics & Business Intelligence",
-    github: "https://github.com/yogesh43221",
-    image: "https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&q=80&w=600",
-    featured: false,
-    tags: ["Power BI", "Data Viz", "BI"]
+    title: "Vidhya Vision",
+    description: "Context-aware educational content discovery tool using transformer models and vector similarity search.",
+    techStack: ["Python", "LangChain", "FAISS", "Hugging Face"],
+    category: "AI / LLM / NLP Systems",
+    github: "https://github.com/yogesh43221/Vidhya-Vision",
+    image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&q=80&w=600",
+    extendedDetails: {
+      problem: "Traditional keyword search fails to capture semantic meaning in educational content.",
+      solution: "Used text embeddings from transformer models and FAISS for vector similarity search.",
+      results: "Enabled high-quality semantic ranking for educational resources."
+    }
   },
   {
     id: 7,
-    title: "Automated ETL Pipeline",
-    description: "Data engineering pipeline for cleaning and migrating retail datasets from legacy systems to cloud warehouses.",
-    techStack: ["Python", "Airflow", "Snowflake", "SQL"],
+    title: "Blinkit Sales Data Analytics",
+    description: "Deep dive into retail sales patterns and inventory metrics to generate actionable behavioral insights.",
+    techStack: ["SQL", "Python", "Data Cleaning"],
     category: "Data Analytics & Business Intelligence",
-    github: "https://github.com/yogesh43221",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600",
-    featured: false,
-    tags: ["ETL", "Airflow", "Data Engineering"]
+    github: "https://github.com/yogesh43221/Blinkit-Sales-Data-Analytics",
+    image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=600",
+    extendedDetails: {
+      problem: "Retail businesses require real-time insights into sales patterns to optimize inventory.",
+      solution: "Conducted SQL-heavy analysis on revenue trends and product category performance.",
+      results: "Identified key customer behavior patterns and revenue growth opportunities."
+    }
   },
   {
     id: 8,
-    title: "Performance Testing API Suite",
-    description: "Comprehensive load and stress testing suite for measuring API latency and throughput under high traffic.",
-    techStack: ["K6", "Grafana", "Docker", "JavaScript"],
+    title: "Quick Resume Analyzer",
+    description: "Automation tool for parsing resumes and matching candidate skills with job requirements using SpaCy.",
+    techStack: ["Python", "SpaCy", "Streamlit", "NLP"],
+    category: "AI / LLM / NLP Systems",
+    github: "https://github.com/yogesh43221/Quick-Resume-Analyzer",
+    image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=600",
+    extendedDetails: {
+      problem: "Manual resume screening is slow, inconsistent, and error-prone.",
+      solution: "Developed an NLP-based entity extraction tool using SpaCy and a Streamlit UI for recruiters.",
+      results: "Automated resume parsing and skill matching to improve recruiter productivity."
+    }
+  },
+  {
+    id: 9,
+    title: "Automated E2E Test Suite for Clinical Workflows",
+    description: "Robust automation framework reducing manual regression testing for clinical AI platforms using Playwright.",
+    techStack: ["Python", "Playwright", "Browser-Use AI", "CI/CD", "Automated Testing"],
     category: "QA & Systems Engineering",
     github: "https://github.com/yogesh43221",
-    image: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=600",
-    featured: false,
-    tags: ["QA", "Load Testing", "Performance"]
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=600",
+    featured: true,
+    extendedDetails: {
+      problem: "Clinical AI platforms involve complex workflows difficult to scale with manual regression testing.",
+      solution: "Engineered a Python-based framework using Playwright locators and AI agents for exploratory testing of dynamic content.",
+      results: "Reduced manual regression time and improved release confidence for clinical AI systems.",
+      contributions: [
+        "Automated login, MFA, and role-based access switching journeys",
+        "Stabilized tests with explicit waits for AI inference latency",
+        "Integrated AI agents to validate logical consistency in medical summaries",
+        "Verified audio playback and session persistence across clinical apps"
+      ]
+    }
+  },
+  {
+    id: 10,
+    title: "Radiology Report Management System",
+    description: "Production-grade healthcare app built to practice Gray-Box testing and identify SDLC defects early.",
+    techStack: ["FastAPI", "React.js", "PostgreSQL", "Docker", "Gray Box Testing"],
+    category: "QA & Systems Engineering",
+    github: "https://github.com/yogesh43221",
+    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=600",
+    featured: true,
+    extendedDetails: {
+      problem: "Disconnected testing approaches lead to misdiagnosed defects and incomplete coverage.",
+      solution: "Built a full-stack system with FastAPI/React/PostgreSQL to test failures across all layers.",
+      results: "Identified deep architectural bugs and improved debugging efficiency using Gray Box techniques.",
+      contributions: [
+        "Designed REST APIs with JWT auth and payload validation",
+        "Architected PostgreSQL schemas for data integrity testing",
+        "Built React UI for real-time state and payload inspection",
+        "Containerized the environment with Docker for reproducibility"
+      ]
+    }
   }
 ];
 
