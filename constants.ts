@@ -388,11 +388,36 @@ export const ACHIEVEMENTS: Achievement[] = [
 ];
 
 export const SKILLS: Skill[] = [
+  // Backend & APIs
   { name: "FastAPI / Flask", level: 90, icon: "Server", category: "Backend & APIs", context: "Production APIs" },
-  { name: "Playwright", level: 85, icon: "Shield", category: "Tools & Platforms", context: "E2E Automation" },
-  { name: "Advanced SQL", level: 95, icon: "Database", category: "Data Analysis", context: "Optimization, CTEs" },
-  { name: "LLMs (GPT/Llama)", level: 90, icon: "Brain", category: "AI & LLMs", context: "RAG, Agents" },
-  { name: "Docker", level: 85, icon: "Container", category: "Backend & APIs", context: "Containerization" },
+  { name: "Python", level: 95, icon: "Code", category: "Backend & APIs", context: "Primary Language" },
+  { name: "Node.js", level: 75, icon: "Terminal", category: "Backend & APIs", context: "Backend Services" },
+  { name: "RESTful APIs", level: 90, icon: "Network", category: "Backend & APIs", context: "Microservices" },
+  
+  // Data Analysis
+  { name: "Advanced SQL", level: 95, icon: "Database", category: "Data Analysis", context: "Query Optimization" },
+  { name: "Power BI", level: 90, icon: "BarChart", category: "Data Analysis", context: "BI Dashboards" },
+  { name: "Pandas / NumPy", level: 90, icon: "TrendingUp", category: "Data Analysis", context: "Data Wrangling" },
+  { name: "Tableau", level: 80, icon: "PieChart", category: "Data Analysis", context: "Visualization" },
+  { name: "Excel (Adv.)", level: 85, icon: "Grid", category: "Data Analysis", context: "Complex Formulas" },
+  
+  // AI & LLMs
+  { name: "LangChain", level: 90, icon: "Layers", category: "AI & LLMs", context: "RAG Pipelines" },
+  { name: "LLMs (GPT/Llama)", level: 90, icon: "Brain", category: "AI & LLMs", context: "Agentic Workflows" },
+  { name: "Vector DBs", level: 85, icon: "Zap", category: "AI & LLMs", context: "Pinecone / FAISS" },
+  
+  // Machine Learning
+  { name: "Scikit-learn", level: 90, icon: "Activity", category: "Machine Learning", context: "Predictive Models" },
+  { name: "PyTorch", level: 75, icon: "Cpu", category: "Machine Learning", context: "Deep Learning" },
+  { name: "Computer Vision", level: 80, icon: "Eye", category: "Machine Learning", context: "HOG/CNNs" },
+  
+  // Tools & Platforms
+  { name: "Playwright", level: 85, icon: "Shield", category: "Tools & Platforms", context: "QA Automation" },
+  { name: "Docker", level: 85, icon: "Container", category: "Tools & Platforms", context: "Containerization" },
+  { name: "Git", level: 90, icon: "GitMerge", category: "Tools & Platforms", context: "Version Control" },
+  { name: "Cloud (NPTEL)", level: 80, icon: "Cloud", category: "Tools & Platforms", context: "Infrastructure" },
+  { name: "Selenium", level: 75, icon: "CheckCircle", category: "Tools & Platforms", context: "Legacy Automation" },
+  { name: "Embedded C++", level: 70, icon: "Settings", category: "Tools & Platforms", context: "Robotics/Arduino" }
 ];
 
 export const SYSTEM_INSTRUCTION = `
