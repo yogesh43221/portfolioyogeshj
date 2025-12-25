@@ -389,43 +389,42 @@ export const ACHIEVEMENTS: Achievement[] = [
 
 export const SKILLS: Skill[] = [
   // Backend & APIs
-  { name: "FastAPI / Flask", level: 90, icon: "Server", category: "Backend & APIs", context: "Production APIs" },
-  { name: "Python", level: 95, icon: "Code", category: "Backend & APIs", context: "Primary Language" },
-  { name: "RESTful APIs", level: 90, icon: "Network", category: "Backend & APIs", context: "Microservices" },
+  { name: "FastAPI / Flask", level: 90, icon: "Server", category: "Backend & APIs", context: "Primary Frameworks" },
+  { name: "Python (Expert)", level: 95, icon: "Code", category: "Backend & APIs", context: "Main Language" },
+  { name: "SQLAlchemy", level: 90, icon: "Layers", category: "Backend & APIs", context: "ORM / Modeling" },
+  { name: "Pydantic", level: 92, icon: "CheckCircle", category: "Backend & APIs", context: "Data Validation" },
+  { name: "JWT / OAuth2", level: 85, icon: "Lock", category: "Backend & APIs", context: "Auth & Security" },
+  { name: "RESTful APIs", level: 90, icon: "Network", category: "Backend & APIs", context: "Service Design" },
   
-  // Data Analysis
-  { name: "Advanced SQL", level: 95, icon: "Database", category: "Data Analysis", context: "Query Optimization" },
-  { name: "MySQL", level: 90, icon: "Database", category: "Data Analysis", context: "Relational DBs" },
-  { name: "PostgreSQL", level: 85, icon: "Database", category: "Data Analysis", context: "Clinical Data" },
-  { name: "Power BI", level: 90, icon: "BarChart", category: "Data Analysis", context: "BI Dashboards" },
-  { name: "Pandas / NumPy", level: 90, icon: "TrendingUp", category: "Data Analysis", context: "Data Wrangling" },
-  { name: "Tableau", level: 80, icon: "PieChart", category: "Data Analysis", context: "Visualization" },
-  { name: "Excel (Adv.)", level: 85, icon: "Grid", category: "Data Analysis", context: "Complex Formulas" },
+  // Data Analysis & DBMS
+  { name: "Advanced SQL", level: 95, icon: "Database", category: "Data Analysis", context: "Complex Joins" },
+  { name: "MySQL", level: 92, icon: "Database", category: "Data Analysis", context: "Production RDBMS" },
+  { name: "PostgreSQL", level: 88, icon: "Database", category: "Data Analysis", context: "Clinical Data" },
+  { name: "Database Design", level: 85, icon: "GitMerge", category: "Data Analysis", context: "Schema Modeling" },
+  { name: "Query Optimization", level: 85, icon: "TrendingUp", category: "Data Analysis", context: "Performance Tuning" },
+  { name: "Power BI", level: 90, icon: "BarChart", category: "Data Analysis", context: "BI Pipelines" },
+  { name: "Pandas / NumPy", level: 90, icon: "Grid", category: "Data Analysis", context: "Data Wrangling" },
   
   // AI & LLMs
   { name: "LangChain", level: 90, icon: "Layers", category: "AI & LLMs", context: "RAG Pipelines" },
-  { name: "LLMs (GPT/Llama)", level: 90, icon: "Brain", category: "AI & LLMs", context: "Agentic Workflows" },
+  { name: "LLMs (GPT/Llama)", level: 90, icon: "Brain", category: "AI & LLMs", context: "Agentic Logic" },
   { name: "Vector DBs", level: 85, icon: "Zap", category: "AI & LLMs", context: "Pinecone / FAISS" },
-  { name: "Prompt Eng.", level: 85, icon: "Terminal", category: "AI & LLMs", context: "System Instructions" },
-  { name: "Semantic Search", level: 80, icon: "Search", category: "AI & LLMs", context: "Vector Retrieval" },
+  { name: "Prompt Eng.", level: 85, icon: "Terminal", category: "AI & LLMs", context: "System Prompts" },
   
   // Machine Learning
-  { name: "Scikit-learn", level: 90, icon: "Activity", category: "Machine Learning", context: "Predictive Models" },
+  { name: "Scikit-learn", level: 90, icon: "Activity", category: "Machine Learning", context: "Modeling" },
   { name: "XGBoost / Random Forest", level: 95, icon: "GitBranch", category: "Machine Learning", context: "Classification" },
-  { name: "PyTorch", level: 75, icon: "Cpu", category: "Machine Learning", context: "Deep Learning" },
+  { name: "PyTorch", level: 75, icon: "Cpu", category: "Machine Learning", context: "Neural Nets" },
   { name: "Hugging Face", level: 85, icon: "Smile", category: "Machine Learning", context: "Transformers" },
-  { name: "Computer Vision", level: 80, icon: "Eye", category: "Machine Learning", context: "HOG/CNNs" },
-  { name: "Feature Eng.", level: 90, icon: "Sliders", category: "Machine Learning", context: "Data Prep" },
-  { name: "NLP (SpaCy/NLTK)", level: 85, icon: "MessageSquare", category: "Machine Learning", context: "Text Processing" },
+  { name: "Feature Eng.", level: 90, icon: "Sliders", category: "Machine Learning", context: "Preprocessing" },
   
   // Tools & Platforms
   { name: "Playwright", level: 90, icon: "Shield", category: "Tools & Platforms", context: "QA Automation" },
-  { name: "Postman", level: 95, icon: "Send", category: "Tools & Platforms", context: "API Testing" },
-  { name: "DBeaver", level: 85, icon: "Database", category: "Tools & Platforms", context: "DB Management" },
-  { name: "Docker", level: 85, icon: "Container", category: "Tools & Platforms", context: "Containerization" },
-  { name: "Git", level: 90, icon: "GitMerge", category: "Tools & Platforms", context: "Version Control" },
-  { name: "AWS (Basic)", level: 75, icon: "Cloud", category: "Tools & Platforms", context: "Cloud Foundation" },
-  { name: "Selenium", level: 75, icon: "CheckCircle", category: "Tools & Platforms", context: "Legacy Automation" }
+  { name: "Postman", level: 95, icon: "Send", category: "Tools & Platforms", context: "API Debugging" },
+  { name: "DBeaver", level: 90, icon: "Database", category: "Tools & Platforms", context: "SQL Workbench" },
+  { name: "Docker", level: 85, icon: "Container", category: "Tools & Platforms", context: "Deployment" },
+  { name: "Git", level: 90, icon: "GitMerge", category: "Tools & Platforms", context: "Versioning" },
+  { name: "AWS (Basic)", level: 75, icon: "Cloud", category: "Tools & Platforms", context: "Infrastructure" }
 ];
 
 export const SYSTEM_INSTRUCTION = `
