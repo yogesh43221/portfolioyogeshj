@@ -211,9 +211,22 @@ const Experience: React.FC = () => {
               <ul className="space-y-6">
                 {ACHIEVEMENTS.map((ach) => (
                   <li key={ach.id} className="group">
-                        <h4 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-horizon-sky transition-colors font-sans">
-                            {ach.title}
-                        </h4>
+                        <div className="flex justify-between items-start gap-4">
+                             <h4 className="text-base font-bold text-slate-900 dark:text-white font-sans">
+                                {ach.title}
+                             </h4>
+                             {ach.link && (
+                                 <a 
+                                    href={ach.link} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="p-1.5 rounded-md bg-slate-50 dark:bg-midnight-800 text-slate-400 hover:text-horizon-sky hover:bg-horizon-sky/5 border border-slate-200 dark:border-midnight-700 transition-all"
+                                    title="View Verification"
+                                 >
+                                    <ExternalLink className="w-3.5 h-3.5" />
+                                 </a>
+                             )}
+                        </div>
                         <p className="text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed font-sans font-medium">
                             {ach.description}
                         </p>

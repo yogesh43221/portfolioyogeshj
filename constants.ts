@@ -30,7 +30,7 @@ export const RESUME_URLS = {
   BACKEND: "https://drive.google.com/file/d/your-backend-resume-id/view?usp=sharing"
 };
 
-export const ALL_CERTIFICATIONS_URL = "https://drive.google.com/drive/folders/your-certs-folder-id?usp=sharing";
+export const ALL_CERTIFICATIONS_URL = "https://www.linkedin.com/in/yogesh-jadhav-60548020a/details/certifications/";
 
 export const PROJECTS: Project[] = [
   {
@@ -344,17 +344,31 @@ export const PUBLICATIONS: Publication[] = [
 export const CERTIFICATIONS: Certification[] = [
   {
     id: 1,
-    title: "AWS Certified Solutions Architect",
-    issuer: "Amazon Web Services",
-    date: "2024",
-    link: "#"
+    title: "SQL (Advanced)",
+    issuer: "HackerRank",
+    date: "Feb 2025",
+    link: "https://www.hackerrank.com/certificates/dce52142cbb1"
   },
   {
     id: 2,
-    title: "Deep Learning Specialization",
-    issuer: "DeepLearning.AI",
-    date: "2023",
-    link: "#"
+    title: "Cloud Computing - NPTEL",
+    issuer: "NPTEL / IIT Kharagpur",
+    date: "Jul 2023",
+    link: "https://nptel.ac.in/noc/Ecertificate/?q=NPTEL23CS89S545102024"
+  },
+  {
+    id: 3,
+    title: "Career Essentials in Data Analysis",
+    issuer: "Microsoft & LinkedIn",
+    date: "Dec 2024",
+    link: "https://www.linkedin.com/learning/certificates/4a7fd2ac1808cad37350a93231cd76cb6d85d49c7244df9b88a42882d906ad48"
+  },
+  {
+    id: 4,
+    title: "Career Essentials in Generative AI",
+    issuer: "Microsoft & LinkedIn",
+    date: "Dec 2024",
+    link: "https://www.linkedin.com/learning/certificates/d074fb736fdfab6d6c0f30e298d28c3f6d4fd49b13958cf5d42579eb1da4f712"
   }
 ];
 
@@ -362,8 +376,14 @@ export const ACHIEVEMENTS: Achievement[] = [
   {
     id: 1,
     title: "Amazon ML Summer School 2023",
-    description: "Selected for intensive mentorship by Amazon Scientists on Large Scale ML.",
-    link: "https://amazon.com"
+    description: "Intensive mentorship by Amazon Scientists on Large Scale Machine Learning and Deep Neural Networks.",
+    link: "https://drive.google.com/file/d/1cTHgGRHQiOSybRy7cbgNUgATr736QCLL/view?usp=sharing"
+  },
+  {
+    id: 2,
+    title: "DD-ROBOCON 2022",
+    description: "National Level Robotics competition held at IIT Delhi. Expertise in Eagle PCB, Embedded Systems, and hardware validation.",
+    link: "https://drive.google.com/file/d/10N3A4Sd5KlkR0SzpXLXfD64jtI2EGNWv/view?usp=sharing"
   }
 ];
 
