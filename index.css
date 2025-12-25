@@ -36,7 +36,7 @@
 @layer components {
   /* Unified Surface System */
   .glass-card {
-    @apply bg-white/70 dark:bg-midnight-800/60 backdrop-blur-md border border-slate-200/50 dark:border-midnight-700/50 transition-all duration-150 rounded-3xl;
+    @apply bg-white dark:bg-midnight-800 border border-slate-200 dark:border-midnight-700/50 transition-all duration-150 rounded-3xl;
   }
   
   /* Unified Button System */
@@ -48,9 +48,9 @@
     @apply inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-slate-200 dark:border-midnight-700 text-slate-600 dark:text-slate-300 font-black rounded-xl hover:border-horizon-sky dark:hover:border-horizon-sky transition-all duration-150;
   }
 
-  /* Unified Form System */
+  /* Unified Form System - Enhanced for visibility */
   .input-field {
-    @apply w-full py-4 bg-transparent border-b border-slate-200 dark:border-midnight-700 text-lg text-slate-900 dark:text-white outline-none font-sans font-semibold transition-all duration-150 placeholder:text-slate-300 dark:placeholder:text-midnight-700 focus:border-horizon-sky;
+    @apply w-full px-5 py-4 bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-midnight-700 rounded-xl text-base text-slate-900 dark:text-white outline-none font-sans font-medium transition-all duration-150 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:border-horizon-sky focus:ring-2 focus:ring-horizon-sky/20;
   }
 }
 
