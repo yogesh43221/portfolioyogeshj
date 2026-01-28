@@ -98,6 +98,7 @@ export const PROJECTS: Project[] = [
     category: "Backend",
     github: "https://github.com/yogesh43221/FlaskProjects/tree/main/BrainloxChatbot-API",
     image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=600",
+    featured: true,
     extendedDetails: {
       problem: "Students need quick answers about courses without manual browsing.",
       solution: "Implemented Flask-based API endpoints with NLP preprocessing for intent matching.",
@@ -112,6 +113,7 @@ export const PROJECTS: Project[] = [
     category: "AI",
     github: "https://github.com/yogesh43221/Vidhya-Vision",
     image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&q=80&w=600",
+    featured: true,
     extendedDetails: {
       problem: "Traditional keyword search fails to capture semantic meaning in educational content.",
       solution: "Used text embeddings from transformer models and FAISS for vector similarity search.",
@@ -186,6 +188,69 @@ export const PROJECTS: Project[] = [
         "Built React UI for real-time state and payload inspection",
         "Containerized the environment with Docker for reproducibility"
       ]
+    }
+  },
+  {
+    id: 11,
+    title: "DocuMate – Document Q&A Assistant",
+    description: "Advanced RAG system supporting multi-format uploads (PDF, DOCX, TXT) with page-level citations and strict context grounding.",
+    techStack: ["Python", "LangChain", "OpenAI", "FAISS", "PyMuPDF"],
+    category: "AI",
+    github: "https://github.com/yogesh43221",
+    link: "https://www.loom.com/share/13889b4e70ef4da6b6cc1e7d692e1d09",
+    image: "https://images.unsplash.com/photo-1568667256549-094345857637?auto=format&fit=crop&q=80&w=600",
+    featured: true,
+    extendedDetails: {
+      problem: "Users struggle to query unstructured multi-format documents without hallucinations.",
+      solution: "Implemented a citation-backed RAG pipeline with multi-format parsing and vector indexing.",
+      results: "Achieved precise grounding with source attribution across PDF, DOCX, and Markdown."
+    }
+  },
+  {
+    id: 12,
+    title: "AutoStream – Conversational AI Agent",
+    description: "Multi-turn conversational AI built with LangGraph for intent detection, state management, and lead qualification.",
+    techStack: ["Python", "LangGraph", "LangChain", "Tavily", "PostgreSQL"],
+    category: "AI",
+    github: "https://github.com/yogesh43221",
+    link: "https://drive.google.com/file/d/1cD-yslgKUw3VrNdDvEDsaanQCws-DfTB/view",
+    image: "https://images.unsplash.com/photo-1531746790731-6c2079ead73d?auto=format&fit=crop&q=80&w=600",
+    featured: true,
+    extendedDetails: {
+      problem: "Traditional chatbots lack state persistence and sophisticated multi-turn intent handling.",
+      solution: "Utilized LangGraph's stateful orchestration to manage complex agentic workflows and product Q&A.",
+      results: "Robust lead qualification agent capable of context-aware follow-ups and service routing."
+    }
+  },
+  {
+    id: 13,
+    title: "SentinelSight – AI Video Analytics",
+    description: "Real-time CCTV analytics platform using YOLOv8 for object detection and inference pipelines for security event detection.",
+    techStack: ["Python", "YOLOv8", "OpenCV", "Inference Pipelines", "Streamlit"],
+    category: "Machine Learning",
+    github: "https://github.com/yogesh43221",
+    image: "https://images.unsplash.com/photo-1557597774-9d2739f85a94?auto=format&fit=crop&q=80&w=600",
+    featured: true,
+    extendedDetails: {
+      problem: "Manual monitoring of CCTV feeds is inefficient for event detection and security analytics.",
+      solution: "Developed a CV pipeline leveraging YOLOv8 for high-frequency object detection and real-time dashboarding.",
+      results: "Automated security monitoring with visual evidence and statistical reporting."
+    }
+  },
+  {
+    id: 14,
+    title: "Eklavya – Multi-Agent AI Content Generator",
+    description: "Orchestrated Generator and Reviewer agents utilizing prompt engineering for automated educational content creation.",
+    techStack: ["Python", "OpenAI", "Multi-Agent Systems", "Streamlit", "Prompt Engineering"],
+    category: "AI",
+    github: "https://github.com/yogesh43221",
+    link: "https://eklavya-ai-generator.onrender.com",
+    image: "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&q=80&w=600",
+    featured: true,
+    extendedDetails: {
+      problem: "High-quality educational content creation is time-consuming and prone to factual errors.",
+      solution: "Built a dual-agent system where one agent generates and another rigorously reviews and refines content.",
+      results: "Streamlined content production with a focus on pedagogical accuracy and structured outputs."
     }
   }
 ];
