@@ -199,6 +199,7 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/yogesh43221",
     link: "https://www.loom.com/share/13889b4e70ef4da6b6cc1e7d692e1d09",
     image: "https://images.unsplash.com/photo-1568667256549-094345857637?auto=format&fit=crop&q=80&w=600",
+    featured: true,
     extendedDetails: {
       problem: "Users face challenges querying unstructured documents (PDF/DOCX) without experiencing LLM hallucinations.",
       solution: "Implemented a citation-backed RAG pipeline using recursive character splitting and vector indexing.",
@@ -229,7 +230,6 @@ export const PROJECTS: Project[] = [
     category: "Machine Learning",
     github: "https://github.com/yogesh43221",
     image: "https://images.unsplash.com/photo-1557597774-9d2739f85a94?auto=format&fit=crop&q=80&w=600",
-    featured: true,
     extendedDetails: {
       problem: "Manual security monitoring of multiple feeds is prone to human error and delayed reaction times.",
       solution: "Engineered a high-throughput CV pipeline using YOLOv8 for object detection with custom zone-based rule logic.",
