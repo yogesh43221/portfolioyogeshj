@@ -1,11 +1,11 @@
 import React from 'react';
 
 export type ProjectCategory = 
-  | 'AI / LLM / NLP Systems' 
-  | 'Machine Learning Systems' 
-  | 'Backend & API Development' 
-  | 'Data Analytics & Business Intelligence'
-  | 'QA & Systems Engineering';
+  | 'AI' 
+  | 'Machine Learning' 
+  | 'Data Analytics' 
+  | 'Backend' 
+  | 'QA';
 
 export interface Project {
   id: number;

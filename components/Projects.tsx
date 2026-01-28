@@ -1,5 +1,21 @@
-import React, { useState } from 'react';
-import { Github, Code, Brain, Database, Server, ChevronDown, ChevronUp, Network, ArrowUpRight, ShieldCheck, ListFilter } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { 
+  Github, 
+  Code, 
+  Brain, 
+  Database, 
+  Server, 
+  ChevronDown, 
+  ChevronUp, 
+  Network, 
+  ArrowUpRight, 
+  ShieldCheck, 
+  Share2, 
+  Twitter, 
+  Linkedin, 
+  Link, 
+  Check 
+} from 'lucide-react';
 import { PROJECTS } from '../constants';
 import { ProjectCategory, Project } from '../types';
 
@@ -9,6 +25,34 @@ const ProjectCard: React.FC<{
   onToggle: () => void;
   getCategoryIcon: (cat: ProjectCategory) => React.ReactNode;
 }> = ({ project, isExpanded, onToggle, getCategoryIcon }) => {
+  const [showShare, setShowShare] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const shareRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (shareRef.current && !shareRef.current.contains(event.target as Node)) {
+        setShowShare(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const shareUrl = `${window.location.origin}${window.location.pathname}#projects`;
+  const shareText = `Check out this project: ${project.title} by Yogesh Jadhav`;
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(shareUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const shareLinks = {
+    twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`,
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
+  };
+
   return (
     <div className={`group flex flex-col h-full glass-card overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 ${isExpanded ? 'ring-2 ring-horizon-sky/30' : ''}`}>
       {/* Top Content Area - This grows to fill space */}
@@ -73,10 +117,51 @@ const ProjectCard: React.FC<{
       </div>
 
       {/* Footer - Pinned to the very bottom */}
-      <div className="p-6 bg-slate-50/50 dark:bg-midnight-900/40 border-t border-slate-200 dark:border-midnight-700 flex items-center justify-between">
-            <a href={project.github} target="_blank" rel="noopener noreferrer" className="accent-mono !text-slate-600 dark:!text-slate-400 hover:!text-horizon-sky flex items-center">
-                <Github className="h-4 w-4 mr-2" /> SOURCE
-            </a>
+      <div className="p-6 bg-slate-50/50 dark:bg-midnight-900/40 border-t border-slate-200 dark:border-midnight-700 flex items-center justify-between relative">
+            <div className="flex items-center gap-4">
+              <a href={project.github} target="_blank" rel="noopener noreferrer" className="accent-mono !text-slate-600 dark:!text-slate-400 hover:!text-horizon-sky flex items-center">
+                  <Github className="h-4 w-4 mr-2" /> SOURCE
+              </a>
+              
+              <div className="relative" ref={shareRef}>
+                <button 
+                  onClick={() => setShowShare(!showShare)}
+                  className="accent-mono !text-slate-600 dark:!text-slate-400 hover:!text-horizon-sky flex items-center p-1 rounded-md hover:bg-slate-100 dark:hover:bg-white/5 transition-all"
+                  aria-label="Share Project"
+                >
+                  <Share2 className="h-4 w-4" />
+                </button>
+
+                {showShare && (
+                  <div className="absolute bottom-full left-0 mb-3 w-40 glass-card !rounded-xl shadow-2xl z-20 overflow-hidden animate-fadeIn py-1">
+                    <button 
+                      onClick={handleCopy}
+                      className="w-full flex items-center gap-3 px-4 py-2 text-[10px] font-mono font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
+                    >
+                      {copied ? <Check className="w-3 h-3 text-emerald-500" /> : <Link className="w-3 h-3" />}
+                      {copied ? 'COPIED!' : 'COPY LINK'}
+                    </button>
+                    <a 
+                      href={shareLinks.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full flex items-center gap-3 px-4 py-2 text-[10px] font-mono font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
+                    >
+                      <Linkedin className="w-3 h-3" /> LINKEDIN
+                    </a>
+                    <a 
+                      href={shareLinks.twitter}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full flex items-center gap-3 px-4 py-2 text-[10px] font-mono font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
+                    >
+                      <Twitter className="w-3 h-3" /> TWITTER
+                    </a>
+                  </div>
+                )}
+              </div>
+            </div>
+
             {project.link && (
                 <a 
                   href={project.link} 
@@ -95,11 +180,11 @@ const ProjectCard: React.FC<{
 const Projects: React.FC = () => {
   const categories: (ProjectCategory | 'All')[] = [
     'All',
-    'QA & Systems Engineering',
-    'AI / LLM / NLP Systems',
-    'Machine Learning Systems',
-    'Backend & API Development',
-    'Data Analytics & Business Intelligence'
+    'AI',
+    'Machine Learning',
+    'Data Analytics',
+    'Backend',
+    'QA'
   ];
 
   const [activeCategory, setActiveCategory] = useState<ProjectCategory | 'All'>('All');
@@ -111,11 +196,11 @@ const Projects: React.FC = () => {
   
   const getCategoryIcon = (cat: string) => {
     switch (cat) {
-      case 'AI / LLM / NLP Systems': return <Brain className="w-4 h-4" />;
-      case 'Machine Learning Systems': return <Network className="w-4 h-4" />;
-      case 'Backend & API Development': return <Server className="w-4 h-4" />;
-      case 'Data Analytics & Business Intelligence': return <Database className="w-4 h-4" />;
-      case 'QA & Systems Engineering': return <ShieldCheck className="w-4 h-4" />;
+      case 'AI': return <Brain className="w-4 h-4" />;
+      case 'Machine Learning': return <Network className="w-4 h-4" />;
+      case 'Backend': return <Server className="w-4 h-4" />;
+      case 'Data Analytics': return <Database className="w-4 h-4" />;
+      case 'QA': return <ShieldCheck className="w-4 h-4" />;
       default: return <Code className="w-4 h-4" />;
     }
   };
@@ -143,7 +228,7 @@ const Projects: React.FC = () => {
                             : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
                         }`}
                     >
-                        {cat === 'All' ? 'View All' : cat.split(' ')[0]}
+                        {cat === 'All' ? 'View All' : cat}
                     </button>
                     ))}
                 </div>
