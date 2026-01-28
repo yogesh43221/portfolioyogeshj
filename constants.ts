@@ -92,11 +92,12 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 5,
-    title: "Brainlox Chatbot API",
+    title: "Brainlox AI Knowledge Assistant (RAG-based Chatbot API)",
     description: "A RESTful chatbot API built to answer student course-related queries using Flask and NLP preprocessing.",
     techStack: ["Python", "Flask", "NLP", "JSON"],
-    category: "Backend",
+    category: "AI",
     github: "https://github.com/yogesh43221/FlaskProjects/tree/main/BrainloxChatbot-API",
+    link: "https://brainloxchatbot-api-274691259241.asia-south1.run.app/",
     image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=600",
     featured: true,
     extendedDetails: {
@@ -112,6 +113,7 @@ export const PROJECTS: Project[] = [
     techStack: ["Python", "LangChain", "FAISS", "Hugging Face"],
     category: "AI",
     github: "https://github.com/yogesh43221/Vidhya-Vision",
+    link: "https://huggingface.co/spaces/yogeshjadhav666/Vidhya_Vision",
     image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&q=80&w=600",
     featured: true,
     extendedDetails: {
@@ -174,7 +176,7 @@ export const PROJECTS: Project[] = [
     title: "Radiology Report Management System",
     description: "Production-grade healthcare app built to practice Gray-Box testing and identify SDLC defects early.",
     techStack: ["FastAPI", "React.js", "PostgreSQL", "Docker", "Gray Box Testing"],
-    category: "QA",
+    category: "Backend",
     github: "https://github.com/yogesh43221",
     image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=600",
     featured: true,
