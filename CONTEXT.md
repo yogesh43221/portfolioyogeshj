@@ -25,7 +25,8 @@
 - [x] Milestone 6: Execute local verification and initial push (`e7523c6`).
 - [x] Milestone 7: Add QA resume PDF to `public/` and push (`b636e69`).
 - [x] Milestone 8: Investigate and resolve Vercel runtime `ERR_MODULE_NOT_FOUND` in `api/chat.ts` by making it self-contained (`892ddec`).
-- [x] Milestone 9: Implement safe server-side diagnostic logging (categorizing missing key, empty response, auth, quota, 404 model, and timeouts) and increase internal timeout to 8.5s.
+- [x] Milestone 9: Implement safe server-side diagnostic logging (categorizing missing key, empty response, auth, quota, 404 model, and timeouts) and increase internal timeout to 8.5s (`9257419`).
+- [x] Milestone 10: Implement transient HTTP 503 single retry with time-guard, greeting vs unknown question distinction, education/certifications matchers, and 15-case test suite.
 
 ## 3. Technology Stack & Component Architecture
 - **Frontend Framework:** React 18, TypeScript, Vite 5, TailwindCSS 3, Lucide React

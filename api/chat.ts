@@ -234,10 +234,17 @@ let quotaExhaustedUntil = 0;
  * Clearly labels output as coming from the verified portfolio records.
  */
 export function getGroundedPortfolioReply(message: string): string {
-  const lower = message.toLowerCase();
+  const lower = message.toLowerCase().trim();
   const label = "[Verified Portfolio Knowledge Base]\n\n";
 
-  // 1. Matched Project
+  // 1. Greetings (explicit greeting words or introductions)
+  const greetingWords = ['hi', 'hello', 'hey', 'greetings', 'who are you', 'introduce yourself', 'what can you do', 'good morning', 'good afternoon', 'good evening'];
+  const isGreeting = greetingWords.some(g => lower === g || lower.startsWith(g + ' ') || lower.startsWith(g + '!') || lower.startsWith(g + ',') || lower.startsWith(g + '.'));
+  if (isGreeting) {
+    return `${label}Hello! I am ${PROFILE.name}'s digital twin. I specialize in QA automation with Playwright, Python backend development with FastAPI, and SQL data integrity. Feel free to ask about any specific project (such as OrbitDesk, Radiology Report Labeling, or Vidhya Vision), work experience at Hub9 Software, research publications, or education!`;
+  }
+
+  // 2. Matched Project
   const matchedProject = PROJECTS.find(p => 
     lower.includes(p.title.toLowerCase()) || 
     p.title.toLowerCase().split(/[\s—:-]+/).some(w => w.length > 4 && lower.includes(w))
@@ -256,33 +263,139 @@ export function getGroundedPortfolioReply(message: string): string {
     return reply;
   }
 
-  // 2. Research / Publications
+  // 3. Research / Publications
   if (lower.includes('research') || lower.includes('publication') || lower.includes('paper') || lower.includes('ieee') || lower.includes('springer') || lower.includes('tinyml') || lower.includes('fall detection')) {
     return `${label}Yogesh has co-authored two peer-reviewed research publications:\n\n1. **Fall Detection Using HOG Feature Extraction and Adaptive Boosting Technique** (IEEE, 2023) — Evaluated HOG feature descriptors and AdaBoost classifiers for fall event classification.\n\n2. **Classroom Activity Detection Using TinyML** (Springer Nature, 2025) — Implemented low-power TinyML models on resource-constrained embedded edge devices for ambient activity recognition.`;
   }
 
-  // 3. Hub9 Experience & QA Testing
+  // 4. Hub9 Experience & QA Testing
   if (lower.includes('hub9') || lower.includes('experience') || lower.includes('playwright') || lower.includes('qa') || lower.includes('intern') || lower.includes('postman')) {
     return `${label}At **Hub9 Software** (Jan 2025 – Oct 2025), Yogesh served as a Software Development Intern focused on QA Automation & Backend APIs. Key contributions:\n\n• Engineered automated end-to-end test flows with **Playwright** across Chromium, Firefox, and WebKit for clinical workflows.\n• Validated REST API endpoint payloads, status codes, and error bounds using **Postman**.\n• Contributed to **FastAPI** backend routing and formulated structured **PostgreSQL** queries.\n• Maintained bug reports and regression plans in Jira and Confluence.`;
   }
 
-  // 4. Core Tech Stack / Skills
+  // 5. Core Tech Stack / Skills
   if (lower.includes('stack') || lower.includes('skill') || lower.includes('tool') || lower.includes('python') || lower.includes('sql') || lower.includes('fastapi') || lower.includes('pytest')) {
     return `${label}Yogesh's core engineering toolkit covers:\n\n• **QA Automation & Testing**: Playwright, Pytest, Postman, API Validation, E2E Regression Testing.\n• **Backend & APIs**: Python, FastAPI, RESTful APIs, PostgreSQL, SQL, Docker.\n• **AI / LLM & Search**: LangChain, FAISS, Hugging Face, Transformers, Vector Search.\n• **Data & Analytics**: Pandas, NumPy, Power BI, SQL Query Formulation.`;
   }
 
-  // 5. Quality Manifesto / Principles
+  // 6. Education & Academics (verified in constants)
+  if (lower.includes('education') || lower.includes('degree') || lower.includes('college') || lower.includes('university') || lower.includes('b.tech') || lower.includes('mit') || lower.includes('academic') || lower.includes('study')) {
+    return `${label}Yogesh holds a **B.Tech in Electronics & Telecommunication** with a minor in **AI & Machine Learning** from **MIT Academy of Engineering, Alandi** (2020 – 2024). He was also an active member of the Robotics Club (DD-Robocon).`;
+  }
+
+  // 7. Certifications & Achievements (verified in constants)
+  if (lower.includes('certificate') || lower.includes('certification') || lower.includes('achievement') || lower.includes('hackerrank') || lower.includes('nptel') || lower.includes('amazon ml') || lower.includes('robocon')) {
+    return `${label}Key verified certifications and achievements:\n\n• **HackerRank**: SQL (Advanced) — Feb 2025\n• **NPTEL / IIT Kharagpur**: Cloud Computing — Jul 2023\n• **Microsoft & LinkedIn**: Career Essentials in Generative AI & Data Analysis — Dec 2024\n• **Amazon ML Summer School 2023**: Mentorship on Large-Scale Machine Learning\n• **DD-ROBOCON 2022**: National Level Robotics Competition held at IIT Delhi`;
+  }
+
+  // 8. Quality Manifesto / Principles
   if (lower.includes('manifesto') || lower.includes('why hire') || lower.includes('quality') || lower.includes('philosophy') || lower.includes('flakiness')) {
     return `${label}Yogesh's engineering philosophy is founded on three core tenets:\n\n1. **Flakiness is a Defect**: Automated suites must produce deterministic, reproducible outcomes across Chromium, Firefox, and WebKit.\n2. **API-First Contracts**: FastAPI schema validations and Pydantic models catch regressions before they reach frontend interfaces.\n3. **Shift-Left Quality**: Testing continuously in CI/CD pipelines eliminates defects during development rather than post-release.`;
   }
 
-  // 6. Contact & Bio
-  if (lower.includes('contact') || lower.includes('email') || lower.includes('hire') || lower.includes('resume') || lower.includes('reach') || lower.includes('linkedin') || lower.includes('github')) {
+  // 9. Contact & Bio / Resume
+  if (lower.includes('contact') || lower.includes('email') || lower.includes('hire') || lower.includes('resume') || lower.includes('reach') || lower.includes('linkedin') || lower.includes('github') || lower.includes('phone') || lower.includes('location')) {
     return `${label}You can reach Yogesh directly via email at **${PROFILE.email}**, connect on LinkedIn (${PROFILE.linkedin}), or check out his code repositories on GitHub (${PROFILE.github}). You can also download his resume using the button in the hero section!`;
   }
 
-  // 7. Default verified summary
-  return `${label}Hello! I am ${PROFILE.name}'s digital twin. I specialize in QA automation with Playwright, Python backend development with FastAPI, and SQL data integrity. Feel free to ask about any specific project (such as OrbitDesk, Radiology Report Labeling, or Vidhya Vision) or explore the engineering dossiers above!`;
+  // 10. Unknown / Unanswered Question Fallback
+  return `${label}I do not have verified information in Yogesh's portfolio regarding that specific question.\n\nAs his grounded portfolio assistant, I can verify and answer questions about:\n• **QA Automation**: Playwright, Pytest, E2E testing, API testing.\n• **Backend & APIs**: Python, FastAPI, PostgreSQL, SQL data queries, Docker.\n• **Featured Projects**: OrbitDesk Support Agent, Radiology Report Labeling, Booking Analytics RAG, and more.\n• **Experience**: Software Development Intern at Hub9 Software.\n• **Education & Research**: MIT Academy of Engineering (B.Tech) and IEEE/Springer publications.\n\nPlease feel free to ask about any of these topics!`;
+}
+
+interface GenerateContentParams {
+  model: string;
+  contents: any[];
+  config: {
+    systemInstruction: string;
+    temperature: number;
+    maxOutputTokens: number;
+  };
+}
+
+export interface GeminiClientLike {
+  models: {
+    generateContent: (params: GenerateContentParams) => Promise<{ text?: string | null }>;
+  };
+}
+
+/**
+ * Executes a Gemini chat generation request with at most ONE retry for transient 503 / UNAVAILABLE errors.
+ * Rejects immediately without retry for permanent errors (400, 401, 403, 404, 429) and timeouts.
+ */
+export async function executeChatGeneration(
+  ai: GeminiClientLike,
+  modelName: string,
+  contents: any[],
+  detailedInstruction: string,
+  totalTimeoutMs: number = 8500
+): Promise<{ text?: string | null; attempts: number }> {
+  const startTime = Date.now();
+  let attempts = 0;
+
+  while (attempts < 2) {
+    attempts++;
+    const elapsed = Date.now() - startTime;
+    const remainingTime = totalTimeoutMs - elapsed;
+
+    if (remainingTime <= 1000) {
+      throw new Error('timeout');
+    }
+
+    let timeoutId: NodeJS.Timeout | null = null;
+    const timeoutPromise = new Promise<never>((_, reject) => {
+      timeoutId = setTimeout(() => reject(new Error('timeout')), remainingTime);
+    });
+
+    try {
+      if (attempts === 1) {
+        console.log('[api/chat] Initiating Gemini generateContent request with model:', modelName);
+      } else {
+        console.warn(`[api/chat] Transient 503 received on attempt 1. Attempting retry #2 with ${remainingTime}ms remaining budget...`);
+      }
+
+      const response = await Promise.race([
+        ai.models.generateContent({
+          model: modelName,
+          contents,
+          config: {
+            systemInstruction: detailedInstruction,
+            temperature: 0.7,
+            maxOutputTokens: 500,
+          },
+        }),
+        timeoutPromise,
+      ]);
+
+      if (timeoutId) clearTimeout(timeoutId);
+      return { text: response.text, attempts };
+    } catch (err: any) {
+      if (timeoutId) clearTimeout(timeoutId);
+
+      const errStr = String(err?.message || err || '');
+      const errStatus = err?.status || err?.statusCode || err?.code;
+      const isTransient503 = (
+        errStatus === 503 ||
+        errStr.includes('503') ||
+        errStr.includes('UNAVAILABLE') ||
+        errStr.includes('high demand')
+      );
+
+      const elapsedSoFar = Date.now() - startTime;
+      const timeRemaining = totalTimeoutMs - elapsedSoFar;
+
+      // Only retry if transient 503, on attempt 1, and first attempt failed quickly with > 3000ms left
+      if (attempts === 1 && isTransient503 && elapsedSoFar < 3500 && timeRemaining > 3000) {
+        console.warn('[api/chat] Transient 503/UNAVAILABLE encountered on attempt 1. Waiting 400ms backoff before retry...');
+        await new Promise(res => setTimeout(res, 400));
+        continue;
+      }
+
+      // Do not retry: permanent error, timeout, or budget exhausted
+      throw err;
+    }
+  }
+
+  throw new Error('timeout');
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse): Promise<void> {
@@ -353,44 +466,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
       parts: [{ text: message }],
     });
 
-    let timeoutId: NodeJS.Timeout | null = null;
-    const timeoutPromise = new Promise<never>((_, reject) => {
-      timeoutId = setTimeout(() => reject(new Error('timeout')), TIMEOUT_MS);
-    });
+    const result = await executeChatGeneration(ai, modelName, contents, DETAILED_INSTRUCTION, TIMEOUT_MS);
 
-    try {
-      console.log('[api/chat] Initiating Gemini generateContent request with model:', modelName);
-
-      const response = await Promise.race([
-        ai.models.generateContent({
-          model: modelName,
-          contents,
-          config: {
-            systemInstruction: DETAILED_INSTRUCTION,
-            temperature: 0.7,
-            maxOutputTokens: 500,
-          },
-        }),
-        timeoutPromise,
-      ]);
-
-      if (timeoutId) clearTimeout(timeoutId);
-
-      if (response.text) {
-        console.log('[api/chat] Success: Live Gemini response generated successfully from model:', modelName);
-      } else {
-        console.warn('[api/chat] Fallback: Gemini request succeeded but returned empty text output.');
-      }
-
-      const reply = response.text || getGroundedPortfolioReply(message);
-      res.status(200).json({
-        reply,
-        source: response.text ? 'live_gemini' : 'grounded_knowledge_base'
-      });
-      return;
-    } finally {
-      if (timeoutId) clearTimeout(timeoutId);
+    if (result.text) {
+      console.log(`[api/chat] Success: Live Gemini response generated from model '${modelName}' (attempts: ${result.attempts}).`);
+    } else {
+      console.warn('[api/chat] Fallback: Gemini request succeeded but returned empty text output.');
     }
+
+    const reply = result.text || getGroundedPortfolioReply(message);
+    res.status(200).json({
+      reply,
+      source: result.text ? 'live_gemini' : 'grounded_knowledge_base'
+    });
+    return;
   } catch (err: any) {
     const errStr = String(err?.message || err || '');
     const errStatus = err?.status || err?.statusCode || err?.code;
@@ -404,8 +493,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
       console.error('[api/chat] Fallback: Gemini authentication or permission error. Status:', errStatus || 'unauthorized');
     } else if (errStatus === 404 || errStr.includes('not found') || errStr.includes('NOT_FOUND')) {
       console.error(`[api/chat] Fallback: Model '${modelName}' not found or unsupported for generateContent (HTTP 404).`);
+    } else if (errStatus === 503 || errStr.includes('503') || errStr.includes('UNAVAILABLE')) {
+      console.warn('[api/chat] Fallback: Gemini service unavailable / capacity exhausted (HTTP 503).');
     } else {
-      console.error('[api/chat] Fallback: Gemini request failed with unexpected error:', {
+      console.error('[api/chat] Fallback: Gemini request failed with error:', {
         name: err?.name || 'Error',
         status: errStatus,
         message: err?.message || 'Unknown error'
