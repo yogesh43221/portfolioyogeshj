@@ -2,7 +2,10 @@
 export default {
   content: [
     "./index.html",
-    "./**/*.{js,ts,jsx,tsx}",
+    "./*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./services/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   darkMode: 'class',
   theme: {
@@ -12,6 +15,20 @@ export default {
         mono: ['JetBrains Mono', 'monospace'],
       },
       colors: {
+        paper: {
+          50: '#FAF7F2',
+          100: '#F5EFE6',
+          200: '#EAE1D5',
+          border: 'rgba(217, 119, 6, 0.15)',
+        },
+        blueprint: {
+          950: '#0B0D12',
+          900: '#0E1117',
+          850: '#141822',
+          800: '#1A202C',
+          700: '#2A3346',
+          border: 'rgba(148, 163, 184, 0.15)',
+        },
         midnight: {
           950: '#0B0D12',
           900: '#111319', // Dark mode base

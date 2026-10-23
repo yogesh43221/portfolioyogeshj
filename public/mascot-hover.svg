@@ -1,0 +1,51 @@
+<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="shadow-hover" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0B0D12" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#0B0D12" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="skin-hover" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#DF9F6D" />
+      <stop offset="100%" stop-color="#C88452" />
+    </linearGradient>
+    <linearGradient id="shirt-hover" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="hair-hover" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2D2B38" />
+      <stop offset="100%" stop-color="#15141B" />
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="60" cy="115" rx="34" ry="4.5" fill="url(#shadow-hover)" />
+
+  <g id="mascot-hover" transform="translate(2, -2) rotate(3 60 60)">
+    <path d="M33 112 C34 91 42 81 53 80 L73 81 C82 83 88 93 88 112 Z" fill="url(#shirt-hover)" stroke="#0B0F17" stroke-width="2.5" stroke-linejoin="round" />
+    <path d="M55 81 C57 87 69 87 71 81" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" />
+    <path d="M35 85 C24 92 23 100 28 106 C32 109 37 106 37 101 C37 95 41 90 46 86" fill="#C88452" stroke="#0B0F17" stroke-width="2.2" stroke-linejoin="round" />
+    <path d="M84 84 C94 82 103 76 109 70 C112 67 114 70 112 73 C107 81 97 91 85 93 Z" fill="#C88452" stroke="#0B0F17" stroke-width="2.2" stroke-linejoin="round" />
+    <circle cx="111" cy="70" r="3.8" fill="#DF9F6D" stroke="#0B0F17" stroke-width="2" />
+    <path d="M112 68 L117 67" stroke="#0B0F17" stroke-width="2" stroke-linecap="round" />
+    <rect x="56" y="71" width="12" height="11" rx="4" fill="#C88452" stroke="#0B0F17" stroke-width="2" />
+    <circle cx="36" cy="53" r="5" fill="#DF9F6D" stroke="#0B0F17" stroke-width="2" />
+    <circle cx="88" cy="53" r="5" fill="#DF9F6D" stroke="#0B0F17" stroke-width="2" />
+    <path d="M38 49 C38 33 48 24 62 24 C76 24 86 33 86 49 C86 65 75 74 62 74 C49 74 38 65 38 49 Z" fill="url(#skin-hover)" stroke="#0B0F17" stroke-width="2.5" stroke-linejoin="round" />
+    <path d="M36 46 C35 33 42 19 56 17 C67 15 80 18 86 26 C91 32 89 42 88 46 C85 39 81 37 74 37 C65 37 60 39 52 35 C46 32 41 39 36 46 Z" fill="url(#hair-hover)" stroke="#0B0F17" stroke-width="2.2" stroke-linejoin="round" />
+    <path d="M47 42 C50 39 55 40 57 43" fill="none" stroke="#15141B" stroke-width="2.2" stroke-linecap="round" />
+    <path d="M67 42 C69 39 74 40 76 43" fill="none" stroke="#15141B" stroke-width="2.2" stroke-linecap="round" />
+    <ellipse cx="52" cy="49" rx="4.2" ry="4.5" fill="#0B0F17" />
+    <circle cx="50.5" cy="47.5" r="1.6" fill="#FFFFFF" />
+    <circle cx="53.5" cy="50.5" r="0.8" fill="#FFFFFF" />
+    <ellipse cx="72" cy="49" rx="4.2" ry="4.5" fill="#0B0F17" />
+    <circle cx="70.5" cy="47.5" r="1.6" fill="#FFFFFF" />
+    <circle cx="73.5" cy="50.5" r="0.8" fill="#FFFFFF" />
+    <circle cx="45" cy="55" r="4" fill="#F43F5E" fill-opacity="0.4" />
+    <circle cx="79" cy="55" r="4" fill="#F43F5E" fill-opacity="0.4" />
+    <path d="M61 49 C62 52 64 53 62 54" fill="none" stroke="#A7673A" stroke-width="1.8" stroke-linecap="round" />
+    <path d="M52 58 C52 66 71 66 71 58 Z" fill="#B91C1C" stroke="#0B0F17" stroke-width="2" stroke-linejoin="round" />
+    <path d="M54 58 C57 60 66 60 69 58" fill="#FFFFFF" />
+    <path d="M57 63 C60 61 64 61 66 63 C65 65 58 65 57 63 Z" fill="#F87171" />
+    <path d="M109 52 L111 57 L116 59 L111 61 L109 66 L107 61 L102 59 L107 57 Z" fill="#FBBF24" opacity="0.9" />
+  </g>
+</svg>

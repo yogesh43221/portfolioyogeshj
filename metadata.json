@@ -1,5 +1,6 @@
 {
-  "name": "Yogesh Jadhav | Data Engineer & ML Researcher",
-  "description": "Portfolio of Yogesh Jadhav - Data Engineer and Machine Learning enthusiast specializing in ETL pipelines, predictive modeling, and AI solutions.",
-  "requestFramePermissions": []
+  "name": "Yogesh Jadhav | QA Automation / Software Engineer",
+  "description": "Portfolio of Yogesh Jadhav, an early-career QA Automation / Software Engineer specializing in Python, Playwright, API Testing, SQL, and FastAPI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

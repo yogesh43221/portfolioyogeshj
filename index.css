@@ -36,21 +36,21 @@
 @layer components {
   /* Unified Surface System */
   .glass-card {
-    @apply bg-white dark:bg-midnight-800 border border-slate-200 dark:border-midnight-700/50 transition-all duration-150 rounded-3xl;
+    @apply bg-white dark:bg-midnight-900 border border-slate-200 dark:border-midnight-700 transition-all duration-200 rounded-2xl shadow-sm;
   }
   
   /* Unified Button System */
   .btn-primary {
-    @apply inline-flex items-center justify-center px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-midnight-950 font-black rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-150 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-midnight-950 font-bold text-sm rounded-xl hover:bg-slate-800 dark:hover:bg-slate-100 active:scale-[0.98] transition-all duration-150 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-horizon-sky disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px];
   }
   
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-slate-200 dark:border-midnight-700 text-slate-600 dark:text-slate-300 font-black rounded-xl hover:border-horizon-sky dark:hover:border-horizon-sky transition-all duration-150;
+    @apply inline-flex items-center justify-center px-6 py-3 bg-white dark:bg-midnight-900 border border-slate-300 dark:border-midnight-700 text-slate-700 dark:text-slate-300 font-bold text-sm rounded-xl hover:bg-slate-50 dark:hover:bg-midnight-800 hover:text-slate-900 dark:hover:text-white transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-horizon-sky min-h-[44px];
   }
 
   /* Unified Form System - Enhanced for visibility and accessibility */
   .input-field {
-    @apply w-full px-6 py-5 bg-slate-100/50 dark:bg-midnight-950/40 border border-slate-300 dark:border-midnight-700 rounded-2xl text-[16px] text-slate-900 dark:text-white outline-none font-sans font-semibold transition-all duration-150 placeholder:text-slate-500 dark:placeholder:text-slate-400 focus:bg-white dark:focus:bg-midnight-950 focus:border-horizon-sky focus:ring-4 focus:ring-horizon-sky/10 shadow-sm;
+    @apply w-full px-4 py-3 bg-slate-50 dark:bg-midnight-900 border border-slate-300 dark:border-midnight-700 rounded-xl text-base text-slate-900 dark:text-white outline-none font-sans font-medium transition-all duration-150 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-midnight-950 focus:border-horizon-sky focus:ring-2 focus:ring-horizon-sky/20 shadow-sm;
   }
 }
 
@@ -92,17 +92,42 @@
   }
 }
 
-/* Scrollbar System */
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #0B0D12; }
-::-webkit-scrollbar-thumb {
-  background: #1D1F2C; 
-  border-radius: 5px;
-  border: 2px solid #0B0D12;
+/* Scrollbar System - Theme synchronized */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
-::-webkit-scrollbar-thumb:hover { background: #3D7EAE; }
-html:not(.dark) ::-webkit-scrollbar-track { background: #F3FDFF; }
-html:not(.dark) ::-webkit-scrollbar-thumb {
-  background: #AACADF;
-  border: 2px solid #F3FDFF;
+::-webkit-scrollbar-track {
+  background: #F4EFE6;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8CEBF;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #BAAC99;
+}
+
+html.dark ::-webkit-scrollbar-track,
+.dark ::-webkit-scrollbar-track {
+  background: #0E1117;
+}
+html.dark ::-webkit-scrollbar-thumb,
+.dark ::-webkit-scrollbar-thumb {
+  background: #242938;
+  border-radius: 4px;
+}
+html.dark ::-webkit-scrollbar-thumb:hover,
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3B82F6;
+}
+
+/* Dedicated component scrollbar utility */
+.workstation-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #D8CEBF #F4EFE6;
+}
+html.dark .workstation-scrollbar,
+.dark .workstation-scrollbar {
+  scrollbar-color: #242938 #0E1117;
 }

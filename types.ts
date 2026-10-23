@@ -1,11 +1,11 @@
 import React from 'react';
 
 export type ProjectCategory = 
-  | 'AI' 
-  | 'Machine Learning' 
-  | 'Data Analytics' 
-  | 'Backend' 
-  | 'QA';
+  | 'QA Automation' 
+  | 'Backend / API' 
+  | 'AI / LLM' 
+  | 'Data / Analytics'
+  | 'Machine Learning';
 
 export interface Project {
   id: number;
@@ -19,12 +19,15 @@ export interface Project {
   impact?: string; 
   tags?: string[]; 
   featured?: boolean;
+  deployed?: boolean;
   extendedDetails?: {
     problem: string;
     solution: string;
-    results: string;
+    results?: string;
     architecture?: string;
-    contributions?: string[]; // Added for specific contribution bullets
+    contributions?: string[];
+    testing?: string;
+    limitations?: string;
   };
 }
 
@@ -56,6 +59,7 @@ export interface Publication {
   year: string;
   summary: string;
   link: string;
+  doi?: string;
 }
 
 export interface Certification {
@@ -74,18 +78,18 @@ export interface Achievement {
 }
 
 export type SkillCategory = 
-  | 'AI & LLMs'
-  | 'Machine Learning'
-  | 'Data Analysis'
-  | 'Backend & APIs'
-  | 'Tools & Platforms';
+  | 'QA & Automation'
+  | 'Programming & Backend'
+  | 'AI / ML / LLM'
+  | 'Data & Analytics'
+  | 'Tools & Infrastructure';
 
 export interface Skill {
   name: string;
-  level: number; // 0-100
-  icon: string;
   category: SkillCategory;
-  context?: string; 
+  context?: string;
+  level?: number;
+  icon?: string;
 }
 
 export interface ChatMessage {
@@ -98,5 +102,4 @@ export interface ChatMessage {
 export interface SocialLink {
   platform: string;
   url: string;
-  icon: React.ComponentType<any>;
 }

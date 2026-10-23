@@ -1,0 +1,46 @@
+<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="shadow-idle" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0B0D12" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#0B0D12" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="skin-idle" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#DF9F6D" />
+      <stop offset="100%" stop-color="#C88452" />
+    </linearGradient>
+    <linearGradient id="shirt-idle" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="hair-idle" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2D2B38" />
+      <stop offset="100%" stop-color="#15141B" />
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="60" cy="115" rx="34" ry="4.5" fill="url(#shadow-idle)" />
+
+  <g id="mascot-idle">
+    <path d="M34 112 C34 92 40 82 50 81 L70 81 C80 82 86 92 86 112 Z" fill="url(#shirt-idle)" stroke="#0B0F17" stroke-width="2.5" stroke-linejoin="round" />
+    <path d="M52 81 C54 87 66 87 68 81" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" />
+    <path d="M36 86 C28 92 26 101 29 108 C31 112 36 111 38 107 C38 99 41 93 45 88" fill="#C88452" stroke="#0B0F17" stroke-width="2.2" stroke-linejoin="round" />
+    <path d="M84 86 C92 92 94 101 91 108 C89 112 84 111 82 107 C82 99 79 93 75 88" fill="#C88452" stroke="#0B0F17" stroke-width="2.2" stroke-linejoin="round" />
+    <rect x="54" y="72" width="12" height="11" rx="4" fill="#C88452" stroke="#0B0F17" stroke-width="2" />
+    <circle cx="34" cy="54" r="5" fill="#DF9F6D" stroke="#0B0F17" stroke-width="2" />
+    <path d="M33 52 C35 53 35 55 33 56" fill="none" stroke="#C88452" stroke-width="1.5" stroke-linecap="round" />
+    <circle cx="86" cy="54" r="5" fill="#DF9F6D" stroke="#0B0F17" stroke-width="2" />
+    <path d="M87 52 C85 53 85 55 87 56" fill="none" stroke="#C88452" stroke-width="1.5" stroke-linecap="round" />
+    <path d="M36 50 C36 34 46 25 60 25 C74 25 84 34 84 50 C84 66 73 75 60 75 C47 75 36 66 36 50 Z" fill="url(#skin-idle)" stroke="#0B0F17" stroke-width="2.5" stroke-linejoin="round" />
+    <path d="M34 47 C33 34 40 20 54 18 C65 16 78 19 84 27 C89 33 87 43 86 47 C83 40 79 38 72 38 C63 38 58 40 50 36 C44 33 39 40 34 47 Z" fill="url(#hair-idle)" stroke="#0B0F17" stroke-width="2.2" stroke-linejoin="round" />
+    <path d="M46 45 C48 43 53 43 55 45" fill="none" stroke="#15141B" stroke-width="2" stroke-linecap="round" />
+    <path d="M65 45 C67 43 72 43 74 45" fill="none" stroke="#15141B" stroke-width="2" stroke-linecap="round" />
+    <ellipse cx="50" cy="51" rx="3.5" ry="4" fill="#0B0F17" />
+    <circle cx="49" cy="49.5" r="1.3" fill="#FFFFFF" />
+    <ellipse cx="70" cy="51" rx="3.5" ry="4" fill="#0B0F17" />
+    <circle cx="69" cy="49.5" r="1.3" fill="#FFFFFF" />
+    <circle cx="44" cy="57" r="3.2" fill="#E86C60" fill-opacity="0.35" />
+    <circle cx="76" cy="57" r="3.2" fill="#E86C60" fill-opacity="0.35" />
+    <path d="M59 51 C60 54 62 55 60 56" fill="none" stroke="#A7673A" stroke-width="1.8" stroke-linecap="round" />
+    <path d="M53 60 C56 65 64 65 67 60" fill="#FFFFFF" stroke="#0B0F17" stroke-width="2" stroke-linecap="round" />
+  </g>
+</svg>

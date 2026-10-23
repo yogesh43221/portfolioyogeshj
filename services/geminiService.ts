@@ -1,38 +1,26 @@
-import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
-import { SYSTEM_INSTRUCTION } from "../constants";
+import { ChatMessage } from "../types";
 
-// Declare process to avoid TypeScript errors when @types/node is not installed
-declare const process: any;
-
-let chatSession: Chat | null = null;
-
-const getChatSession = (): Chat => {
-  if (chatSession) return chatSession;
-
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-  
-  // Upgraded to Pro for researcher-level logic and complex reasoning
-  chatSession = ai.chats.create({
-    model: 'gemini-3-pro-preview',
-    config: {
-      systemInstruction: SYSTEM_INSTRUCTION,
-      temperature: 0.7,
-      thinkingConfig: {
-        thinkingBudget: 2000 // Subtle reasoning boost for technical queries
-      }
-    },
-  });
-
-  return chatSession;
-};
-
-export const sendMessageToGemini = async (message: string): Promise<string> => {
+export const sendMessageToGemini = async (message: string, history: ChatMessage[]): Promise<string> => {
   try {
-    const chat = getChatSession();
-    const response: GenerateContentResponse = await chat.sendMessage({ message });
-    return response.text || "I'm having trouble thinking right now. Please try again.";
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message,
+        history,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Server returned ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.reply ?? "I'm having trouble retrieving that data right now. Please try again.";
   } catch (error) {
-    console.error("Gemini API Error:", error);
-    return "Connection error. Please check your network or API configuration.";
+    console.warn("Gemini Assistant Service:", error);
+    return "I encountered a temporary connection issue. You can explore the verified project dossiers and interactive terminal directly!";
   }
 };

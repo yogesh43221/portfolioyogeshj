@@ -1,35 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark scroll-pt-20">
+<html lang="en" class="scroll-smooth scroll-pt-24">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('theme');
+          if (saved === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
     
     <!-- Primary Meta Tags -->
-    <title>Yogesh Jadhav | Software Engineer | Data Analyst | QA Automation</title>
-    <meta name="title" content="Yogesh Jadhav | Software Engineer | Data Analyst | QA Automation">
-    <meta name="description" content="Explore the portfolio of Yogesh Jadhav, a multi-disciplinary engineer specializing in Backend Engineering (FastAPI), Data Logic (SQL), and QA Automation (Playwright). Bridging dev and quality.">
+    <title>Yogesh Jadhav | QA Automation / Software Engineer</title>
+    <meta name="title" content="Yogesh Jadhav | QA Automation / Software Engineer">
+    <meta name="description" content="Portfolio of Yogesh Jadhav, an early-career QA Automation / Software Engineer specializing in Python, Playwright, API Testing, SQL, and FastAPI.">
     <meta name="author" content="Yogesh Jadhav">
-    <meta name="keywords" content="Yogesh Jadhav, Software Engineer, Data Analyst, QA Automation, FastAPI, SQL, Playwright, Python, Hub9, Portfolio, Pune Engineer">
+    <meta name="keywords" content="Yogesh Jadhav, QA Automation, Software Engineer, Playwright, Python, API Testing, SQL, FastAPI, Portfolio, Pune">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://yogesh-portfolio.vercel.app/">
+    <link rel="canonical" href="https://portfolioyogeshj.vercel.app/">
 
     <!-- Favicon (Generated SVG for "YJ") -->
     <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="20" fill="%230f172a"/><text x="50" y="65" font-family="monospace" font-weight="bold" font-size="50" fill="%23f8fafc" text-anchor="middle">YJ</text></svg>' />
 
     <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yogesh-portfolio.vercel.app/">
+    <meta property="og:url" content="https://portfolioyogeshj.vercel.app/">
     <meta property="og:site_name" content="Yogesh Jadhav Portfolio">
-    <meta property="og:title" content="Yogesh Jadhav | Software Engineer | Data Analyst | QA Automation">
-    <meta property="og:description" content="I bridge the gap between development and quality. Building systems that are robust, scalable, and data-driven. Check out my projects in QA, Backend, and Data Analytics.">
-    <meta property="og:image" content="https://yogesh-portfolio.vercel.app/og-image.png">
+    <meta property="og:title" content="Yogesh Jadhav | QA Automation / Software Engineer">
+    <meta property="og:description" content="Portfolio of Yogesh Jadhav - QA Automation / Software Engineer. Practical experience in Python, Playwright, API Testing, SQL, and FastAPI.">
+    <meta property="og:image" content="https://portfolioyogeshj.vercel.app/profile.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://yogesh-portfolio.vercel.app/">
-    <meta property="twitter:title" content="Yogesh Jadhav | Software Engineer | Data Analyst | QA Automation">
-    <meta property="twitter:description" content="I bridge the gap between development and quality. Building systems that are robust, scalable, and data-driven. Check out my projects in QA, Backend, and Data Analytics.">
-    <meta property="twitter:image" content="https://yogesh-portfolio.vercel.app/og-image.png">
+    <meta property="twitter:url" content="https://portfolioyogeshj.vercel.app/">
+    <meta property="twitter:title" content="Yogesh Jadhav | QA Automation / Software Engineer">
+    <meta property="twitter:description" content="Portfolio of Yogesh Jadhav - QA Automation / Software Engineer. Practical experience in Python, Playwright, API Testing, SQL, and FastAPI.">
+    <meta property="twitter:image" content="https://portfolioyogeshj.vercel.app/profile.jpg">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -40,8 +52,8 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Yogesh Jadhav",
-      "url": "https://yogesh-portfolio.vercel.app",
-      "jobTitle": "Software Engineer & QA Automation Expert",
+      "url": "https://portfolioyogeshj.vercel.app",
+      "jobTitle": "QA Automation / Software Engineer",
       "alumniOf": "MIT Academy of Engineering, Alandi",
       "sameAs": [
         "https://github.com/yogesh43221",
@@ -50,22 +62,8 @@
       "knowsAbout": ["Software Engineering", "QA Automation", "Data Analysis", "Python", "FastAPI", "SQL", "Playwright", "Docker"]
     }
     </script>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
-    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
-    "vite": "https://esm.sh/vite@^7.3.0",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
-    "@emailjs/browser": "https://esm.sh/@emailjs/browser@^4.4.1"
-  }
-}
-</script>
-</head>
-  <body class="bg-slate-50 text-slate-900 dark:bg-cyber-900 dark:text-slate-300 antialiased transition-colors duration-300">
+  </head>
+  <body class="bg-[#FAF7F2] text-slate-800 dark:bg-[#0E1117] dark:text-slate-200 antialiased transition-colors duration-150">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

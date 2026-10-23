@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import WhyHireMe from './components/WhyHireMe';
+import WorkspaceHero from './components/WorkspaceHero';
+import QualityManifesto from './components/QualityManifesto';
 import Philosophy from './components/Philosophy';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
@@ -21,11 +21,11 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-horizon-light dark:bg-midnight-900 min-h-screen text-slate-900 dark:text-slate-200 font-sans selection:bg-horizon-sky selection:text-white transition-colors duration-150 bg-grain">
+    <div className="bg-[#FAF7F2] dark:bg-[#0E1117] min-h-screen text-slate-800 dark:text-slate-200 font-sans selection:bg-amber-400/80 selection:text-slate-900 transition-colors duration-150 bg-grain">
         <Navbar />
         <main>
-            <Hero />
-            <WhyHireMe />
+            <WorkspaceHero />
+            <QualityManifesto />
             <Projects />
             <Experience />
             <Philosophy />

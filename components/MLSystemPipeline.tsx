@@ -15,16 +15,16 @@ const pipelineStages: Stage[] = [
     id: 'ingestion',
     label: 'Data Ingestion',
     icon: Database,
-    description: "Aggregating raw data from disparate sources (SQL, APIs, unstructured logs) into a unified lake.",
-    tools: ["PostgreSQL", "MIMIC-IV", "S3"],
+    description: "Aggregating raw structured and unstructured data from SQL databases, REST endpoints, and file logs.",
+    tools: ["PostgreSQL", "Python", "SQL"],
     color: "text-blue-500"
   },
   {
     id: 'engineering',
     label: 'Feature Eng.',
     icon: GitBranch,
-    description: "Building robust ETL pipelines to clean, normalize, and transform raw data into model-ready features.",
-    tools: ["Pandas", "dbt", "Airflow"],
+    description: "Cleaning, normalizing, and transforming raw data into structured features and validated datasets.",
+    tools: ["Pandas", "NumPy", "Pytest"],
     color: "text-cyan-500"
   },
   {
@@ -40,7 +40,7 @@ const pipelineStages: Stage[] = [
     label: 'Production',
     icon: Server,
     description: "Containerizing and serving models via scalable APIs with low-latency inference monitoring.",
-    tools: ["Docker", "FastAPI", "AWS"],
+    tools: ["Docker", "FastAPI", "Uvicorn"],
     color: "text-indigo-500"
   },
   {
@@ -48,7 +48,7 @@ const pipelineStages: Stage[] = [
     label: 'Business Value',
     icon: TrendingUp,
     description: "Translating technical outputs into actionable insights, dashboards, and automated decisions.",
-    tools: ["PowerBI", "ROI Analysis", "Automation"],
+    tools: ["Power BI", "Streamlit", "Automation"],
     color: "text-emerald-500"
   }
 ];
@@ -60,7 +60,7 @@ const MLSystemPipeline: React.FC = () => {
     <div className="w-full mb-20 animate-fadeIn">
       <div className="flex items-center gap-2 mb-6">
          <Cpu className="w-4 h-4 text-slate-500" />
-         <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-slate-500">
+         <h3 className="text-xs font-sans font-bold uppercase tracking-widest text-slate-500">
             End-to-End System Architecture
          </h3>
       </div>
@@ -94,7 +94,7 @@ const MLSystemPipeline: React.FC = () => {
                             </div>
 
                             {/* Label */}
-                            <span className={`text-sm font-bold font-mono transition-colors duration-300 ${isActive ? 'text-slate-900 dark:text-white' : 'text-slate-500'}`}>
+                            <span className={`text-sm font-bold font-sans transition-colors duration-300 ${isActive ? 'text-slate-900 dark:text-white' : 'text-slate-500'}`}>
                                 {stage.label}
                             </span>
                             
