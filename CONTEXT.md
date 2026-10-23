@@ -72,20 +72,17 @@
   - Ripgrep search in `dist/` for `VITE_API_KEY`: 0 results
   - Zero API secrets defined in `vite.config.ts`
   - `.gitignore` confirmed ignoring `.env`, `.env.*`, `node_modules`, `dist`, `.vercel`
+- **5. Resume Asset Verification:**
+  - PDF `public/Yogesh_Jadhav_QA_Resume.pdf` (114,389 bytes, SHA256 `1273734C...`) added by user.
+  - `npm run build` verified: copies directly to `dist/Yogesh_Jadhav_QA_Resume.pdf` with identical hash.
+  - Links in `WorkspaceHero.tsx` and `Footer.tsx` verified pointing directly to `/Yogesh_Jadhav_QA_Resume.pdf`.
 
 
 ## 6. Current Stopping Point & Next Steps
-- **Commit Created:** `aff6370` on branch `redesign-preview`
-  - Commit message: `feat: Integrate Google AI Studio portfolio redesign with Vercel serverless API`
-  - Staged and committed: 44 files changed (11,841 insertions, 1,242 deletions)
-  - Zero `.env` files, credentials, `node_modules/`, or `dist/` committed.
-  - Working tree clean.
-- **Push Status:**
-  - `git push origin redesign-preview` was attempted, but GitHub rejected password authentication:
-    `remote: Invalid username or token. Password authentication is not supported for Git operations.`
-    `fatal: Authentication failed for 'https://github.com/yogesh43221/portfolioyogeshj.git/'`
-  - In non-interactive agent execution, Git Credential Manager cannot display the interactive browser/token login popup.
+- **Current Branch:** `redesign-preview`
+- **Pending Addition:** `public/Yogesh_Jadhav_QA_Resume.pdf` (untracked, ready to be committed).
 - **Next Step:**
-  - You can run `git push origin redesign-preview` from your interactive local terminal (where Git Credential Manager can prompt you for GitHub login/PAT), OR provide an authenticated push command.
-  - Once pushed, Vercel will automatically build and deploy the Preview URL for `redesign-preview`.
+  - Await user approval to commit `public/Yogesh_Jadhav_QA_Resume.pdf` and `CONTEXT.md` and push to `origin redesign-preview`.
+  - Once pushed, Vercel will trigger an updated Preview deployment containing the physical PDF file.
+
 
