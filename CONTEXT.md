@@ -22,12 +22,9 @@
 - [x] Milestone 3: Implement Vercel Serverless Functions (`api/chat.ts`, `api/health.ts`) with honest grounded fallback and isolated local test script (`scripts/verify-chat-api.ts`).
 - [x] Milestone 4: Reconcile configuration files (`package.json`, `vite.config.ts`, `tailwind.config.js`, `tsconfig.json`, `index.html`, `vite-env.d.ts`).
 - [x] Milestone 5: Transfer and adapt redesign components, services, constants, types, styles, and `App.tsx`.
-- [x] Milestone 6: Execute local verification:
-  - `npm install`: 300 packages installed, `package-lock.json` generated.
-  - `npm run test:api`: 4/4 handler tests passed.
-  - `npx tsc --noEmit`: 0 errors.
-  - `npm run build`: Vite build completed cleanly in 2.95s.
-- [x] Milestone 7: Present comprehensive report and await user approval before git commit/push.
+- [x] Milestone 6: Execute local verification and initial push (`e7523c6`).
+- [x] Milestone 7: Add QA resume PDF to `public/` and push (`b636e69`).
+- [x] Milestone 8: Investigate and resolve Vercel runtime `ERR_MODULE_NOT_FOUND` in `api/chat.ts` by making it self-contained.
 
 ## 3. Technology Stack & Component Architecture
 - **Frontend Framework:** React 18, TypeScript, Vite 5, TailwindCSS 3, Lucide React
@@ -49,6 +46,10 @@
   - *Rationale:* Keeps the Vite build config simple and unpolluted. Local API testing is verified using an isolated runner script (`scripts/verify-chat-api.ts`), while live Vercel Function behavior will be tested on the Vercel Preview URL.
 - **Decision 5: Preserved `ResumeDropdown.tsx` & `RESUME_URLS` in `constants.ts`:**
   - *Rationale:* Backward compatibility ensures that existing components are not broken while the new `WorkspaceHero` direct resume download is the active UI.
+- **Decision 6: Self-contained `api/chat.ts` for Vercel Node ESM compatibility:**
+  - *Root Cause:* In `package.json`, `"type": "module"` configures Node.js in native ESM mode. In Vercel's deployed container `/var/task/`, relative extensionless imports like `../constants` fail at runtime with `Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/var/task/constants' imported from /var/task/api/chat.js` because `constants.ts` is outside `api/` and Node ESM requires exact extensions and compiled modules.
+  - *Solution:* Inlined `PROFILE`, `SYSTEM_INSTRUCTION`, and the 7 `PROJECTS` knowledge definitions directly inside `api/chat.ts`.
+  - *Trade-off:* Eliminates all local relative imports, requires zero build configuration changes or plugins, and makes the serverless function 100% self-contained and reliable on Vercel Node runtime.
 
 ## 5. Tests Performed & Verification Log
 - **1. Handler Unit/Contract Test (`npm run test:api`):**
@@ -61,7 +62,7 @@
 - **2. TypeScript Compilation Check (`npx tsc --noEmit`):**
   - Total errors: 0
 - **3. Production Bundle Build (`npm run build`):**
-  - Vite transformed 1,513 modules in 3.10s
+  - Vite transformed 1,513 modules in 3.36s
   - Output files generated in `dist/`:
     - `dist/index.html` (3.89 kB)
     - `dist/assets/profile-CTGvIZmj.jpg` (8.88 kB)
@@ -73,16 +74,13 @@
   - Zero API secrets defined in `vite.config.ts`
   - `.gitignore` confirmed ignoring `.env`, `.env.*`, `node_modules`, `dist`, `.vercel`
 - **5. Resume Asset Verification:**
-  - PDF `public/Yogesh_Jadhav_QA_Resume.pdf` (114,389 bytes, SHA256 `1273734C...`) added by user.
-  - `npm run build` verified: copies directly to `dist/Yogesh_Jadhav_QA_Resume.pdf` with identical hash.
-  - Links in `WorkspaceHero.tsx` and `Footer.tsx` verified pointing directly to `/Yogesh_Jadhav_QA_Resume.pdf`.
-
+  - PDF `public/Yogesh_Jadhav_QA_Resume.pdf` (114,389 bytes) verified present and copied to `dist/`.
 
 ## 6. Current Stopping Point & Next Steps
 - **Current Branch:** `redesign-preview`
-- **Pending Addition:** `public/Yogesh_Jadhav_QA_Resume.pdf` (untracked, ready to be committed).
+- **Working Tree Changes:** `api/chat.ts` and `CONTEXT.md` modified.
 - **Next Step:**
-  - Await user approval to commit `public/Yogesh_Jadhav_QA_Resume.pdf` and `CONTEXT.md` and push to `origin redesign-preview`.
-  - Once pushed, Vercel will trigger an updated Preview deployment containing the physical PDF file.
+  - Present report and verification results to user.
+  - Await explicit user approval before staging, committing, and pushing to `origin redesign-preview`.
 
 

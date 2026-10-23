@@ -1,6 +1,187 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { GoogleGenAI } from '@google/genai';
-import { SYSTEM_INSTRUCTION, PROJECTS, PROFILE } from '../constants';
+
+interface ProjectDetails {
+  problem: string;
+  solution: string;
+  results?: string;
+  architecture?: string;
+  contributions?: string[];
+  testing?: string;
+  limitations?: string;
+}
+
+interface ProjectKnowledge {
+  id: number;
+  title: string;
+  description: string;
+  techStack: string[];
+  category: string;
+  github?: string;
+  extendedDetails?: ProjectDetails;
+}
+
+// Inlined self-contained profile knowledge to avoid Node ESM runtime module resolution errors in Vercel Serverless Functions
+const PROFILE = {
+  name: "Yogesh Jadhav",
+  title: "QA Automation / Software Engineer",
+  email: "yj43221@gmail.com",
+  location: "Pune, India",
+  github: "https://github.com/yogesh43221",
+  linkedin: "https://www.linkedin.com/in/yogesh-jadhav-60548020a/"
+};
+
+const SYSTEM_INSTRUCTION = `
+You are the AI portfolio assistant and digital representative of ${PROFILE.name}.
+Persona: Software Engineer specialized in QA Automation, with supporting pillars in Backend/API Engineering and AI/ML.
+Core Direction: QA Automation and Software Engineering (Playwright, Pytest, API testing, regression validation).
+Supporting Strengths: Python backend engineering (FastAPI, SQL, Docker) and practical AI/LLM applications (RAG pipelines, LangChain, FAISS). Hub9 experience is primary.
+Grounding Rules:
+- Answer questions about Yogesh's resume, projects, experience, education, and skills using ONLY facts supported by the portfolio content.
+- Do not claim seniority, production scale, or tools not present in the verified portfolio data.
+- If information is not provided in the portfolio or is unknown, explicitly state that rather than inventing or assuming details.
+Tone: Professional, direct, precise, and engineering-oriented.
+`;
+
+const PROJECTS: ProjectKnowledge[] = [
+  {
+    id: 1,
+    title: "OrbitDesk Support Agent",
+    description: "Multi-turn customer support agent capable of resolving inquiries, executing tool-assisted lookups, and categorizing issue severity with automated test suites.",
+    techStack: ["Python", "Pytest", "FastAPI", "LangChain", "Tool Calling", "Schema Validation"],
+    category: "QA Automation",
+    github: "https://github.com/yogesh43221/orbitdesk-support-agent",
+    extendedDetails: {
+      problem: "Customer support desks face ticket backlogs and repetitive inquiry triage that delay responses to routine questions, requiring rigorous test verification across dialogue flows and tool integrations.",
+      solution: "Designed an agentic support workflow capable of parsing customer issues, routing queries by intent, and executing knowledge lookups, backed by automated Pytest test suites.",
+      contributions: [
+        "Constructed conversational decision logic and intent classification for customer support queries",
+        "Integrated structured tool calling for simulated ticket lookup and status updates",
+        "Implemented fallback handling and out-of-scope question redirection",
+        "Built automated test suites covering request routing, schema validation, and failure paths"
+      ],
+      testing: "Implemented Pytest suites verifying intent routing, schema validation, invalid input rejection, confidence boundaries, and tool failure paths.",
+      results: "Demonstrated an autonomous support agent prototype handling triage and automated context lookups with verified test coverage across edge cases."
+    }
+  },
+  {
+    id: 2,
+    title: "Radiology Report Labeling & Validation System",
+    description: "Full-stack medical report labeling and validation service built with FastAPI, PostgreSQL, and Docker, designed with schema validation and testability across API and database layers.",
+    techStack: ["Python", "FastAPI", "PostgreSQL", "Docker", "REST APIs", "Pytest"],
+    category: "Backend / API",
+    github: "https://github.com/yogesh43221/radiology-report-labeling-system",
+    extendedDetails: {
+      problem: "Healthcare record workflows require strict schema validation, reliable error handling, and robust database constraints to prevent invalid medical report states.",
+      solution: "Designed a RESTful API backend using FastAPI and Pydantic models for request validation, PostgreSQL for structured storage, and Docker containerization for reproducible test environments.",
+      contributions: [
+        "Developed CRUD endpoints for radiology report creation, labeling status updates, and retrieval with JWT authentication",
+        "Structured PostgreSQL relational schemas with foreign key constraints and indexed query paths",
+        "Containerized the backend and database using Docker Compose for local development and test isolation"
+      ],
+      testing: "Tested endpoint responses, payload boundary conditions, and database transaction integrity using Pytest.",
+      results: "Established a functional prototype demonstrating clean API contracts, JWT authentication, and schema-level validation."
+    }
+  },
+  {
+    id: 3,
+    title: "Booking Analytics RAG System",
+    description: "Retrieval-Augmented Generation (RAG) system built with LangChain, Pinecone, and Python that allows users to query booking and reservation datasets using natural language.",
+    techStack: ["Python", "LangChain", "OpenAI API", "Pinecone", "FAISS", "SQL"],
+    category: "Backend / API",
+    github: "https://github.com/yogesh43221/Booking-Analytics-RAG-System",
+    extendedDetails: {
+      problem: "Querying operational booking data typically requires writing custom SQL queries, creating a barrier for non-technical team members seeking quick answers.",
+      solution: "Constructed a vector search pipeline using LangChain and Pinecone to embed data schemas and retrieve relevant contextual records for an LLM to generate answers.",
+      contributions: [
+        "Built document and metadata chunking pipelines to index tabular booking records into vector collections",
+        "Implemented similarity search retrieval using Pinecone and FAISS vector stores",
+        "Designed prompt templates to constrain LLM responses strictly to retrieved booking context"
+      ],
+      testing: "Evaluated response relevance across sample domain questions and verified context retrieval accuracy against raw SQL reference queries.",
+      results: "Enabled conversational querying over booking records with grounded contextual responses.",
+      limitations: "Relies on external LLM API availability and vector embedding quality for domain-specific terminology."
+    }
+  },
+  {
+    id: 4,
+    title: "DocuMate — Document Q&A Assistant",
+    description: "Retrieval-Augmented Generation (RAG) assistant that indexes documents and provides conversational question answering over uploaded files using embeddings and vector search.",
+    techStack: ["Python", "LangChain", "RAG", "Vector Search", "FAISS", "Embeddings"],
+    category: "AI / LLM",
+    github: "https://github.com/yogesh43221/DocuMate-RAG-QA-System",
+    extendedDetails: {
+      problem: "Reviewing lengthy unstructured documents and technical guides manually to locate specific answers is slow and error-prone.",
+      solution: "Built a document question-answering workflow using LangChain, text chunking, vector indexing, and LLM context synthesis.",
+      contributions: [
+        "Implemented document parsing pipelines with sliding chunk windows and overlap preservation",
+        "Built vector similarity retrieval using embedding stores to retrieve relevant context chunks",
+        "Designed structured prompt templates to constrain LLM responses strictly to retrieved source text"
+      ],
+      testing: "Tested retrieval consistency against diverse question types and evaluated chunk boundary effects on answer accuracy.",
+      results: "Delivered a conversational document assistant capable of grounded answering from document context."
+    }
+  },
+  {
+    id: 5,
+    title: "Financial Transaction Fraud Detection",
+    description: "Machine learning pipeline designed to detect fraudulent financial transactions in highly imbalanced datasets using SMOTE and Random Forest.",
+    techStack: ["Python", "Scikit-learn", "Pandas", "SMOTE", "Random Forest"],
+    category: "Machine Learning",
+    github: "https://github.com/yogesh43221/Data-Science-Projects/tree/main/Transaction%20Fraud%20Detection",
+    extendedDetails: {
+      problem: "Identifying fraudulent transactions in high-volume financial data is challenging due to extreme class imbalance where legitimate events heavily outnumber anomalies.",
+      solution: "Engineered an end-to-end machine learning workflow utilizing SMOTE for synthetic minority oversampling and Random Forest classifiers for robust decision boundaries.",
+      contributions: [
+        "Preprocessed financial transaction records, handled missing features, and normalized numerical feature scales",
+        "Applied SMOTE to balance class distributions without discarding legitimate transaction records",
+        "Trained Random Forest classification models tuned to prioritize precision and recall on the minority class"
+      ],
+      testing: "Evaluated classification performance using precision, recall, F1-score, and confusion matrices against held-out test splits.",
+      results: "Demonstrated a machine learning pipeline capable of identifying minority fraud patterns on imbalanced transaction data.",
+      limitations: "Trained on static benchmark distributions; production deployment would require dynamic thresholding and concept drift monitoring."
+    }
+  },
+  {
+    id: 6,
+    title: "Vidhya Vision — Analytics Vidhya Course Finder",
+    description: "Semantic search and course discovery application using Hugging Face transformer embeddings and FAISS vector indexing to find relevant educational courses.",
+    techStack: ["Python", "LangChain", "FAISS", "Hugging Face", "Transformers", "Streamlit"],
+    category: "AI / LLM",
+    github: "https://github.com/yogesh43221/Vidhya-Vision",
+    extendedDetails: {
+      problem: "Keyword-based search fails to retrieve educational courses and resources when query words do not match course titles or descriptions verbatim.",
+      solution: "Implemented semantic vector search using open-source Hugging Face embeddings and FAISS indexing, deployed live as an interactive web app on Hugging Face Spaces.",
+      contributions: [
+        "Integrated Hugging Face embedding models to transform course listings and metadata into dense vector representations",
+        "Built FAISS index retrieval for sub-second similarity search over course catalogs",
+        "Deployed an interactive web application on Hugging Face Spaces for live course discovery"
+      ],
+      testing: "Tested semantic retrieval with conceptual queries against curated educational course datasets.",
+      results: "Deployed live on Hugging Face Spaces, enabling conversational course discovery beyond exact keyword matching."
+    }
+  },
+  {
+    id: 7,
+    title: "Eklavya AI Generator",
+    description: "Educational content generation system that synthesizes structured study modules, conceptual summaries, and practice assessments from input topics.",
+    techStack: ["Python", "Streamlit", "LLMs", "Prompt Engineering", "NLP"],
+    category: "AI / LLM",
+    github: "https://github.com/yogesh43221/eklavya-ai-generator",
+    extendedDetails: {
+      problem: "Compiling structured study materials, conceptual primers, and self-assessment questions manually requires significant preparation time.",
+      solution: "Developed an interactive web generator utilizing prompt chaining and formatted outputs to generate modular study materials on demand, deployed on Render.",
+      contributions: [
+        "Constructed structured prompt workflows generating modular sections (concept definitions, code examples, quizzes)",
+        "Formatted outputs into clean markdown with downloadable review exports",
+        "Implemented input parameter guards to ensure predictable generation formats",
+        "Deployed the interactive web application to Render with live public access"
+      ],
+      testing: "Tested generation reliability and consistency across varied technical subject prompts.",
+      results: "Deployed live web generator on Render providing on-demand educational primers and quiz generation."
+    }
+  }
+];
 
 // Construct grounded knowledge base from the PROJECTS array
 const PROJECTS_KNOWLEDGE = PROJECTS.map(p => `
@@ -126,7 +307,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
     res.status(400).json({ error: 'Message is required' });
     return;
   }
-
 
   // Server-only Gemini API key
   const apiKey = process.env.GEMINI_API_KEY;
