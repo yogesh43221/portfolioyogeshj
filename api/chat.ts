@@ -311,14 +311,26 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
   // Server-only Gemini API key
   const apiKey = process.env.GEMINI_API_KEY;
 
-  // If no API key configured or quota was recently exhausted, fulfill from grounded knowledge base
-  if (!apiKey || Date.now() < quotaExhaustedUntil) {
+  if (!apiKey) {
+    console.warn('[api/chat] Fallback: GEMINI_API_KEY environment variable is not configured or empty.');
     res.status(200).json({
       reply: getGroundedPortfolioReply(message),
       source: 'grounded_knowledge_base'
     });
     return;
   }
+
+  if (Date.now() < quotaExhaustedUntil) {
+    console.warn('[api/chat] Fallback: Active rate-limit/quota cooldown in effect until', new Date(quotaExhaustedUntil).toISOString());
+    res.status(200).json({
+      reply: getGroundedPortfolioReply(message),
+      source: 'grounded_knowledge_base'
+    });
+    return;
+  }
+
+  const modelName = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
+  const TIMEOUT_MS = 8500; // 8.5 seconds: safely under Vercel Hobby 10-second limit while accommodating cold starts
 
   try {
     const ai = new GoogleGenAI({
@@ -343,13 +355,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
 
     let timeoutId: NodeJS.Timeout | null = null;
     const timeoutPromise = new Promise<never>((_, reject) => {
-      timeoutId = setTimeout(() => reject(new Error('timeout')), 5000);
+      timeoutId = setTimeout(() => reject(new Error('timeout')), TIMEOUT_MS);
     });
 
     try {
+      console.log('[api/chat] Initiating Gemini generateContent request with model:', modelName);
+
       const response = await Promise.race([
         ai.models.generateContent({
-          model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
+          model: modelName,
           contents,
           config: {
             systemInstruction: DETAILED_INSTRUCTION,
@@ -362,6 +376,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
 
       if (timeoutId) clearTimeout(timeoutId);
 
+      if (response.text) {
+        console.log('[api/chat] Success: Live Gemini response generated successfully from model:', modelName);
+      } else {
+        console.warn('[api/chat] Fallback: Gemini request succeeded but returned empty text output.');
+      }
+
       const reply = response.text || getGroundedPortfolioReply(message);
       res.status(200).json({
         reply,
@@ -373,8 +393,23 @@ export default async function handler(req: VercelRequest, res: VercelResponse): 
     }
   } catch (err: any) {
     const errStr = String(err?.message || err || '');
-    if (errStr.includes('429') || errStr.includes('quota') || errStr.includes('RESOURCE_EXHAUSTED') || err?.status === 429) {
-      quotaExhaustedUntil = Date.now() + 24 * 60 * 60 * 1000;
+    const errStatus = err?.status || err?.statusCode || err?.code;
+
+    if (err?.message === 'timeout' || err?.name === 'AbortError') {
+      console.warn(`[api/chat] Fallback: Gemini API call timed out after ${TIMEOUT_MS}ms.`);
+    } else if (errStatus === 429 || errStr.includes('429') || errStr.includes('quota') || errStr.includes('RESOURCE_EXHAUSTED')) {
+      quotaExhaustedUntil = Date.now() + 5 * 60 * 1000; // 5-minute cooldown
+      console.warn('[api/chat] Fallback: Gemini rate limit/quota exhausted (HTTP 429). 5-minute cooldown activated.');
+    } else if (errStatus === 401 || errStatus === 403 || errStr.includes('API_KEY_INVALID') || errStr.includes('unauthorized') || errStr.includes('PERMISSION_DENIED')) {
+      console.error('[api/chat] Fallback: Gemini authentication or permission error. Status:', errStatus || 'unauthorized');
+    } else if (errStatus === 404 || errStr.includes('not found') || errStr.includes('NOT_FOUND')) {
+      console.error(`[api/chat] Fallback: Model '${modelName}' not found or unsupported for generateContent (HTTP 404).`);
+    } else {
+      console.error('[api/chat] Fallback: Gemini request failed with unexpected error:', {
+        name: err?.name || 'Error',
+        status: errStatus,
+        message: err?.message || 'Unknown error'
+      });
     }
 
     res.status(200).json({
