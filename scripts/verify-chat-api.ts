@@ -19,7 +19,7 @@
  * 15. Timeout rejection (no retry on timeout -> attempts === 1)
  */
 
-import handler, { getGroundedPortfolioReply, executeChatGeneration, GeminiClientLike } from '../api/chat';
+import handler, { getGroundedPortfolioReply, executeChatGeneration, GeminiClientLike, DETAILED_INSTRUCTION } from '../api/chat';
 
 interface MockResponse {
   statusCode: number;
@@ -357,6 +357,48 @@ async function runTests() {
     } else {
       console.error('❌ Test 17 Failed: Expected exactly 2 attempts, got:', attemptsCountDouble503, err);
     }
+  }
+
+  // Test 18: Regression test - DETAILED_INSTRUCTION must contain verified education details
+  total++;
+  const hasMit = DETAILED_INSTRUCTION.includes('MIT Academy of Engineering');
+  const hasBTech = DETAILED_INSTRUCTION.includes('B.Tech in Electronics & Telecommunication');
+  const hasMinor = DETAILED_INSTRUCTION.includes('Artificial Intelligence & Machine Learning');
+  const hasPeriod = DETAILED_INSTRUCTION.includes('2020 – 2024');
+  const hasSalaryRule = DETAILED_INSTRUCTION.includes('current salary');
+
+  if (hasMit && hasBTech && hasMinor && hasPeriod && hasSalaryRule) {
+    console.log('✅ Test 18 Passed: DETAILED_INSTRUCTION includes verified education facts and salary unavailable directive.');
+    passed++;
+  } else {
+    console.error('❌ Test 18 Failed: DETAILED_INSTRUCTION missing verified education details:', {
+      hasMit, hasBTech, hasMinor, hasPeriod, hasSalaryRule
+    });
+  }
+
+  // Test 19: Regression test - executeChatGeneration passes systemInstruction with education to Gemini SDK
+  total++;
+  let capturedSystemInstruction = '';
+  const mockAiEducationCheck: GeminiClientLike = {
+    models: {
+      generateContent: async (params) => {
+        capturedSystemInstruction = params.config.systemInstruction;
+        return { text: 'Yogesh holds a B.Tech from MIT Academy of Engineering, Alandi.' };
+      }
+    }
+  };
+
+  const eduRes = await executeChatGeneration(mockAiEducationCheck, 'gemini-2.5-flash', [{ role: 'user', parts: [{ text: 'What is your education?' }] }], DETAILED_INSTRUCTION, 8500);
+
+  if (
+    eduRes.text?.includes('MIT Academy of Engineering') &&
+    capturedSystemInstruction.includes('MIT Academy of Engineering') &&
+    capturedSystemInstruction.includes('B.Tech in Electronics & Telecommunication')
+  ) {
+    console.log('✅ Test 19 Passed: executeChatGeneration provides verified education in Gemini systemInstruction payload.');
+    passed++;
+  } else {
+    console.error('❌ Test 19 Failed: Education context was not passed to Gemini generateContent params.');
   }
 
   console.log(`\n📊 Test Summary: ${passed}/${total} tests passed.\n`);
